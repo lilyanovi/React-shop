@@ -95,13 +95,15 @@ font-family: 'Montserrat';
  font-size: 20px;
  line-height: 24px;
  color: #FFFFFF;
- border: none;
+ border: 1px solid #547147;
  cursor: pointer;
  margin: 24px 0 20px;
  &:hover {
-  background: #3b532f;
+  color: #547147;
+  background-color: #FFFFFF;
+  border: 1px solid #547147;
  }
- }
+}
 
 @media (min-width: 1318px) {
   .card {
