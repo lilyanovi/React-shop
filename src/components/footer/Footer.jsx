@@ -2,7 +2,12 @@ import './footer.scss'
 import insta from '../../assets/footer/insta.png'
 import vk from '../../assets/footer/vk.png'
 import flogo from '../../assets/footer/flogo.png'
+import { Modal } from '../modal/modal'
+import { Application } from '../application/application'
+
+import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
+
 
 const links = [
   {
@@ -23,6 +28,9 @@ const links = [
 ]
 
 const Footer = () => {
+
+  const [modalActive, setModalActive] = useState(false)
+
   return (
     <>
       <footer className="footer">
@@ -64,12 +72,16 @@ const Footer = () => {
             <div className="footer__column">
               <h1>Остались вопросы?</h1>
               <p className="footer__column-text">Оставьте заявку, мы свяжемся с Вами <br /> в ближайшее время</p>
-              <button onClick="">Оставить заявку</button>
+              <button onClick={() => setModalActive(true)}>Оставить заявку</button>
             </div>
 
           </div>
         </div>
-      </footer> </>)
+      </footer> 
+      <Modal active={modalActive} setActive={setModalActive}>
+        <Application/>
+      </Modal>
+    </>)
 }
 
 export default Footer
