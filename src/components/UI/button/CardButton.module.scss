@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkalami&family=Inter:wght@200;400;600;700;900&family=Montserrat:wght@100;200;400;600;700;800;900&display=swap');
+
+
+.cardBtn {
+ padding: 12px 95px;
+ text-align: center;
+ background: #547147;
+ border-radius: 40px;
+ font-family: 'Montserrat';
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+color: #FFFFFF;
+border: none;
+cursor: pointer;
+margin: 24px 0 20px;
+&:hover {
+ background: #3b532f;
+}
+}
