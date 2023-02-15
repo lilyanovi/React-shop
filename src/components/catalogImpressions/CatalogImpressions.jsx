@@ -77,9 +77,9 @@ const CatalogImpressions = (props) => {
   <div className="catalogImpressions">
     <h1 className="title">
       Каталог впечатлений
-      </h1>
+    </h1>
     <div className="catalogCard">
-    {cards.map(card => <Card modal={props.setModal} card={card} key={card.id}/>)}
+      {cards.map(card => <Card modal={props.setModal} card={card} key={card.id}/>)}
     </div>
   </div>
  );

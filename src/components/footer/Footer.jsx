@@ -4,7 +4,7 @@ import vk from '../../assets/footer/vk.png'
 import flogo from '../../assets/footer/flogo.png'
 import { Modal } from '../modal/modal'
 import { Application } from '../application/application'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
 
