@@ -2,7 +2,11 @@ import './footer.scss'
 import insta from '../../assets/footer/insta.png'
 import vk from '../../assets/footer/vk.png'
 import flogo from '../../assets/footer/flogo.png'
+import { Modal } from '../modal/modal'
+import { Application } from '../application/application'
+import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+
 
 const links = [
   {
@@ -23,16 +27,18 @@ const links = [
 ]
 
 const Footer = () => {
+
+  const [modalActive, setModalActive] = useState(false)
+
   return (
     <>
       <footer className="footer">
         <div className="footer__box container">
-          <hr />
           <div className="footer__row">
             <div className="footer__column">
               <img src={flogo} alt="flogo" />
               <p className="footer__column-allright">Все права защищены<br />
-                © Дари Душой, 2022 г.
+                © Дари Душой, 2023 г.
               </p>
             </div>
 
@@ -56,20 +62,24 @@ const Footer = () => {
             <div className="footer__column">
               <h1>+7 (999) 123-45-67</h1>
               <div className="footer__column-link">
-                <img src={vk} alt="vk" />
-                <img src={insta} alt="insta" />
+                <a href="https://instagram.com/daridushoy/"><img src={vk} alt="vk" /></a>
+                <a href="https://vk.com/daridushoy/"><img src={insta} alt="insta" /></a>
               </div>
             </div>
 
             <div className="footer__column">
               <h1>Остались вопросы?</h1>
               <p className="footer__column-text">Оставьте заявку, мы свяжемся с Вами <br /> в ближайшее время</p>
-              <button onClick="">Оставить заявку</button>
+              <button onClick={() => setModalActive(true)}>Оставить заявку</button>
             </div>
 
           </div>
         </div>
-      </footer> </>)
+      </footer>
+      <Modal active={modalActive} setActive={setModalActive}>
+        <Application />
+      </Modal>
+    </>)
 }
 
 export default Footer
