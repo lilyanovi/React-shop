@@ -1,10 +1,10 @@
-import style from './modal.module.css'
+import './modal.scss'
 
 export function Modal ({active, setActive, children}) {
 
     return (
         <>
-            <div className={active ? style.modal_active : style.modal} onClick={() => setActive(false)}>
+            <div className={active ? 'modal_active' : 'modal'} onClick={() => setActive(false)}>
                <div onClick={e => e.stopPropagation()}>
                     {children}
                </div>
