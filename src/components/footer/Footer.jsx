@@ -3,8 +3,9 @@ import insta from '../../assets/footer/insta.png'
 import vk from '../../assets/footer/vk.png'
 import flogo from '../../assets/footer/flogo.png'
 import { Modal } from '../modal/modal'
+import { useSelector, useDispatch } from 'react-redux'
 import { Application } from '../application/application'
-import { useState } from 'react'
+import { openModal } from '../../store/modal/actions'
 import { NavLink } from 'react-router-dom'
 
 
@@ -27,8 +28,12 @@ const links = [
 ]
 
 const Footer = () => {
+  const modalShow = useSelector(store => store.modal.modalShow)
+  const dispatch = useDispatch()
 
-  const [modalActive, setModalActive] = useState(false)
+  const handleShowModal = () => {
+    dispatch(openModal(true))
+  }
 
   return (
     <>
@@ -70,15 +75,18 @@ const Footer = () => {
             <div className="footer__column">
               <h1>Остались вопросы?</h1>
               <p className="footer__column-text">Оставьте заявку, мы свяжемся с Вами <br /> в ближайшее время</p>
-              <button onClick={() => setModalActive(true)}>Оставить заявку</button>
+              <button onClick={handleShowModal}>Оставить заявку</button>
             </div>
 
           </div>
         </div>
       </footer>
-      <Modal active={modalActive} setActive={setModalActive}>
-        <Application />
-      </Modal>
+      {
+        modalShow && 
+          <Modal>
+            <Application/>
+          </Modal>
+      }
     </>)
 }
 
