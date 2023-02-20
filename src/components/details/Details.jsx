@@ -1,5 +1,5 @@
 import style from './details.module.css'
-import horseWalk from '../../assets/slider/horseWalk.png'
+import airtube from '../../assets/stocks/airtube.png'
 import { Modal } from '../modal/modal'
 import { Application } from '../application/application'
 import { useSelector, useDispatch } from 'react-redux'
@@ -10,7 +10,7 @@ export const arrDetails = [
         id: 1,
         title: 'Конная прогулка',
         price: 'от 990 ₽',
-        img: horseWalk
+        img: airtube
     }
 ]
 
@@ -30,13 +30,23 @@ const Details = () => {
             {
                 arrDetails.map(item => (
                     <form className={style.details}>
-                        <div className={style.details__head}>
-                            <h2 className={style.details__head__title} >{item.title}</h2>
-                            <h1 className={style.details__price} >{item.price}</h1>
+                        <div className={style.details__info}>
+                            <div className={style.details__img}>
+                                <div>
+                                    <img src={item.img} alt="img" />
+                                </div>
+                                <div></div>
+                            </div>
+                            <div className={style.details__description}>
+                                <div className={style.details__head}>
+                                    <h2 className={style.details__head__title} >{item.title}</h2>
+                                    <h1 className={style.details__price} >{item.price}</h1>
+                                </div>
+
+                                <button className={style.details__btn} onClick={(event) => handleOpenModal(event)}>Заказать впечатление</button>
+                                <h3 className={style.details__head__subtitle}> Подробнее о впечатлении: </h3>
+                            </div>
                         </div>
-                        <button className={style.details__btn} onClick={(event) => handleOpenModal(event)}>Заказать впечатление</button>
-                        <img src={item.img} alt="img" />
-                        <p> Тут будет добавлена подробная информация </p>
                     </form>
                 ))
             }
