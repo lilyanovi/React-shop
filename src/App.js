@@ -5,6 +5,9 @@ import HomePage from './pages/HomePage'
 import ErrorPage from './pages/404Page'
 import ContactPage from './pages/ContactPage'
 import StocksPage from './pages/StocksPage'
+import LoginPage from './pages/LoginPage'
+import SignUpPage from './pages/SignInPage'
+import AccountPage from './pages/AccountPage'
 
 export default function App() {
 
@@ -15,6 +18,9 @@ export default function App() {
           <Route index element={<HomePage/>}></Route>
           <Route path="contacts" element={<ContactPage/>}></Route>
           <Route path="stock" element={<StocksPage/>}></Route>
+          <Route path="login" element={<LoginPage/>}></Route>
+          <Route path="account" element={<AccountPage/>}></Route>
+          <Route path="signup" element={<SignUpPage/>}></Route>
           <Route path='*' element={<ErrorPage />}></Route>
         </Route>
       </Routes>

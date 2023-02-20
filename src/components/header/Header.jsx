@@ -22,6 +22,9 @@ export const links = [
 ]
 
 const Header = () => {
+
+const user = false;
+
   return (
     <>
       <header className="header">
@@ -44,7 +47,21 @@ const Header = () => {
               ))
             }
           </nav>
-          <NavLink to="basket" className="header__nav-basket"></NavLink>
+          {user ?
+            <div>
+              <NavLink to='/account'>
+                <button>Личный кабинет</button>
+              </NavLink>
+              <button>Выйти</button>
+            </div>
+          
+            :
+            <NavLink to='/login'>
+              <button>Войти</button>
+            </NavLink>
+          }
+          
+          
         </div>
       </header>
     </>
