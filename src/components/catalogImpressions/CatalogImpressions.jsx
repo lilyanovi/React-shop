@@ -3,12 +3,14 @@ import Card from './Card';
 import './CatalogImpressions.scss'
 import { Modal } from '../modal/modal';
 import { Application } from '../application/application';
+import { useSelector } from 'react-redux'
 import Details from '../details/Details';
 
 const CatalogImpressions = (props) => {
+  const modalShow = useSelector(store => store.modal.modalShow)
+  const modalDetail = useSelector(store => store.modal.modalDetails)
+  const [info, setInfo] = useState(false)
 
-  const [modalActive1, setModalActive1] = useState(false)
-  const [modalActive2, setModalActive2] = useState(false)
   const [cards, setCards] = useState([
     {
       "id": 1,
@@ -84,14 +86,20 @@ const CatalogImpressions = (props) => {
       Каталог впечатлений
     </h1>
     <div className="catalogCard">
-    {cards.map(card => <Card modal1={setModalActive1} modal2={setModalActive2} card={card} key={card.id}/>)}
+      {cards.map(card => <Card card={card} key={card.id}/>)}
     </div>
-    <Modal active={modalActive1} setActive={setModalActive1}>
-        <Application />
-    </Modal>
-    <Modal active={modalActive2} setActive={setModalActive2}>
-    <Details/>
-    </Modal>
+    {
+      modalShow &&
+      <Modal>
+        <Application/>
+      </Modal>
+    }
+    {
+      modalDetail &&
+      <Modal>
+        <Details/>
+      </Modal>
+    }
   </div>
  );
 };

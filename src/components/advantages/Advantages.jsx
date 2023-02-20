@@ -33,7 +33,7 @@ const Advantages = () => {
       <div className="advantages container">
         {
           arrAdvantages.map(item => (
-            <div className="advantages__item">
+            <div className="advantages__item" key={item.id}>
               <img src={item.img} alt="advantages img" height="80"/>
               <p>{item.text}</p>
             </div>
