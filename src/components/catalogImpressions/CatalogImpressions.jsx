@@ -3,7 +3,7 @@ import Card from './Card';
 import './CatalogImpressions.scss'
 import { Modal } from '../modal/modal';
 import { Application } from '../application/application';
-import Det from '../details/Det';
+import Details from '../details/Details';
 import axios from 'axios'
 
 const CatalogImpressions = () => {
@@ -18,7 +18,7 @@ const CatalogImpressions = () => {
   }, []
   )
   async function fetchCards() {
-    const cards = await axios.get('https://kaori318.github.io/givesoul/src/cards.json')
+    const cards = await axios.get('https://kaori318.github.io/site/cards.json')
     setCards(cards.data)
   }
   function getCardId(cardId) {
@@ -39,7 +39,7 @@ const CatalogImpressions = () => {
         <Application />
     </Modal>
     <Modal active={modalActive2} setActive={setModalActive2}>
-        <Det card={cardModal}/>
+        <Details card={cardModal}/>
     </Modal>
   </div>
  );
