@@ -16,30 +16,21 @@ const Card = ({ card, setInfo, cardId }) => {
   }
 
   return (
-    <div className="card">
+    <div className="card" onClick={() => cardId(card.id)}>
       <div className="card__img"
-      onClick={() => {
-        cardId(card.id)
-        handleOpenDetails}}>
+      onClick={handleOpenDetails}>
         <img
           src={card.img}
           alt={card.title} />
       </div>
       <div className="card__block">
-        <div className="card__title"
-        onClick={() => {
-        cardId(card.id)
-        handleOpenDetails}}>
+        <div className="card__title" onClick={handleOpenDetails}>
           {card.name}
         </div>
         <div className="card__body">
           <h1 className='price'>{card.price}</h1>
            <button className="cardBtn" onClick={handleOpenModal}>Заказать</button>
-          <p onClick={() => {
-            cardId(card.id)
-           handleOpenDetails}}>
-          Подробнее
-          </p>
+          <p onClick={handleOpenDetails}>Подробнее</p>
         </div>
       </div>
     </div>
