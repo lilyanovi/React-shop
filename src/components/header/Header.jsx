@@ -92,9 +92,14 @@ const Header = () => {
             </div>
           
             :
-            <NavLink to='/login'>
-              <button>Войти</button>
-            </NavLink>
+            <div> 
+              <NavLink to='/login'>
+                <button>Войти</button>
+              </NavLink>
+              <NavLink to='/signup'>
+                <button>Зарегестрироваться</button>
+              </NavLink>
+            </div>
           }
           
           

@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux"
 import FormLogin from "../components/formLogin"
 
 import { setUser } from "../store/auth/action";
-//import { useAuth } from "../hooks/use-auth";
+import { useAuth } from "../hooks/use-auth";
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 
@@ -33,6 +33,15 @@ const LoginPage = () => {
             .catch(() => console.log('Invalid user!'))
     }
 
+  /*  const {currentUser} = useAuth();
+
+    const rememberUser = () => {
+ 
+  console.log(currentUser)
+  localStorage.setItem('currentUser', JSON.stringify(currentUser))
+}*/
+   
+ 
     const handleSubmitGoogle = (e) => {
         e.preventDefault()    
      
