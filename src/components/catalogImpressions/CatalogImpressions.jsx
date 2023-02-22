@@ -50,7 +50,7 @@ const CatalogImpressions = () => {
     {
       modalDetail &&
       <Modal>
-        <Details/>
+        <Details card={cardModal}/>
       </Modal>
     }
   </div>
