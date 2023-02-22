@@ -1,84 +1,37 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Card from './Card';
 import './CatalogImpressions.scss'
 import { Modal } from '../modal/modal';
 import { Application } from '../application/application';
 import { useSelector } from 'react-redux'
 import Details from '../details/Details';
+import axios from 'axios'
 
-const CatalogImpressions = (props) => {
+
+const CatalogImpressions = () => {
+
+  const [cards, setCards] = useState([])
+  const [cardModal, setCardModal] = useState('')
+  
   const modalShow = useSelector(store => store.modal.modalShow)
   const modalDetail = useSelector(store => store.modal.modalDetails)
   const [info, setInfo] = useState(false)
 
-  const [cards, setCards] = useState([
-    {
-      "id": 1,
-      "name": "Конная прогулка",
-      "img": "../../img/1.jpg",
-      "price": "от 990"
-     },
-     {
-      "id": 2,
-      "name": "Полет на мотопараплане",
-      "img": "../../img/2.jpg",
-      "price": "3000"
-     },
-     {
-      "id": 3,
-      "name": "Полет в аэротрубе",
-      "img": "../../img/3.jpg",
-      "price": "от 1800"
-     },
-     {
-      "id": 4,
-      "name": "Вечер в куполе",
-      "img": "../../img/4.jpg",
-      "price": "3000"
-     },
-     {
-      "id": 5,
-      "name": "Прогулка на яхте «Чайка»",
-      "img": "../../img/5.jpg",
-      "price": "от 3500"
-     },
-     {
-      "id": 6,
-      "name": "Велопрогулка с пикником",
-      "img": "../../img/6.jpg",
-      "price": "3000"
-     },
-     {
-      "id": 7,
-      "name": "Драйв на квадроциклах",
-      "img": "../../img/7.jpg",
-      "price": "от 1800"
-     },
-     {
-      "id": 8,
-      "name": "Запись песни в студии",
-      "img": "../../img/8.jpg",
-      "price": "5000"
-     },
-     {
-      "id": 9,
-      "name": "Поездка на болотоходах",
-      "img": "../../img/9.jpg",
-      "price": "3500"
-     },
-     {
-      "id": 10,
-      "name": "Игра в виртуальной реальности",
-      "img": "../../img/10.jpg",
-      "price": "600"
-     },
-     {
-      "id": 11,
-      "name": "Романтический пикник",
-      "img": "../../img/11.jpg",
-      "price": "2500"
-     }
-  ])
+  useEffect (() => {
+    fetchCards()
+  }, []
+  )
+  
+  async function fetchCards() {
+    const cards = await axios.get('https://kaori318.github.io/site/cards.json')
+    setCards(cards.data)
+  }
+  
+  function getCardId(cardId) {
+  const id = cardId;
+    let index = cards.findIndex(el => el.id === id);
+    setCardModal(cards[index])
+  }
   
  return (
   <div className="catalogImpressions">
@@ -86,7 +39,7 @@ const CatalogImpressions = (props) => {
       Каталог впечатлений
     </h1>
     <div className="catalogCard">
-      {cards.map(card => <Card card={card} key={card.id}/>)}
+      {cards.map(card => <Card card={card} cardId={getCardId} key={card.id}/>)}
     </div>
     {
       modalShow &&
