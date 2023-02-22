@@ -1,6 +1,14 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+
 import './header.scss'
 import imgLogo from '../../assets/logo.png'
+
+import { removeUser } from '../../store/auth/action'
+import { useAuth } from '../../hooks/use-auth'
+import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth'
+
+
 
 //предлагаю этот массив импортировать в футер, чтобы не дублировать код для навигации
 export const links = [
@@ -23,7 +31,35 @@ export const links = [
 
 const Header = () => {
 
-const user = false;
+  const {isAuth} = useAuth();
+  const auth = getAuth();
+  
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+
+  /*onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const uid = user.uid;
+      console.log(`${uid} активен`)
+    } else {
+      console.log('Не активен')
+    }
+  });
+*/
+
+  const handleLogOut = (e) => {
+    e.preventDefault();
+
+    signOut(auth)
+      .then(() => {
+        dispatch(removeUser());
+        navigate('/login');
+        console.log('Пользователь не авторизован');
+    }).catch ((error) => {
+      console.log(error)
+    })
+    
+  }
 
   return (
     <>
@@ -47,12 +83,12 @@ const user = false;
               ))
             }
           </nav>
-          {user ?
+          {isAuth ?
             <div>
               <NavLink to='/account'>
                 <button>Личный кабинет</button>
               </NavLink>
-              <button>Выйти</button>
+              <button onClick={(e) => handleLogOut(e)}>Выйти</button>
             </div>
           
             :

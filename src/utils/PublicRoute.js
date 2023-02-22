@@ -1,14 +1,17 @@
-/*import { useSelector } from 'react-redux';
+
 import { Navigate, Outlet } from 'react-router-dom';
-//import { selectAuth } from '../store/profile/selectors';
+import { useAuth } from '../hooks/use-auth';
 
 
-export const PublicRoute = ({ component }) => {
-//  const isAuth = useSelector(selectAuth);
+const PublicRoute = ({ component }) => {
 
-  if (isAuth) {
-    // return <Navigate to="/" replace />;
-  }
+    const {isAuth} = useAuth();
+  
+    if (isAuth) {
+        return <Navigate to="/account" replace />;
+    }
 
-  return component ? component : <Outlet />;
-};*/
+    return component ? component : <Outlet />;
+};
+
+export default PublicRoute;
