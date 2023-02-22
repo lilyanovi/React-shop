@@ -29,7 +29,7 @@ const Details = ({card}) => {
         <>
             {/* {arrDetails
                 .map(item => ( */}
-                    <form className={style.details} key={item.id}>
+                    <form className={style.details} key={card.id}>
                         <div className={style.details__head}>
                             <h2 className={style.details__head__title} >{card.name}</h2>
                             <h1 className={style.details__price} >{card.price}</h1>
