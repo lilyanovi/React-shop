@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Card from './Card';
-import './CatalogImpressions.scss'
+import './Catalog.scss'
 import { Modal } from '../modal/modal';
 import { Application } from '../application/application';
 import { useSelector } from 'react-redux'
@@ -8,7 +8,7 @@ import Details from '../details/Details';
 import axios from 'axios'
 
 
-const CatalogImpressions = () => {
+const Catalog = () => {
 
   const [cards, setCards] = useState([])
   const [cardModal, setCardModal] = useState('')
@@ -57,4 +57,4 @@ const CatalogImpressions = () => {
  );
 };
 
-export default CatalogImpressions;
+export default Catalog;
