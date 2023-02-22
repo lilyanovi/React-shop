@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 
 import './header.scss'
 import imgLogo from '../../assets/logo.png'
+import imgSearch from '../../assets/search.png'
 
 import { removeUser } from '../../store/auth/action'
 import { useAuth } from '../../hooks/use-auth'
@@ -31,6 +32,7 @@ export const links = [
 
 const Header = () => {
 
+<<<<<<< HEAD
   const {isAuth} = useAuth();
   const auth = getAuth();
   
@@ -61,6 +63,8 @@ const Header = () => {
     
   }
 
+=======
+>>>>>>> 08e43c021d676ade685410da0379529a02bafb8c
   return (
     <>
       <header className="header">

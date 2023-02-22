@@ -2,12 +2,16 @@
     background: #FFFFFF;
     backdrop-filter: blur(25px);
     border-radius: 20px;
-    max-width: 530px;
+    max-width: 1300px;
     padding: 30px;
-    display: flex;
     flex-direction: column;
     gap: 20px;
 }
+
+.details__img {
+    margin-right: 40px;
+}
+
 
 .details__head {
     margin: 0 0 10px;
@@ -22,6 +26,14 @@
     align-items: flex-start;
     gap: 15px;
 }
+
+.details__head__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 40px;
+    color: #333333;
+}
+
 
 .details__price {
     margin: 0 0 10px;
@@ -49,6 +61,8 @@
     font-weight: 700;
     font-size: 20px;
     line-height: 24px;
+    margin-bottom: 40px;
+
 }
 
 .details__btn:hover {
@@ -63,6 +77,17 @@
     color: #FFFFFF;
 }
 
-.details__checkbox__input {
-    margin-right: 10px;
+.details__head__subtitle {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #333333;
+}
+
+.details__info {
+    display: flex;
+    justify-content: space-between;
+
 }

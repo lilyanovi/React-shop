@@ -1,5 +1,5 @@
 import React from 'react';
-import './Catalog.scss'
+import './CatalogHomePage.scss'
 import { useDispatch } from 'react-redux'
 import { openModal, openModalDetail } from '../../store/modal/actions'
 
