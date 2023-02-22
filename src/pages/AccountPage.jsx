@@ -1,6 +1,5 @@
 import { useAuth } from "../hooks/use-auth"
 
-
 const AccountPage = () => {
 
     const {email, name} = useAuth();
@@ -17,5 +16,5 @@ const AccountPage = () => {
       </>
     )
   }
-  
+
   export default AccountPage

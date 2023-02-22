@@ -1,15 +1,11 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-
 import './header.scss'
 import imgLogo from '../../assets/logo.png'
 import imgSearch from '../../assets/search.png'
-
 import { removeUser } from '../../store/auth/action'
 import { useAuth } from '../../hooks/use-auth'
 import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth'
-
-
 
 //предлагаю этот массив импортировать в футер, чтобы не дублировать код для навигации
 export const links = [
@@ -31,23 +27,11 @@ export const links = [
 ]
 
 const Header = () => {
-
-<<<<<<< HEAD
   const {isAuth} = useAuth();
   const auth = getAuth();
-  
+
   const dispatch = useDispatch();
   const navigate = useNavigate()
-
-  /*onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const uid = user.uid;
-      console.log(`${uid} активен`)
-    } else {
-      console.log('Не активен')
-    }
-  });
-*/
 
   const handleLogOut = (e) => {
     e.preventDefault();
@@ -60,11 +44,9 @@ const Header = () => {
     }).catch ((error) => {
       console.log(error)
     })
-    
+
   }
 
-=======
->>>>>>> 08e43c021d676ade685410da0379529a02bafb8c
   return (
     <>
       <header className="header">
@@ -87,26 +69,30 @@ const Header = () => {
               ))
             }
           </nav>
-          {isAuth ?
-            <div>
-              <NavLink to='/account'>
-                <button>Личный кабинет</button>
-              </NavLink>
-              <button onClick={(e) => handleLogOut(e)}>Выйти</button>
+          <div className="header__nav-right">
+            <div className="header__search">
+              <img src={imgSearch} alt="img search" className="header__search-img" />
+              <input type="search" placeholder="Поиск" className="header__search-input"/>
             </div>
-          
-            :
-            <div> 
-              <NavLink to='/login'>
-                <button>Войти</button>
-              </NavLink>
-              <NavLink to='/signup'>
-                <button>Зарегестрироваться</button>
-              </NavLink>
-            </div>
-          }
-          
-          
+            {isAuth ?
+              <div>
+                <NavLink to='/account'>
+                  <button>Личный кабинет</button>
+                </NavLink>
+                <button onClick={(e) => handleLogOut(e)}>Выйти</button>
+              </div>
+
+              :
+              <div> 
+                <NavLink to='/login'>
+                  <button>Войти</button>
+                </NavLink>
+                <NavLink to='/signup'>
+                  <button>Зарегестрироваться</button>
+                </NavLink>
+              </div>
+            }
+          </div>
         </div>
       </header>
     </>
