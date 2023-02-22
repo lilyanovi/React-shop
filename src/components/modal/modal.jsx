@@ -1,10 +1,19 @@
-import style from './modal.module.css'
+import './modal.scss'
+import { useDispatch } from 'react-redux'
+import { closeModal, closeModalDetail, closeModalSended } from '../../store/modal/actions'
 
-export function Modal ({active, setActive, children}) {
+export function Modal ({ children }) {
+    const dispatch = useDispatch()
+
+    const handleCloseModal = () => {
+        dispatch(closeModal(false))
+        dispatch(closeModalDetail(false))
+        dispatch(closeModalSended(false))
+    }
 
     return (
         <>
-            <div className={active ? style.modal_active : style.modal} onClick={() => setActive(false)}>
+            <div className="modal" onClick={handleCloseModal}>
                <div onClick={e => e.stopPropagation()}>
                     {children}
                </div>

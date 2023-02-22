@@ -31,7 +31,7 @@ const QuestionsContent = () => {
             <h1 className="questions-header">Часто задаваемые вопросы</h1>
             <div className="accordion ">
                 {questionData.map(({ title, content }) => (
-                    <QuestionsItem title={title} content={content} />
+                    <QuestionsItem title={title} content={content} key={title}/>
                 ))}
             </div>
         </div>
