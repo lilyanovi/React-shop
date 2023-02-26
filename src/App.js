@@ -10,6 +10,9 @@ import SignUpPage from './pages/SignUpPage'
 import AccountPage from './pages/AccountPage'
 import PublicRoute from './utils/PublicRoute'
 import PrivateRoute from './utils/PrivateRoute'
+import PersonalData from './components/account/PersonalData'
+import CompletedApplications from './components/account/CompletedApplications'
+import ApplicationHistory from './components/account/ApplicationHistory'
 
 import './services/firebase'
 
@@ -23,7 +26,11 @@ export default function App() {
           <Route path="contacts" element={<ContactPage/>}></Route>
           <Route path="stock" element={<StocksPage/>}></Route>
           <Route path="login" element={<PublicRoute component={<LoginPage/>}/>}></Route>
-          <Route path="account" element={<PrivateRoute component={<AccountPage/>}/>}></Route>
+          <Route path="account" element={<PrivateRoute component={<AccountPage/>}/>}>
+            <Route index element={<PersonalData/>}></Route>
+            <Route path="history" element={<ApplicationHistory/>}></Route>
+            <Route path="completed" element={<CompletedApplications/>}></Route>
+          </Route>
           <Route path="signup" element={<PublicRoute component={<SignUpPage/>}/>}></Route>
           <Route path='*' element={<ErrorPage />}></Route>
         </Route>

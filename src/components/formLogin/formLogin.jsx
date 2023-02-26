@@ -10,16 +10,21 @@ const FormLogin = ({title, handleClick}) => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="email"
+                placeholder="Email"
             />
             <input
                 type="password"
                 value={pass}
                 onChange={(e) => setPass(e.target.value)}
-                placeholder="password"
+                placeholder="Password"
             />
+            <div className="formLogin__checkbox">
+                <input type="checkbox" id="formLogin-saveMe"/>
+                <label htmlFor="formLogin-saveMe">Запомнить меня</label>
+            </div>
 
             <button
+                className="formLogin__btn-enter-exit"
                 onClick={(e) => {
                     handleClick(e, email, pass);
                     setEmail('');

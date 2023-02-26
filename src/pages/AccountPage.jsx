@@ -1,18 +1,15 @@
 import { useAuth } from "../hooks/use-auth"
+import Account from '../components/account/Account'
 
 const AccountPage = () => {
 
     const {email, name} = useAuth();
 
+    console.log(name)
+
     return (
       <>
-        <p>Привет, пользователь!</p>
-        <p>Ваш e-mail: {email}</p>
-        {
-            name ?
-            (<p>{name}</p>) :
-            (<p>Нет данных об имени</p>)
-        }
+        <Account/>
       </>
     )
   }
