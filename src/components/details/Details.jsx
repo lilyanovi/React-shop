@@ -1,4 +1,4 @@
-import style from './details.module.css'
+import style from './details.module.scss'
 //import horseWalk from '../../assets/slider/horseWalk.png'
 import { Modal } from '../modal/modal'
 import { Application } from '../application/application'
