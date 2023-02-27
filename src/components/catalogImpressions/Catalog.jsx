@@ -12,7 +12,7 @@ const Catalog = () => {
 
   const [cards, setCards] = useState([])
   const [cardModal, setCardModal] = useState('')
-  const [filtredCards, setFiltredCards] = useState(cardsHomePage)
+  const [filtredCards, setFiltredCards] = useState(cards)
   
   const modalShow = useSelector(store => store.modal.modalShow)
   const modalDetail = useSelector(store => store.modal.modalDetails)
@@ -40,7 +40,7 @@ const Catalog = () => {
     setCardModal(cards[index])
   }
   const watchChange = (valueMin, valueMax) => {
-    let filtredCards = cardsHomePage.slice();
+    let filtredCards = cards.slice();
     setFiltredCards(filtredCards.filter((el) => valueMin <= parseInt(el.price.match(/\d+/)) && parseInt(el.price.match(/\d+/)) <= valueMax))
   }
 
