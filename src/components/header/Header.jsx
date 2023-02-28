@@ -3,6 +3,9 @@ import './header.scss'
 import imgLogo from '../../assets/logo.png'
 import imgSearch from '../../assets/search.png'
 import { useAuth } from '../../hooks/use-auth'
+import { useDispatch } from 'react-redux'
+import { pushText } from '../../store/filterName/actions'
+import React, { useCallback } from 'react'
 
 export const links = [
   {
@@ -23,14 +26,19 @@ export const links = [
 ]
 
 const Header = () => {
-  const {isAuth} = useAuth();
-  
+  const dispatch = useDispatch();
+  const { isAuth } = useAuth();
+
+  const enterFilter = useCallback((e) => {
+    dispatch(pushText(e.target.value))
+  }, [dispatch])
+
   return (
     <>
       <header className="header">
         <div className="header__nav container">
           <NavLink to="/" className="header__nav-logo">
-            <img src={imgLogo} alt="logo" height="64"/>
+            <img src={imgLogo} alt="logo" height="64" />
           </NavLink>
           <nav>
             {
@@ -48,9 +56,9 @@ const Header = () => {
             }
           </nav>
           <div className="header__nav-right">
-            <div className="header__search">
+            <div className="header__search" >
               <img src={imgSearch} alt="img search" className="header__search-img" />
-              <input type="search" placeholder="Поиск" className="header__search-input"/>
+              <input type="search" onChange={enterFilter} onFocus={enterFilter} placeholder="Поиск" className="header__search-input" />
             </div>
             {isAuth ?
               <div className="header__auth">
@@ -58,7 +66,7 @@ const Header = () => {
               </div>
 
               :
-              <div className="header__auth"> 
+              <div className="header__auth">
                 <NavLink to='/login'></NavLink>
               </div>
             }
