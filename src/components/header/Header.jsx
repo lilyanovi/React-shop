@@ -63,7 +63,7 @@ const Header = () => {
        console.log(error)
      })
      }  
-   }, [dispatch, navigate])
+   }, [])
 
   const handleLogOut = (e) => {
     e.preventDefault();
