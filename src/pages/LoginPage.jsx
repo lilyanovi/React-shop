@@ -2,8 +2,7 @@ import '../components/formLogin/formLogin.scss'
 import { NavLink, useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { useState } from "react";
-import imgGoogleAuth from '../assets/googleIcon.png'
-import FormLogin from "../components/formLogin"
+
 import imgGoogleAuth from '../assets/googleIcon.png'
 import FormLogin from "../components/formLogin/formLogin"
 

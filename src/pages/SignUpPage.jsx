@@ -20,7 +20,7 @@ const SignUpPage = () => {
     setErrorMessage('')
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-
+            const user = userCredential.user;
             console.log(`${user.email} зарегестрирован`)
             navigate('/login')
         })
@@ -83,6 +83,11 @@ const SignUpPage = () => {
   return (
     <>
       <section className="formLogin container">
+      {errorMessage ?
+          <div>
+            {errorMessage}
+          </div> : null
+      }
         <h1>Регистрация</h1>
         <div className="formLogin__box">
           <FormLogin
