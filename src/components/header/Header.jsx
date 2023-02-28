@@ -1,9 +1,12 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+
 import './header.scss'
 import imgLogo from '../../assets/logo.png'
 import imgSearch from '../../assets/search.png'
-import { removeUser } from '../../store/auth/action'
+
+import { removeUser, setUser } from '../../store/auth/action'
 import { useAuth } from '../../hooks/use-auth'
 import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth'
 
@@ -32,6 +35,35 @@ const Header = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate()
+ 
+  useEffect(() => {
+     const rememberMe = localStorage.getItem('remember');
+     const auth = getAuth();
+     if (rememberMe){
+       onAuthStateChanged(auth, (user) => {
+         if (user) {
+ 
+           dispatch(setUser({
+             email: user.email,
+             id: user.uid,
+             token: user.accessToken,
+             name: null
+         }));  
+         } else {
+           console.log('No user is signed in.')
+         }
+       });
+     } else {
+       signOut(auth)
+       .then(() => {
+         dispatch(removeUser());
+         localStorage.removeItem('remember')
+         navigate('/login');
+     }).catch ((error) => {
+       console.log(error)
+     })
+     }  
+   }, [dispatch, navigate])
 
   const handleLogOut = (e) => {
     e.preventDefault();
@@ -39,6 +71,7 @@ const Header = () => {
     signOut(auth)
       .then(() => {
         dispatch(removeUser());
+        localStorage.removeItem('remember');
         navigate('/login');
         console.log('Пользователь не авторизован');
     }).catch ((error) => {
