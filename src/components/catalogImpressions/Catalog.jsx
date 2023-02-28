@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Card from './Card';
-import './Catalog.scss'
+import style from './Catalog.module.scss'
 import { Modal } from '../modal/modal';
 import { Application } from '../application/application';
 import { useSelector } from 'react-redux'
@@ -16,7 +16,7 @@ const Catalog = () => {
   
   const modalShow = useSelector(store => store.modal.modalShow)
   const modalDetail = useSelector(store => store.modal.modalDetails)
-  const [info, setInfo] = useState(false)
+  //const [info, setInfo] = useState(false)
 
   useEffect (() => {
     fetchCards()
@@ -45,12 +45,12 @@ const Catalog = () => {
   }
 
  return (
-  <div className="catalogImpressions">
-    <h1 className="title">
+  <div className={style.catalogImpressions}>
+    <h1 className={style.title}>
       Каталог впечатлений
     </h1>
     <FilterCost watchChange={watchChange} />
-    <div className="catalogCard">
+    <div className={style.catalogCard}>
       {filtredCards.map(card => <Card card={card} cardId={getCardId} key={card.id}/>)}
     </div>
     {
