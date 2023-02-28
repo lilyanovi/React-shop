@@ -60,7 +60,6 @@ const FormLogin = ({title, handleClick}) => {
                 onChange={emailHandler}
                 onBlur={e => blurHandler(e)}
                 placeholder="Email"
-                required
             />
             {emailPress && emailError ?
             <p>{emailError}</p> : null
@@ -72,7 +71,6 @@ const FormLogin = ({title, handleClick}) => {
                 onChange={passHandler}
                 onBlur={e => blurHandler(e)}
                 placeholder="Password"
-                required
             />
             {passPress && passError ?
             <p>{passError}</p> : null

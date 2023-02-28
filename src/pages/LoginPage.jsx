@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux"
 import { useState } from "react";
 import imgGoogleAuth from '../assets/googleIcon.png'
 import FormLogin from "../components/formLogin"
+import imgGoogleAuth from '../assets/googleIcon.png'
+import FormLogin from "../components/formLogin/formLogin"
 
 import { setUser } from "../store/auth/action";
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
@@ -124,5 +126,5 @@ const LoginPage = () => {
       </>
     )
   }
-  
-  export default LoginPage
+
+export default LoginPage

@@ -3,8 +3,6 @@ import './Catalog.scss'
 import { useDispatch } from 'react-redux'
 import { openModal, openModalDetail } from '../../store/modal/actions'
 
-
-
 const Card = ({ card, setInfo, cardId }) => {
 
   const dispatch = useDispatch()

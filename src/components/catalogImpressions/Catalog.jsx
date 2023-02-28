@@ -6,12 +6,13 @@ import { Application } from '../application/application';
 import { useSelector } from 'react-redux'
 import Details from '../details/Details';
 import axios from 'axios'
-
+import { FilterCost } from '../filterCost/filterCost';
 
 const Catalog = () => {
 
   const [cards, setCards] = useState([])
   const [cardModal, setCardModal] = useState('')
+  const [filtredCards, setFiltredCards] = useState(cards)
   
   const modalShow = useSelector(store => store.modal.modalShow)
   const modalDetail = useSelector(store => store.modal.modalDetails)
@@ -25,6 +26,12 @@ const Catalog = () => {
   async function fetchCards() {
     const cards = await axios.get('https://kaori318.github.io/site/cards.json')
     setCards(cards.data)
+    setFiltredCards(cards.data)
+    let arr = []
+    cards.data.forEach((el) => {
+      let numEl = parseInt(el.price.match(/\d+/));
+      arr.push(numEl)
+    })
   }
   
   function getCardId(cardId) {
@@ -32,14 +39,19 @@ const Catalog = () => {
     let index = cards.findIndex(el => el.id === id);
     setCardModal(cards[index])
   }
-  
+  const watchChange = (valueMin, valueMax) => {
+    let filtredCards = cards.slice();
+    setFiltredCards(filtredCards.filter((el) => valueMin <= parseInt(el.price.match(/\d+/)) && parseInt(el.price.match(/\d+/)) <= valueMax))
+  }
+
  return (
   <div className="catalogImpressions">
     <h1 className="title">
       Каталог впечатлений
     </h1>
+    <FilterCost watchChange={watchChange} />
     <div className="catalogCard">
-      {cards.map(card => <Card card={card} cardId={getCardId} key={card.id}/>)}
+      {filtredCards.map(card => <Card card={card} cardId={getCardId} key={card.id}/>)}
     </div>
     {
       modalShow &&

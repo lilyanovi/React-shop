@@ -6,7 +6,7 @@ import imgGoogleAuth from '../assets/googleIcon.png'
 import {getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { setUser } from "../store/auth/action";
 
-import FormLogin from "../components/formLogin"
+import FormLogin from "../components/formLogin/formLogin"
 
 const SignUpPage = () => {
   
@@ -16,12 +16,10 @@ const SignUpPage = () => {
   const auth = getAuth();
 
   const handleRegister = (e, email, password) => {
-   e.preventDefault();
-    setErrorMessage('');
+    e.preventDefault();
+    setErrorMessage('')
     createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          
-            const user = userCredential.user 
+      .then((userCredential) => {
 
             console.log(`${user.email} зарегестрирован`)
             navigate('/login')
@@ -57,9 +55,7 @@ const SignUpPage = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
-    
-          const user = result.user;
-
+        const user = result.user;
           dispatch(setUser({
             email: user.email,
             id: user.uid,
@@ -82,16 +78,11 @@ const SignUpPage = () => {
         }
        
       });
-}
+  }
 
-    return (
-      <>
+  return (
+    <>
       <section className="formLogin container">
-          {errorMessage ?
-          <div>
-            {errorMessage}
-          </div> : null
-        }
         <h1>Регистрация</h1>
         <div className="formLogin__box">
           <FormLogin
@@ -111,8 +102,9 @@ const SignUpPage = () => {
           </div>
         </div>
       </section>
-      </>
-    )
-  }
-  
-  export default SignUpPage
+    </>
+  )
+}
+
+export default SignUpPage
+
