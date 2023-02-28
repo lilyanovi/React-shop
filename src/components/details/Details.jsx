@@ -30,12 +30,16 @@ const Details = ({card}) => {
         <div className={style.details} key={card.id}>
             <div className={style.details__images}>
                 <img className={style.details__images_img} src={card.img} alt="img" />
-                <div>Картинки</div>
+                <div className={style.details__images_mini}>
+                    <img className={style.details__images_img_mini} src={card.img} alt="img" />
+                    <img className={style.details__images_img_mini} src={card.img} alt="img" />
+                    <img className={style.details__images_img_mini} src={card.img} alt="img" />
+                </div>
             </div>
             <div className={style.details__body}>
                 <h2 className={style.details__body_title} >{card.name.toUpperCase()}</h2>
                 <div className={style.details__selectionPrice}>
-                    <h1 className={style.details__price} >{card.price}₽</h1>
+                    <h1 className={style.details__price} >{card.price} ₽</h1>
                     <button className={style.details__selection}>Менять описание</button>
                 </div>
                 <button className={style.details__btn} onClick={(event) => handleOpenModal(event)}>Заказать впечатление</button>

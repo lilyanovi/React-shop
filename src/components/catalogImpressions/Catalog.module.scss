@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Alkalami&family=Inter:wght@200;400;600;700;900&family=Montserrat:wght@100;200;400;600;700;800;900&display=swap');
 
 .catalogImpressions {
-  max-width: 1401px;
+  max-width: 1301px;
   margin: 0 auto;
-  padding: 100px 0;
+  padding: 50px 0;
 
 }
 
@@ -15,29 +15,33 @@ text-align: center;
 text-transform: uppercase;
 color: #333333;
 font-family: 'Montserrat';
-margin-bottom: 40px;
+margin-bottom: 10px;
 }
 
 .catalogCard {
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
   overflow-x: auto;
   overflow-y: hidden;
-  justify-content: center;
 }
 
 .card {
- max-width: 407px;
- max-height: 681px;
- margin: 20px 40px 20px 0;
+ max-width: 280px;
+ max-height: 650px;
+margin: 20px 0;
  background: #FFFFFF;
  box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.1);
- border-radius: 20px;
+ border-radius: 8px;
+ z-index: 1;
 
  &__img {
+  height: 270px;
   img {
-    border-radius: 20px 20px 0px 0px;
+    border-radius: 8px 8px 0px 0px;
     cursor: pointer;
+    width: 280px;
+    height: 270px;
   }
  }
 
@@ -45,10 +49,10 @@ margin-bottom: 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 30px 20px;
+  padding: 15px 10px;
   text-align: center;
   margin: 0 auto;
-  height: 297px;
+  height: 190px;
  }
 
  &__title {
@@ -56,8 +60,8 @@ margin-bottom: 40px;
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 600;
-  font-size: 30px;
-  line-height: 34px;
+  font-size: 20px;
+  line-height: 25px;
   cursor: pointer;
  }
 
@@ -67,16 +71,16 @@ margin-bottom: 40px;
 
   h1 {
    font-weight: 600;
-   font-size: 40px;
-   line-height: 44px;
+   font-size: 20px;
+   line-height: 20px;
    color: #333333;
    font-family: 'Montserrat';
   }
 
   p{
    font-weight: 500;
-font-size: 20px;
-line-height: 24px;
+font-size: 15px;
+line-height: 10px;
 color: #888888;
 font-family: 'Montserrat';
 cursor: pointer;
@@ -88,18 +92,18 @@ cursor: pointer;
 }
 
 .cardBtn {
-  padding: 12px 95px;
+  padding: 8px 40px;
   text-align: center;
   background: #547147;
   border-radius: 40px;
   font-family: 'Montserrat';
  font-weight: 700;
- font-size: 20px;
+ font-size: 15px;
  line-height: 24px;
  color: #FFFFFF;
  border: 1px solid #547147;
  cursor: pointer;
- margin: 24px 0 20px;
+ margin: 15px 0;
  &:hover {
   color: #547147;
   background-color: #FFFFFF;
@@ -107,17 +111,3 @@ cursor: pointer;
  }
 }
 
-@media (min-width: 1318px) {
-  .card {
-  &:nth-child(3n) {
-    margin-right: 0;   
-  }
-  }
- }
- @media (min-width: 600px) and (max-width: 1318px)  {
-  .card {
-  &:nth-child(2n) {
-    margin-right: 0;
-   }
-  }
- }
