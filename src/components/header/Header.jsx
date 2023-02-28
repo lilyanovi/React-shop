@@ -73,7 +73,6 @@ const Header = () => {
         dispatch(removeUser());
         localStorage.removeItem('remember');
         navigate('/login');
-        console.log('Пользователь не авторизован');
     }).catch ((error) => {
       console.log(error)
     })

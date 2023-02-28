@@ -1,7 +1,8 @@
+import '../components/formLogin/formLogin.scss'
 import { NavLink, useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { useState } from "react";
-
+import imgGoogleAuth from '../assets/googleIcon.png'
 import FormLogin from "../components/formLogin"
 
 import { setUser } from "../store/auth/action";
@@ -95,22 +96,31 @@ const LoginPage = () => {
 
     return (
       <>
+       <section className="formLogin container">
        {errorMessage ?
           <div>
             {errorMessage}
           </div> : null
         }
-        <section className="container">
-        <h1>LoginPage</h1>
-        <FormLogin handleClick={handleLogin} title='Войти'/>
-        <div>
-            <button onClick={handleSubmitGoogle}>Войти с помощью Google</button>
+        <h1>Войти</h1>
+        <div className="formLogin__box">
+          <FormLogin
+            handleClick={handleLogin}
+            title='Войти'
+          />
+          <button
+            onClick={handleSubmitGoogle}
+            className="formLogin__googleAuth"
+          >
+            <img src={imgGoogleAuth} alt="google icon" />
+            <p>Войти с помощью Google</p>
+          </button>
+          <div>
+            <p className="formLogin__question">Нет учётной записи?</p>
+            <NavLink className="formLogin__link" to='/signup'>Зарегестрироваться</NavLink>
+          </div>
         </div>
-        <div>
-            <p>Нет учётной записи?</p>
-            <NavLink to='/signup'>Зарегестрироваться</NavLink>
-        </div>
-        </section>
+      </section>
       </>
     )
   }

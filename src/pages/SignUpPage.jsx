@@ -1,14 +1,12 @@
+import '../components/formLogin/formLogin.scss'
 import { NavLink, useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { useState } from "react";
-
+import imgGoogleAuth from '../assets/googleIcon.png'
 import {getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { setUser } from "../store/auth/action";
 
 import FormLogin from "../components/formLogin"
-
-
-
 
 const SignUpPage = () => {
   
@@ -88,24 +86,31 @@ const SignUpPage = () => {
 
     return (
       <>
-      {errorMessage ?
-        <div>
-          {errorMessage}
-        </div> : null
-      }
-      <section className="container">
-        <h1>SignUpPage</h1>
-        <FormLogin 
-          title='Зарегестрироваться' 
-          handleClick={handleRegister}/>
-        <div>
-            <button onClick={handleSubmitGoogle} >Войти с помощью Google</button>
+      <section className="formLogin container">
+          {errorMessage ?
+          <div>
+            {errorMessage}
+          </div> : null
+        }
+        <h1>Регистрация</h1>
+        <div className="formLogin__box">
+          <FormLogin
+            title='Зарегестрироваться'
+            handleClick={handleRegister}
+          />
+          <button
+            onClick={handleSubmitGoogle}
+            className="formLogin__googleAuth"
+          >
+            <img src={imgGoogleAuth} alt="google icon" />
+            <p>Войти с помощью Google</p>
+          </button>
+          <div>
+            <p className="formLogin__question">Уже есть учётная запись?</p>
+            <NavLink className="formLogin__link" to='/login'>Войти</NavLink>
+          </div>
         </div>
-        <div>
-            <p>Уже есть учётная запись?</p>
-            <NavLink to='/login'>Войти</NavLink>
-        </div>
-        </section>
+      </section>
       </>
     )
   }
