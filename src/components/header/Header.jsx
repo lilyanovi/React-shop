@@ -1,9 +1,16 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+
 import './header.scss'
 import imgLogo from '../../assets/logo.png'
 import imgSearch from '../../assets/search.png'
-import { useAuth } from '../../hooks/use-auth'
 
+import { removeUser, setUser } from '../../store/auth/action'
+import { useAuth } from '../../hooks/use-auth'
+import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth'
+
+//предлагаю этот массив импортировать в футер, чтобы не дублировать код для навигации
 export const links = [
   {
     id: 1,
@@ -24,6 +31,53 @@ export const links = [
 
 const Header = () => {
   const {isAuth} = useAuth();
+  const auth = getAuth();
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+ 
+  useEffect(() => {
+     const rememberMe = localStorage.getItem('remember');
+     const auth = getAuth();
+     if (rememberMe){
+       onAuthStateChanged(auth, (user) => {
+         if (user) {
+ 
+           dispatch(setUser({
+             email: user.email,
+             id: user.uid,
+             token: user.accessToken,
+             name: null
+         }));  
+         } else {
+           console.log('No user is signed in.')
+         }
+       });
+     } else {
+       signOut(auth)
+       .then(() => {
+         dispatch(removeUser());
+         localStorage.removeItem('remember')
+         navigate('/login');
+     }).catch ((error) => {
+       console.log(error)
+     })
+     }  
+   }, [dispatch, navigate])
+
+  const handleLogOut = (e) => {
+    e.preventDefault();
+
+    signOut(auth)
+      .then(() => {
+        dispatch(removeUser());
+        localStorage.removeItem('remember');
+        navigate('/login');
+    }).catch ((error) => {
+      console.log(error)
+    })
+
+  }
   
   return (
     <>
@@ -53,13 +107,21 @@ const Header = () => {
               <input type="search" placeholder="Поиск" className="header__search-input"/>
             </div>
             {isAuth ?
-              <div className="header__auth">
-                <NavLink to='/account'></NavLink>
+              <div>
+                <NavLink to='/account'>
+                  <button>Личный кабинет</button>
+                </NavLink>
+                <button onClick={(e) => handleLogOut(e)}>Выйти</button>
               </div>
 
               :
-              <div className="header__auth"> 
-                <NavLink to='/login'></NavLink>
+              <div> 
+                <NavLink to='/login'>
+                  <button>Войти</button>
+                </NavLink>
+                <NavLink to='/signup'>
+                  <button>Зарегестрироваться</button>
+                </NavLink>
               </div>
             }
           </div>
