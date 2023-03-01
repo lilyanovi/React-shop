@@ -8,7 +8,7 @@ export const links = [
   {
     id: 1,
     name: 'Каталог',
-    to: '/'
+    to: 'catalog'
   },
   {
     id: 2,

@@ -20,8 +20,24 @@ export function FilterCost(props) {
                 <h5>Сортировать по цене</h5> 
                 <div className='boxForm'> 
                     <div className='inputsBox'> 
-                        <input type="number" step={100} id='minCost' defaultValue={min} onChange={changeMin} className='inputFilter min' /> 
-                        <input type="number" step={100} id='maxCost' defaultValue={max} onChange={changeMax} className='inputFilter max' /> 
+                        <input
+                            type="number"
+                            step={100}
+                            id='minCost'
+                            min="0"
+                            defaultValue={min}
+                            onChange={changeMin}
+                            className='inputFilter min'
+                        />
+                        <input
+                            type="number"
+                            step={100}
+                            id='maxCost'
+                            min="0"
+                            defaultValue={max}
+                            onChange={changeMax}
+                            className='inputFilter max'
+                        /> 
                     </div> 
                     <button onClick={() => props.watchChange(min, max)} className='submit' >Применить</button> 
                 </div> 
