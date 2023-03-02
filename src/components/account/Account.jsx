@@ -15,12 +15,13 @@ const Account = () => {
     signOut(auth)
       .then(() => {
         dispatch(removeUser())
+        localStorage.removeItem('remember');
         navigate('/login')
       }).catch(error => {
         console.log(error)
       })
   }
-
+  
   return (
     <div className="account container">
       <h1>Личный кабинет</h1>
