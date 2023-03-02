@@ -40,7 +40,7 @@ const Details = ({card}) => {
                 <h2 className={style.details__body_title} >{card.name.toUpperCase()}</h2>
                 <div className={style.details__selectionPrice}>
                     <h1 className={style.details__price} >{card.price} ₽</h1>
-                    <button className={style.details__selection}>Менять описание</button>
+                    {/* <button className={style.details__selection}>Менять описание</button> */}
                 </div>
                 <button className={style.details__btn} onClick={(event) => handleOpenModal(event)}>Заказать впечатление</button>
                 <div className={style.details__description}>
