@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CardHomePage from './CardHomePage';
-import './CatalogHomePage.scss'
+import style from './CatalogHomePage.module.scss'
 import { Modal } from '../modal/modal';
 import { Application } from '../application/application';
 import { useSelector } from 'react-redux'
@@ -50,12 +50,12 @@ const CatalogHomePage = () => {
 
 
   return (
-    <div className="catalogImpressions">
-      <h1 className="title">
+    <div className={style.catalogImpressions}>
+    <h1 className={style.title}>
         Каталог впечатлений
       </h1>
       {/* <FilterCost watchChange={watchChange} /> */}
-      <div className="catalogCard">
+      <div className={style.catalogCard}>
         {cardsHomePage.map(card => <CardHomePage card={card} cardId={getCardId} key={card.id} />)}
       </div>
       {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
-import './Catalog.scss'
+import style from './Catalog.module.scss'
 import { Modal } from '../modal/modal';
 import { Application } from '../application/application';
 import { useSelector } from 'react-redux'
@@ -46,28 +46,28 @@ const Catalog = () => {
   }
 
   return (
-    <div className="catalogImpressions">
-      <h1 className="title">
-        Каталог впечатлений
-      </h1>
-      <FilterCost watchChange={watchChange} />
-      <div className="catalogCard">
-        {filterName.map(card => <Card card={card} cardId={getCardId} key={card.id} />)}
-      </div>
-      {
-        modalShow &&
-        <Modal>
-          <Application />
-        </Modal>
-      }
-      {
-        modalDetail &&
-        <Modal>
-          <Details card={cardModal} />
-        </Modal>
-      }
+    <div className={style.catalogImpressions}>
+    <h1 className={style.title}>
+      Каталог впечатлений
+    </h1>
+    <FilterCost watchChange={watchChange} />
+    <div className={style.catalogCard}>
+      {filtredCards.map(card => <Card card={card} cardId={getCardId} key={card.id}/>)}
     </div>
-  );
+    {
+      modalShow &&
+      <Modal>
+        <Application/>
+      </Modal>
+    }
+    {
+      modalDetail &&
+      <Modal>
+        <Details card={cardModal}/>
+      </Modal>
+    }
+  </div>
+ );
 };
 
 export default Catalog;
