@@ -52,7 +52,7 @@ const Catalog = () => {
     </h1>
     <FilterCost watchChange={watchChange} />
     <div className={style.catalogCard}>
-      {filtredCards.map(card => <Card card={card} cardId={getCardId} key={card.id}/>)}
+      {filterName.map(card => <Card card={card} cardId={getCardId} key={card.id} />)}
     </div>
     {
       modalShow &&
