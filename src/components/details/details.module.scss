@@ -19,6 +19,11 @@
         height: 450px;
     }
 
+    .flex_row {
+        display: flex;
+        justify-content: space-between;
+    }
+
     &_mini {
         display: flex;
         justify-content: space-between;
@@ -31,15 +36,12 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        padding-top: 20px;
+        // padding-top: 20px;
     }
+
+
 }
 
-// .flex_row {
-//     justify-content: center;
-//     display: flex;
-//     padding-top: 20px;
-// }
 
 
 

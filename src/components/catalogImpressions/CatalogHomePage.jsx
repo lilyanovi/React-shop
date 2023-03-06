@@ -25,6 +25,7 @@ const CatalogHomePage = () => {
 
   async function fetchCards() {
     const cards = await axios.get('https://kaori318.github.io/site/cards.json')
+    // const cards = await axios.get('https://kaori318.github.io/site/test.json')
     setCards(cards.data)
     setCardsHomePage(cards.data.slice(0, 6))
     //setFiltredCards(cards.data.slice(0, 6))
@@ -51,7 +52,7 @@ const CatalogHomePage = () => {
 
   return (
     <div className={style.catalogImpressions}>
-    <h1 className={style.title}>
+      <h1 className={style.title}>
         Каталог впечатлений
       </h1>
       {/* <FilterCost watchChange={watchChange} /> */}

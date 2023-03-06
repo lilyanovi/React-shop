@@ -24,6 +24,7 @@ const Catalog = () => {
 
   async function fetchCards() {
     const cards = await axios.get('https://kaori318.github.io/site/cards.json')
+    // const cards = await axios.get('https://kaori318.github.io/site/test.json')
     setCards(cards.data)
     setFiltredCards(cards.data)
   }
@@ -47,27 +48,27 @@ const Catalog = () => {
 
   return (
     <div className={style.catalogImpressions}>
-    <h1 className={style.title}>
-      Каталог впечатлений
-    </h1>
-    <FilterCost watchChange={watchChange} />
-    <div className={style.catalogCard}>
-      {filterName.map(card => <Card card={card} cardId={getCardId} key={card.id} />)}
+      <h1 className={style.title}>
+        Каталог впечатлений
+      </h1>
+      <FilterCost watchChange={watchChange} />
+      <div className={style.catalogCard}>
+        {filterName.map(card => <Card card={card} cardId={getCardId} key={card.id} />)}
+      </div>
+      {
+        modalShow &&
+        <Modal>
+          <Application />
+        </Modal>
+      }
+      {
+        modalDetail &&
+        <Modal>
+          <Details card={cardModal} />
+        </Modal>
+      }
     </div>
-    {
-      modalShow &&
-      <Modal>
-        <Application/>
-      </Modal>
-    }
-    {
-      modalDetail &&
-      <Modal>
-        <Details card={cardModal}/>
-      </Modal>
-    }
-  </div>
- );
+  );
 };
 
 export default Catalog;

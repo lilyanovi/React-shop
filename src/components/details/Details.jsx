@@ -26,15 +26,15 @@ const Details = ({ card }) => {
         dispatch(closeModalDetail(false))
     };
 
-    const imgs = [
-        { id: 0, value: "https://wallpaperaccess.com/full/2637581.jpg" },
-        { id: 1, value: "https://source.unsplash.com/user/c_v_r/1900x800" },
-        { id: 2, value: "https://source.unsplash.com/user/c_v_r/100x100" },
-    ]
-    const [wordData, setWordData] = useState(imgs[0])
+    // const imgs = [
+    //     { id: 0, value: "https://wallpaperaccess.com/full/2637581.jpg" },
+    //     { id: 1, value: "https://source.unsplash.com/user/c_v_r/1900x800" },
+    //     { id: 2, value: "https://source.unsplash.com/user/c_v_r/100x100" },
+    // ]
+    const [wordData, setWordData] = useState(card.imgs[0])
     const handleClick = (index) => {
         console.log(index)
-        const wordSlider = imgs[index];
+        const wordSlider = card.imgs[index];
         setWordData(wordSlider)
     }
 
@@ -44,8 +44,8 @@ const Details = ({ card }) => {
                 <div className={style.details__images}>
                     <img className={style.details__images_img} src={wordData.value} alt="img" />
 
-                    <div className='flex_row'>
-                        {imgs.map((data, i) =>
+                    <div className={style.flex_row}>
+                        {card.imgs.map((data, i) =>
                             <div className={style.details__images_mini} key={i} >
                                 <img className={style.details__images_img_mini} src={data.value} alt="img" onClick={() => handleClick(i)} />
                             </div>
