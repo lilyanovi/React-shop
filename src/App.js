@@ -12,7 +12,7 @@ import PublicRoute from './utils/PublicRoute'
 import PrivateRoute from './utils/PrivateRoute'
 import PersonalData from './components/account/PersonalData'
 import CompletedApplications from './components/account/CompletedApplications'
-import ApplicationHistory from './components/account/ApplicationHistory'
+import SubscriptionManagement from './components/account/SubscriptionManagement'
 import ImpressionsCatalog from './pages/ImpressionsCatalog'
 
 import './services/firebase'
@@ -30,7 +30,7 @@ export default function App() {
           <Route path="login" element={<PublicRoute component={<LoginPage/>}/>}></Route>
           <Route path="account" element={<PrivateRoute component={<AccountPage/>}/>}>
             <Route index element={<PersonalData/>}></Route>
-            <Route path="history" element={<ApplicationHistory/>}></Route>
+            <Route path="managment" element={<SubscriptionManagement/>}></Route>
             <Route path="completed" element={<CompletedApplications/>}></Route>
           </Route>
           <Route path="signup" element={<PublicRoute component={<SignUpPage/>}/>}></Route>
