@@ -36,15 +36,15 @@ const Account = () => {
             </NavLink>
             <NavLink
               className="account__sideBar-wrapper-link-active"
-              to="history"
-            >
-              История заявок
-            </NavLink>
-            <NavLink
-              className="account__sideBar-wrapper-link-active"
               to="completed"
             >
               Оформленные заявки
+            </NavLink>
+            <NavLink
+              className="account__sideBar-wrapper-link-active"
+              to="managment"
+            >
+              Управление подпиской
             </NavLink>
             <button
             className="account__sideBar-btn-exit"

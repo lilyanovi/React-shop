@@ -1,19 +1,9 @@
 import style from './details.module.scss'
-//import horseWalk from '../../assets/slider/horseWalk.png'
 import { Modal } from '../modal/modal'
 import { Application } from '../application/application'
 import { useSelector, useDispatch } from 'react-redux'
 import { openModal, closeModalDetail } from '../../store/modal/actions'
-
-// export const arrDetails = [
-//     {
-//         id: 1,
-//         title: 'Конная прогулка',
-//         price: 'от 990 ₽',
-//         img: horseWalk
-//     }
-// ]
-
+import { selectCard } from '../../store/card/actions'
 
 const Details = ({card}) => {
 
@@ -22,8 +12,11 @@ const Details = ({card}) => {
     const handleOpenModal = (event) => {
         event.preventDefault()
         dispatch(openModal(true))
+        dispatch(selectCard(card))
         dispatch(closeModalDetail(false))
     }
+
+    console.log(card)
 
     return (
        <>
@@ -52,7 +45,7 @@ const Details = ({card}) => {
         {
         modalShow &&
         <Modal>
-            <Application />
+            <Application card={card} />
         </Modal>
         }
     </>
