@@ -4,11 +4,10 @@ import { useDispatch } from "react-redux"
 import { useState } from "react";
 import imgGoogleAuth from '../assets/googleIcon.png'
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { writeUserEmail, writeUserName } from '../services/firebase'
 import { setUser } from "../store/auth/action";
 
 import FormLogin from "../components/formLogin/formLogin"
-
-
 
 const SignUpPage = () => {
 
@@ -26,7 +25,7 @@ const SignUpPage = () => {
         const user = userCredential.user
         console.log(`${user.email} зарегестрирован`)
         navigate('/login')
-        
+        writeUserEmail(user);
       })
       .catch((error) => {
           
@@ -70,6 +69,8 @@ const SignUpPage = () => {
         }));
         navigate('/account');
         localStorage.setItem('remember', true); 
+        writeUserEmail(user)
+        writeUserName(user)
       })
       .catch((error) => {
         switch (error.code) {
@@ -96,7 +97,7 @@ const SignUpPage = () => {
         <h1>Регистрация</h1>
         <div className="formLogin__box">
           <FormLogin
-            title='Зарегестрироваться'
+            title='Зарегистрироваться'
             handleClick={handleRegister}
           />
           <button

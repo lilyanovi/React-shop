@@ -6,6 +6,7 @@ import { addApplication } from '../../store/applications/actions'
 import { closeModal, openModalSended } from '../../store/modal/actions'
 import { Modal } from '../modal/modal'
 import Sended from '../sended/Sended'
+import { writeApplicationWithoutLogin } from '../../services/firebase'
 
 export function Application () {
     const [name, setName] = useState('')
@@ -32,6 +33,7 @@ export function Application () {
             setCommit('')
             dispatch(closeModal(false))
             dispatch(openModalSended(true))
+            writeApplicationWithoutLogin(idApplication, name, phone, commit)
         } else {
             return
         }
