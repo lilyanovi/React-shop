@@ -2,12 +2,14 @@ import React from 'react';
 import style from './Catalog.module.scss'
 import { useDispatch } from 'react-redux'
 import { openModal, openModalDetail } from '../../store/modal/actions'
+import { selectCard } from '../../store/card/actions'
 
 const Card = ({ card, setInfo, cardId }) => {
-
   const dispatch = useDispatch()
+
   const handleOpenModal = () => {
     dispatch(openModal(true))
+    dispatch(selectCard(card))
   }
   const handleOpenDetails = () => {
     dispatch(openModalDetail(true))
