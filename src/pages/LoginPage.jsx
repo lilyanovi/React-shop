@@ -33,25 +33,25 @@ const LoginPage = () => {
         }));
 
         if (rememberMe === true) {
-          localStorage.setItem('remember', true)        
+          localStorage.setItem('remember', true)
         }
       })
-      .catch((error) => { 
-              
+      .catch((error) => {
+
         switch (error.code) {
           case "auth/invalid-email":
-            setErrorMessage("Адрес электронной почты указан некорректно");
+            setErrorMessage("Адрес электронной почты указан некорректно!");
             break;
           case "auth/user-disabled":
             setErrorMessage(
-              "Аккаунт заблокирован"
+              "Аккаунт заблокирован!"
             );
             break;
           case "auth/user-not-found":
-            setErrorMessage("Адрес электронной почты не зарегестрирован");
+            setErrorMessage("Адрес электронной почты не зарегестрирован!");
             break;
           case "auth/wrong-password":
-            setErrorMessage("Пароль недействителен или у пользователя нет пароля.")
+            setErrorMessage("Пароль недействителен или у пользователя нет пароля!")
             break;
           default:
             setErrorMessage(error.message);
@@ -76,7 +76,7 @@ const LoginPage = () => {
           name: user.displayName
         }));
         navigate('/account');
-        localStorage.setItem('remember', true) 
+        localStorage.setItem('remember', true)
       })
       .catch((error) => {
 
@@ -85,7 +85,7 @@ const LoginPage = () => {
             setErrorMessage(
               "Аккаунт заблокирован"
             );
-            break;           
+            break;
           default:
             setErrorMessage(error.message);
             break;
@@ -95,13 +95,11 @@ const LoginPage = () => {
 
   return (
     <>
-      {errorMessage ?
-          <div>
-            {errorMessage}
-          </div> : null
-      }
       <section className="formLogin container">
-        <h1>Войти</h1>
+        {errorMessage ?
+          <div className="formLogin__error">
+            {errorMessage}
+          </div> : <h1>Войти</h1>}
         <div className="formLogin__box">
           <FormLogin
             handleClick={handleLogin}
