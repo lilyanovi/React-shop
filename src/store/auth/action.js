@@ -11,3 +11,13 @@ export const removeUser = () => {
         type: types.REMOVE_USER  
     }
 }
+
+export const editUser = (data) => ({
+    type: types.EDIT_USER,
+    payload: data
+})
+
+export const addAuthApplications = (data) => ({
+    type: types.ADD_AUTH_APPLICATION,
+    payload: data
+})

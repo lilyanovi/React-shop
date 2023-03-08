@@ -5,7 +5,9 @@ const initialState = {
     token: localStorage.getItem('remember')  || null,
     id: null,
     name: null,
-    rememberMe: localStorage.getItem('remember') ? true : false
+    phone: null,
+    rememberMe: localStorage.getItem('remember') ? true : false,
+    applications: {}
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -32,6 +34,18 @@ export const userReducer = (state = initialState, action) => {
                 name: null,
                 rememberMe: false
             }
+
+        case types.EDIT_USER:
+            return {
+                ...state,
+                name: payload.name,
+                phone: payload.phone
+            }
+
+        case types.ADD_AUTH_APPLICATION:
+            let copy = Object.assign({}, state)
+            copy.applications = {...copy.applications, ...payload}
+            return copy
 
         default:
             return state

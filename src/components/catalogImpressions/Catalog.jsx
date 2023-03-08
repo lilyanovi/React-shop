@@ -19,8 +19,7 @@ const Catalog = () => {
 
   useEffect(() => {
     fetchCards()
-  }, []
-  )
+  }, [])
 
   async function fetchCards() {
     const cards = await axios.get('https://kaori318.github.io/site/cards.json')
