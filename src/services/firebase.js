@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
-//import { getAuth } from 'firebase/auth'
 import { getAuth } from 'firebase/auth'
-import { getDatabase, ref, set, update, onValue } from "firebase/database";
+import { getDatabase, ref, set, get, child, update, onValue, onChildChanged } from "firebase/database";
 
 
 const firebaseConfig = {
@@ -18,7 +17,7 @@ const app = initializeApp(firebaseConfig);
 
 export const firebaseAuth = getAuth(app);
 
-const db = getDatabase(app);
+export const db = getDatabase(app);
 
 
 // получить всю информацию о пользователе
@@ -42,49 +41,78 @@ export const writeUserEmail = (user) => {
 export const writeUserName = (user) => {
   const uid = user.uid;
   set(ref(db, 'users/' + uid + '/name'), {
-    email: user.displayName,
+    name: user.displayName,
   });
 }
 
 //записать статус подписки
-export const writeUserSubscribe = (user, subscribeVal) => {
-  const uid = user.uid;
-  set(ref(db, 'users/' + uid + '/subscribe'), {
-    subscribe: subscribeVal
+export const writeUserSubscribe = (id, subscribe) =>   {
+  
+  set(ref(db, 'users/' + id + '/subscribe'), {
+    subscribe: subscribe
   });
 }
 
+// получить информацию о статусе подписки пользователе
+export const getUserValueSubscribe = (id) => {
+  return new Promise((resolve, reject) => {
+    get(ref(db, 'users/' + id + '/subscribe')).then((data) => {
+      if (data.exists()) {
+        resolve(data.val().subscribe);
+      } else {
+        console.log("No data available");
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+  })
+}
 
 //добавить пользователя в список подписавшихся
-export const writeSubscribeList = (user) => {
-  const uid = user.uid;
-  set(ref(db, 'subscribeList/' + uid ), {
-    email: user.email
+export const writeSubscribeList = (id, email) => {
+  set(ref(db, 'subscribeList/' + id ), {
+    email: email
   });
 }
 
 //удалить пользователя из списка подписавшихся
-export const deliteInSubscribeList = (user) => {
-  const uid = user.uid;
-  set(ref(db, 'subscribeList/' + uid ), {
+export const deliteInSubscribeList = (id) => {
+  set(ref(db, 'subscribeList/' + id ), {
     email: null
   });
 }
 
-//отправить заявку с авторизацией
-export const writeUserApplication = (user, idApplication, application) => {
-  const uid = user.uid;
-  set(ref(db, 'users/' + uid + '/applications'+ idApplication), {
-    application
+//отправить заявку от авторизованного пользователя
+export const writeUserApplication = (id, idApplication, name, phone, commit, card, date) => {
+  set(ref(db, 'users/' + id + '/applications/'+ idApplication), {
+    name: name,
+    phone: phone,
+    commit: commit,
+    card: card,
+    date: date
   });
 }
 
+//удалить заявку от авторизованного пользователя
+export const deliteUserApplication = (id, idApplication) => {
+  set(ref(db, 'users/' + id + '/applications/'+ idApplication ), {
+    application: null
+  });
+}
+
+//указать статус для заявки от авторизованного пользователя
+export const writeUserApplicationStatus = (id, idApplication, status) => {
+  set(ref(db, 'users/' + id + '/applications/'+ idApplication + '/status'), {
+    status: status
+  });
+}
 
 //отправить заявку без авторизации
-export const writeApplicationWithoutLogin = (idApplication, name, phone, commit) => {
+export const writeApplicationWithoutLogin = (idApplication, name, phone, commit, card) => {
   set(ref(db, 'applicationsWithoutLogin/'+idApplication), {
     name: name,
     phone: phone,
-    commit: commit
+    commit: commit,
+    idCard: card
   });
 }
