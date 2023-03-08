@@ -7,6 +7,7 @@ import FormLogin from "../components/formLogin/formLogin"
 
 import { setUser } from "../store/auth/action";
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { writeUserEmail, writeUserName } from '../services/firebase'
 
 
 const LoginPage = () => {
@@ -77,6 +78,8 @@ const LoginPage = () => {
         }));
         navigate('/account');
         localStorage.setItem('remember', true) 
+        writeUserEmail(user)
+        writeUserName(user)
       })
       .catch((error) => {
 
@@ -116,9 +119,9 @@ const LoginPage = () => {
           </button>
           <div>
             <p className="formLogin__question">Нет учётной записи?</p>
-            <NavLink className="formLogin__link" to='/signup'>Зарегестрироваться</NavLink>
+            <NavLink className="formLogin__link" to='/signup'>Зарегистрироваться</NavLink>
           </div>
-        </div>
+        </div>   
       </section>
     </>
   )

@@ -6,11 +6,12 @@ import { addApplication } from '../../store/applications/actions'
 import { closeModal, openModalSended } from '../../store/modal/actions'
 import { Modal } from '../modal/modal'
 import Sended from '../sended/Sended'
+import { writeApplicationWithoutLogin, writeUserApplication, writeUserApplicationStatus, applicationsWithAuth } from '../../services/firebase'
 import { useAuth } from '../../hooks/use-auth'
 import { addAuthApplications } from '../../store/auth/action'
 
 export function Application () {
-    const { isAuth } = useAuth()
+    const { isAuth, id } = useAuth()
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
     const [commit, setCommit] = useState('')
@@ -56,8 +57,10 @@ export function Application () {
                         card
                     }
                 }
+                
                 dispatch(addApplication(applicationObj))
                 codeDuplication()
+                writeApplicationWithoutLogin(idApplication, name, phone, commit, card)
             } else {
                 return
             }
@@ -69,8 +72,13 @@ export function Application () {
                     date: getDate()
                 }
            }
+        
+           const date = getDate()
+           const status = 'В обработке'
            dispatch(addAuthApplications(applicationObj))
            codeDuplication()
+           writeUserApplication(id, idApplication, name, phone, commit, card, date) 
+           writeUserApplicationStatus(id, idApplication, status)
         }
     }
 

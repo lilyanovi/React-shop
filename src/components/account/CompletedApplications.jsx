@@ -2,15 +2,20 @@ import { useSelector, useDispatch } from 'react-redux'
 import './completedApplications.scss'
 import SelectStatus from '../../ui/selectStatus/SelectStatus'
 import { addAuthApplications } from '../../store/auth/action'
+import { writeUserApplicationStatus } from '../../services/firebase'
+import { useAuth } from '../../hooks/use-auth'
 
 const CompletedApplications = () => {
   const applications = useSelector(store => store.user.applications)
   const dispatch = useDispatch()
+  const { id } = useAuth()
 
   const changeStatus = (status, key) => {
     let copy = Object.assign({}, applications)
     copy[key].status = status
     dispatch(addAuthApplications(copy))
+    const idApplication = [key]
+    writeUserApplicationStatus(id, idApplication, status)
   }
 
   return (
