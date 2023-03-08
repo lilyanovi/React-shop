@@ -1,4 +1,5 @@
 import style from './details.module.scss'
+import React, { useState } from 'react'
 //import horseWalk from '../../assets/slider/horseWalk.png'
 import { Modal } from '../modal/modal'
 import { Application } from '../application/application'
@@ -6,17 +7,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { openModal, closeModalDetail } from '../../store/modal/actions'
 import {useState} from 'react'
 
-// export const arrDetails = [
-//     {
-//         id: 1,
-//         title: 'Конная прогулка',
-//         price: 'от 990 ₽',
-//         img: horseWalk
-//     }
-// ]
-
-
-const Details = ({card}) => {
+const Details = ({ card }) => {
 
     const modalShow = useSelector(store => store.modal.modalShow)
     const dispatch = useDispatch()
@@ -27,8 +18,6 @@ const Details = ({card}) => {
     };
 
     const [desc, setDesc] = useState(card.desc)
-    
-
     // const imgs = [
     //     { id: 0, value: "https://wallpaperaccess.com/full/2637581.jpg" },
     //     { id: 1, value: "https://source.unsplash.com/user/c_v_r/1900x800" },
@@ -43,6 +32,7 @@ const Details = ({card}) => {
 
 
     return (
+
     <>
         <div className={style.details} key={card.id}>
             <div className={style.details__images}>
