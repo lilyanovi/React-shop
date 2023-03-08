@@ -5,7 +5,6 @@ import { Modal } from '../modal/modal'
 import { Application } from '../application/application'
 import { useSelector, useDispatch } from 'react-redux'
 import { openModal, closeModalDetail } from '../../store/modal/actions'
-import {useState} from 'react'
 
 const Details = ({ card }) => {
 
