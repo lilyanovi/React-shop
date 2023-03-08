@@ -1,9 +1,20 @@
 import style from './details.module.scss'
+//import horseWalk from '../../assets/slider/horseWalk.png'
 import { Modal } from '../modal/modal'
 import { Application } from '../application/application'
 import { useSelector, useDispatch } from 'react-redux'
 import { openModal, closeModalDetail } from '../../store/modal/actions'
-import { selectCard } from '../../store/card/actions'
+import {useState} from 'react'
+
+// export const arrDetails = [
+//     {
+//         id: 1,
+//         title: 'Конная прогулка',
+//         price: 'от 990 ₽',
+//         img: horseWalk
+//     }
+// ]
+
 
 const Details = ({card}) => {
 
@@ -12,23 +23,37 @@ const Details = ({card}) => {
     const handleOpenModal = (event) => {
         event.preventDefault()
         dispatch(openModal(true))
-        dispatch(selectCard(card))
         dispatch(closeModalDetail(false))
-    }
+    };
 
-    console.log(card)
+    const [desc, setDesc] = useState(card.desc)
+    
+
+    // const imgs = [
+    //     { id: 0, value: "https://wallpaperaccess.com/full/2637581.jpg" },
+    //     { id: 1, value: "https://source.unsplash.com/user/c_v_r/1900x800" },
+    //     { id: 2, value: "https://source.unsplash.com/user/c_v_r/100x100" },
+    // ]
+    const [wordData, setWordData] = useState(card.imgs[0])
+    const handleClick = (index) => {
+        const wordSlider = card.imgs[index];
+        setWordData(wordSlider)
+    }
+    //const [desc, setDesc] = useState(card.desc)
+
 
     return (
-       <>
+    <>
         <div className={style.details} key={card.id}>
             <div className={style.details__images}>
-                <img className={style.details__images_img} src={card.img} alt="img" />
-                <div className={style.details__images_mini}>
-                    <img className={style.details__images_img_mini} src={card.img} alt="img" />
-                    <img className={style.details__images_img_mini} src={card.img} alt="img" />
-                    <img className={style.details__images_img_mini} src={card.img} alt="img" />
+                <img className={style.details__images_img} src={wordData.value} alt="img" />
+                <div className={style.flex_row}>
+                    {card.imgs.map((data, i) =>
+                        <img key={i} className={style.details__images_img_mini} src={data.value} alt="img" onClick={() => handleClick(i)} />
+                            )}
                 </div>
             </div>
+       
             <div className={style.details__body}>
                 <h2 className={style.details__body_title} >{card.name.toUpperCase()}</h2>
                 <div className={style.details__selectionPrice}>
@@ -38,14 +63,14 @@ const Details = ({card}) => {
                 <button className={style.details__btn} onClick={(event) => handleOpenModal(event)}>Заказать впечатление</button>
                 <div className={style.details__description}>
                     <h3>Подробнее о впечатлении: </h3>
-                    {card.desc}
+                    {desc.map((desc, index) => <p key={index}>{desc}</p>)}
                 </div>
             </div>
         </div>
         {
         modalShow &&
         <Modal>
-            <Application card={card} />
+            <Application />
         </Modal>
         }
     </>

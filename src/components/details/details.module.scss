@@ -3,7 +3,7 @@
 .details {
     background: #FFFFFF;
     border-radius: 20px;
-    max-width: 1301px;
+    width: 1301px;
     padding: 90px 40px 40px;
     display: flex;
     min-height: 873px;
@@ -16,8 +16,9 @@
         margin-bottom: 30px;
         width: 450px;
         height: 450px;
+        object-fit: cover;
     }
-    &_mini {
+    .flex_row {
         display: flex;
         justify-content: space-between;
     }
@@ -25,10 +26,9 @@
         width: 130px;
         height: 130px;
         border-radius: 20px;
+        object-fit: cover;	
     } 
 }
-
-
 
 .details__body {
     &_title {
@@ -92,4 +92,7 @@
     font-size: 16px;
     line-height: 20px;
     color: #333333;
+    p {
+        margin-bottom: 10px;
+    }
 }
