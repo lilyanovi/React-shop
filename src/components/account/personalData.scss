@@ -38,7 +38,8 @@
       width: 56px;
     }
 
-    & p {
+    & p,
+    & input {
       border: 1px solid #C2C2C2;
       border-radius: 10px;
       width: 315px;
@@ -49,7 +50,9 @@
       padding-left: 12px;
     }
 
-    & img {
+    & button {
+      border: none;
+      background: transparent;
       cursor: pointer;
     }
   }

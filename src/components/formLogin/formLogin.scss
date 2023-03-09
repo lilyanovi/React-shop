@@ -2,21 +2,20 @@
   max-width: 600px;
   width: 100%;
   margin: 70px auto 95px;
-
+  font-family: 'Montserrat';
 
   & h1 {
-    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
     font-size: 40px;
     line-height: 50px;
+    margin-bottom: 50px;
     text-align: center;
     text-transform: uppercase;
     color: #333333;
   }
 
   &__box {
-    margin-top: 50px;
     background: #FFFFFF;
     border: 1px solid #547147;
     backdrop-filter: blur(25px);
@@ -32,21 +31,20 @@
     margin-top: 80px;
     max-width: 470px;
     width: 100%;
-    
+
     & input {
       width: 100%;
       height: 60px;
       background: #FFFFFF;
       border: 1px solid #C2C2C2;
       border-radius: 10px;
-      font-family: 'Montserrat';
       font-style: normal;
       font-weight: 400;
       font-size: 16px;
       line-height: 20px;
       color: #333333;
       padding: 20px 15px;
-      margin-bottom: 25px;
+      margin-bottom: 29px;
     }
   }
 
@@ -56,7 +54,6 @@
     gap: 15px;
 
     & label {
-      font-family: 'Montserrat';
       font-style: normal;
       font-weight: 400;
       font-size: 18px;
@@ -71,7 +68,6 @@
     display: block;
     background: #547147;
     border-radius: 40px;
-    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
@@ -97,7 +93,6 @@
     gap: 15px;
 
     & p {
-      font-family: 'Montserrat';
       font-style: normal;
       font-weight: 600;
       font-size: 20px;
@@ -127,6 +122,35 @@
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  &__error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 16px;
+    max-width: 600px;
+    min-height: 84px;
+    outline: 2px solid #4285F4;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    color: #4285F4;
+  }
+
+  &__errorMes {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: -21px;
+    margin-bottom: 7px;
+    height: 14px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    color: #9B0F0F;
   }
 }
 

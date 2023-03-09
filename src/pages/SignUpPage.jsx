@@ -1,42 +1,60 @@
 import '../components/formLogin/formLogin.scss'
 import { NavLink, useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
+import { useState } from "react";
 import imgGoogleAuth from '../assets/googleIcon.png'
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { writeUserEmail, writeUserName } from '../services/firebase'
 import { setUser } from "../store/auth/action";
 
 import FormLogin from "../components/formLogin/formLogin"
 
-
-
 const SignUpPage = () => {
 
-
+  const [errorMessage, setErrorMessage] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const auth = getAuth();
 
   const handleRegister = (e, email, password) => {
     e.preventDefault();
-
+    setErrorMessage('')
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
 
         const user = userCredential.user
-
-        dispatch(setUser({
-          email: user.email,
-          id: user.uid,
-          token: user.accessToken,
-          name: null
-        }));
+        console.log(`${user.email} зарегестрирован`)
+        navigate('/login')
+        writeUserEmail(user);
       })
-      .catch(console.error)
+      .catch((error) => {
+
+        switch (error.code) {
+          case "auth/weak-password":
+            setErrorMessage("Пароль должен состоять как минимум из 6 символов");
+            break;
+          case "auth/email-already-in-use":
+            setErrorMessage(
+              "Указанный e-mail уже зарегестрирован"
+            );
+            break;
+          case "auth/invalid-email":
+            setErrorMessage("Адрес электронной почты указан некорректно");
+            break;
+          case "auth/operation-not-allowed":
+            setErrorMessage("Аккаунт заблокирован");
+            break;
+          default:
+            setErrorMessage(error.message);
+            break;
+        }
+
+      });
   }
 
   const handleSubmitGoogle = (e) => {
     e.preventDefault()
-
+    setErrorMessage('');
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -50,23 +68,34 @@ const SignUpPage = () => {
           name: user.displayName
         }));
         navigate('/account');
+        localStorage.setItem('remember', true); 
+        writeUserEmail(user)
+        writeUserName(user)
       })
       .catch((error) => {
-        /* 
-             const errorCode = error.code;
-             const errorMessage = error.message;
-             const email = error.customData.email;
-             const credential = GoogleAuthProvider.credentialFromError(error);*/
+        switch (error.code) {
+          case "auth/user-disabled":
+            setErrorMessage(
+              "Аккаунт заблокирован"
+            );
+            break;
+          default:
+            setErrorMessage(error.message);
+            break;
+        }
       });
   }
 
   return (
     <>
       <section className="formLogin container">
-        <h1>Регистрация</h1>
+        {errorMessage ?
+          <div className="formLogin__error">
+            {errorMessage}
+          </div> : <h1>Регистрация</h1>}
         <div className="formLogin__box">
           <FormLogin
-            title='Зарегестрироваться'
+            title='Зарегистрироваться'
             handleClick={handleRegister}
           />
           <button

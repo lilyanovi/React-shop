@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import CardHomePage from './CardHomePage';
-import './CatalogHomePage.scss'
+import style from './CatalogHomePage.module.scss'
 import { Modal } from '../modal/modal';
 import { Application } from '../application/application';
 import { useSelector } from 'react-redux'
 import Details from '../details/Details';
 import axios from 'axios'
-import { FilterCost } from '../filterCost/filterCost';
+//import { FilterCost } from '../filterCost/filterCost';
 
 const CatalogHomePage = () => {
 
@@ -15,10 +15,9 @@ const CatalogHomePage = () => {
   const [cardsHomePage, setCardsHomePage] = useState([])
   const [filtredCards, setFiltredCards] = useState([])
 
+
   const modalShow = useSelector(store => store.modal.modalShow)
   const modalDetail = useSelector(store => store.modal.modalDetails)
-  const [info, setInfo] = useState(false)
-
 
   useEffect(() => {
     fetchCards()
@@ -27,9 +26,11 @@ const CatalogHomePage = () => {
 
   async function fetchCards() {
     const cards = await axios.get('https://kaori318.github.io/site/cards.json')
+    // const cards = await axios.get('https://kaori318.github.io/site/test.json')
     setCards(cards.data)
-    setCardsHomePage(cards.data.slice(0, 11))
-    setFiltredCards(cards.data.slice(0, 11))
+
+    setCardsHomePage(cards.data.slice(0, 6))
+    setFiltredCards(cards.data.slice(0, 6))
   }
 
   const filterName = useSelector((state) => {
@@ -37,6 +38,7 @@ const CatalogHomePage = () => {
       e.name.match(RegExp(`${state.text}`, 'i'))
     )
   })
+
 
   function getCardId(cardId) {
     const id = cardId;
@@ -49,16 +51,14 @@ const CatalogHomePage = () => {
     setFiltredCards(filtredCards.filter((el) => valueMin <= parseInt(el.price.match(/\d+/)) && parseInt(el.price.match(/\d+/)) <= valueMax))
   }
 
-
-
   return (
-    <div className="catalogImpressions">
-      <h1 className="title">
+    <div className={style.catalogImpressions}>
+      <h1 className={style.title}>
         Каталог впечатлений
       </h1>
-      <FilterCost watchChange={watchChange} />
-      <div className="catalogCard">
-        {filterName.map(card => <CardHomePage card={card} cardId={getCardId} key={card.id} />)}
+      {/* <FilterCost watchChange={watchChange} /> */}
+      <div className={style.catalogCard}>
+        {filterName.map(card => <CardHomePage card={card} cardId={getCardId} key={card.id} />)}>>>>>>> main
       </div>
       {
         modalShow &&

@@ -2,9 +2,12 @@ import * as types from '../auth/types'
 
 const initialState = {
     email: null,
-    token: null,
+    token: localStorage.getItem('remember')  || null,
     id: null,
-    name: null
+    name: null,
+    phone: null,
+    rememberMe: localStorage.getItem('remember') ? true : false,
+    applications: {}
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -18,7 +21,8 @@ export const userReducer = (state = initialState, action) => {
                 email: payload.email,
                 token: payload.token,
                 id: payload.id,
-                name: payload.name
+                name: payload.name,
+                rememberMe: payload.rememberMe
             }
 
         case types.REMOVE_USER:
@@ -27,8 +31,21 @@ export const userReducer = (state = initialState, action) => {
                 email: null,
                 token: null,
                 id: null,
-                name: null
+                name: null,
+                rememberMe: false
             }
+
+        case types.EDIT_USER:
+            return {
+                ...state,
+                name: payload.name,
+                phone: payload.phone
+            }
+
+        case types.ADD_AUTH_APPLICATION:
+            let copy = Object.assign({}, state)
+            copy.applications = {...copy.applications, ...payload}
+            return copy
 
         default:
             return state
