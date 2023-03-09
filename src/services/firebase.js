@@ -55,18 +55,17 @@ export const writeUserSubscribe = (id, subscribe) =>   {
 
 // получить информацию о статусе подписки пользователе
 export const getUserValueSubscribe = (id) => {
-  return new Promise((resolve, reject) => {
-    get(ref(db, 'users/' + id + '/subscribe')).then((data) => {
+  return get(ref(db, 'users/' + id + '/subscribe'))
+    .then((data) => {
       if (data.exists()) {
-        resolve(data.val().subscribe);
+        return data.val().subscribe;
       } else {
         console.log("No data available");
       }
     }).catch((error) => {
       console.error(error);
     });
-  })
-}
+  }
 
 //добавить пользователя в список подписавшихся
 export const writeSubscribeList = (id, email) => {
