@@ -12,7 +12,7 @@ const CatalogHomePage = () => {
 
   const [cards, setCards] = useState([])
   const [cardModal, setCardModal] = useState('')
-  const [cardsHomePage, setCardsHomePage] = useState([])
+  //const [cardsHomePage, setCardsHomePage] = useState([])
   const [filtredCards, setFiltredCards] = useState([])
 
 
@@ -29,7 +29,7 @@ const CatalogHomePage = () => {
     // const cards = await axios.get('https://kaori318.github.io/site/test.json')
     setCards(cards.data)
 
-    setCardsHomePage(cards.data.slice(0, 6))
+   // setCardsHomePage(cards.data.slice(0, 6))
     setFiltredCards(cards.data.slice(0, 6))
   }
 
@@ -46,10 +46,10 @@ const CatalogHomePage = () => {
     setCardModal(cards[index])
   }
 
-  const watchChange = (valueMin, valueMax) => {
-    let filtredCards = cardsHomePage.slice();
-    setFiltredCards(filtredCards.filter((el) => valueMin <= parseInt(el.price.match(/\d+/)) && parseInt(el.price.match(/\d+/)) <= valueMax))
-  }
+  // const watchChange = (valueMin, valueMax) => {
+  //   let filtredCards = cardsHomePage.slice();
+  //   setFiltredCards(filtredCards.filter((el) => valueMin <= parseInt(el.price.match(/\d+/)) && parseInt(el.price.match(/\d+/)) <= valueMax))
+  // }
 
   return (
     <div className={style.catalogImpressions}>
@@ -58,7 +58,7 @@ const CatalogHomePage = () => {
       </h1>
       {/* <FilterCost watchChange={watchChange} /> */}
       <div className={style.catalogCard}>
-        {filterName.map(card => <CardHomePage card={card} cardId={getCardId} key={card.id} />)}>>>>>>> main
+        {filterName.map(card => <CardHomePage card={card} cardId={getCardId} key={card.id} />)}
       </div>
       {
         modalShow &&
