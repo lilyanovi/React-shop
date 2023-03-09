@@ -28,10 +28,10 @@ const SignUpPage = () => {
         writeUserEmail(user);
       })
       .catch((error) => {
-          
+
         switch (error.code) {
           case "auth/weak-password":
-            setErrorMessage("Пароль должен состоять как минимум из  6 символов");
+            setErrorMessage("Пароль должен состоять как минимум из 6 символов");
             break;
           case "auth/email-already-in-use":
             setErrorMessage(
@@ -48,8 +48,8 @@ const SignUpPage = () => {
             setErrorMessage(error.message);
             break;
         }
-          
-           });
+
+      });
   }
 
   const handleSubmitGoogle = (e) => {
@@ -78,7 +78,7 @@ const SignUpPage = () => {
             setErrorMessage(
               "Аккаунт заблокирован"
             );
-            break;           
+            break;
           default:
             setErrorMessage(error.message);
             break;
@@ -88,13 +88,11 @@ const SignUpPage = () => {
 
   return (
     <>
-      {errorMessage ?
-          <div>
-            {errorMessage}
-          </div> : null
-      }
       <section className="formLogin container">
-        <h1>Регистрация</h1>
+        {errorMessage ?
+          <div className="formLogin__error">
+            {errorMessage}
+          </div> : <h1>Регистрация</h1>}
         <div className="formLogin__box">
           <FormLogin
             title='Зарегистрироваться'

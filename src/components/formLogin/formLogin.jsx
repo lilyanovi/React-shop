@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const FormLogin = ({title, handleClick}) => {
+const FormLogin = ({ title, handleClick }) => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [remember, setRemember] = useState('');
@@ -11,7 +11,7 @@ const FormLogin = ({title, handleClick}) => {
     const [formValid, setFormValid] = useState(false)
 
     useEffect(() => {
-        if(emailError || passError) {
+        if (emailError || passError) {
             setFormValid(false)
         } else {
             setFormValid(true)
@@ -32,7 +32,7 @@ const FormLogin = ({title, handleClick}) => {
     const emailHandler = (e) => {
         setEmail(e.target.value)
         const re =
-        /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+            /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
         if (!re.test(String(e.target.value).toLowerCase())) {
             setEmailError('Некорректный e-mail')
         } else {
@@ -61,7 +61,7 @@ const FormLogin = ({title, handleClick}) => {
                 placeholder="Email"
             />
             {emailPress && emailError ?
-                <p>{emailError}</p> : null
+                <p className="formLogin__errorMes">{emailError}</p> : null
             }
             <input
                 type="password"
@@ -72,18 +72,18 @@ const FormLogin = ({title, handleClick}) => {
                 placeholder="Password"
             />
             {passPress && passError ?
-                <p>{passError}</p> : null
+                <p className="formLogin__errorMes">{passError}</p> : null
             }
-             {title === 'Войти'?
-            <div className="formLogin__checkbox">
-                <input 
-                    type="checkbox" 
-                    id="formLogin-saveMe"
-                    checked={remember}
-                    onChange={(e) => setRemember(e.target.checked)}
-                />
-                <label htmlFor="formLogin-saveMe">Запомнить меня</label>
-            </div> : null
+            {title === 'Войти' ?
+                <div className="formLogin__checkbox">
+                    <input
+                        type="checkbox"
+                        id="formLogin-saveMe"
+                        checked={remember}
+                        onChange={(e) => setRemember(e.target.checked)}
+                    />
+                    <label htmlFor="formLogin-saveMe">Запомнить меня</label>
+                </div> : null
             }
 
             <button
