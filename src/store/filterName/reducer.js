@@ -7,4 +7,5 @@ export const filterNameReducer = (state = initialState, action) => {
         return result
     }
     return state
+
 }

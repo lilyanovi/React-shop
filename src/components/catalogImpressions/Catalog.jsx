@@ -16,13 +16,14 @@ const Catalog = () => {
   const [filtredCards, setFiltredCards] = useState(cards)
   const [currentPage, setCurrentPage] = useState(1)
   const [countriesPerPage] = useState(12)
-
   const modalShow = useSelector(store => store.modal.modalShow)
   const modalDetail = useSelector(store => store.modal.modalDetails)
 
   useEffect(() => {
     fetchCards()
-  }, [])
+  }, []
+  )
+
 
   async function fetchCards() {
     const cards = await axios.get('https://kaori318.github.io/site/cards.json')
@@ -47,6 +48,7 @@ const Catalog = () => {
     let filtredCards = cards.slice();
     setFiltredCards(filtredCards.filter((el) => valueMin <= parseInt(el.price.match(/\d+/)) && parseInt(el.price.match(/\d+/)) <= valueMax))
   }
+
 
 // Пагинация отображение элементов на странице
   const lastCountryIndex = currentPage * countriesPerPage
