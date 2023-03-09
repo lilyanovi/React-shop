@@ -7,12 +7,15 @@ import { useSelector } from 'react-redux'
 import Details from '../details/Details';
 import axios from 'axios'
 import { FilterCost } from '../filterCost/filterCost';
+import Pagination from '../../pagination/Pagination';
 
 const Catalog = () => {
 
   const [cards, setCards] = useState([])
   const [cardModal, setCardModal] = useState('')
   const [filtredCards, setFiltredCards] = useState(cards)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [countriesPerPage] = useState(12)
 
   const modalShow = useSelector(store => store.modal.modalShow)
   const modalDetail = useSelector(store => store.modal.modalDetails)
@@ -45,6 +48,13 @@ const Catalog = () => {
     setFiltredCards(filtredCards.filter((el) => valueMin <= parseInt(el.price.match(/\d+/)) && parseInt(el.price.match(/\d+/)) <= valueMax))
   }
 
+// Пагинация отображение элементов на странице
+  const lastCountryIndex = currentPage * countriesPerPage
+  const firstCountryIndex = lastCountryIndex - countriesPerPage
+  const currentCountry = filterName.slice(firstCountryIndex, lastCountryIndex)
+
+  const paginate = pageNumber => setCurrentPage(pageNumber)
+
   return (
     <div className={style.catalogImpressions}>
       <h1 className={style.title}>
@@ -52,8 +62,14 @@ const Catalog = () => {
       </h1>
       <FilterCost watchChange={watchChange} />
       <div className={style.catalogCard}>
-        {filterName.map(card => <Card card={card} cardId={getCardId} key={card.id} />)}
+        {currentCountry.map(card => <Card card={card} cardId={getCardId} key={card.id} />)}
       </div>
+      <Pagination
+      countriesPerPage={countriesPerPage}
+      totalCoutries={cards.length}
+      paginate={paginate}
+      currentPage={currentPage}
+      />
       {
         modalShow &&
         <Modal>
