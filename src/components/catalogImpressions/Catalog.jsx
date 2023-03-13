@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 import Details from '../details/Details';
 import axios from 'axios'
 import { FilterCost } from '../filterCost/filterCost';
-import Pagination from '../../pagination/Pagination';
+import Pagination from '../../components/pagination/Pagination';
 
 const Catalog = () => {
 
@@ -33,9 +33,11 @@ const Catalog = () => {
   }
 
   let filterName = useSelector((state) => {
+    if (state !== "") {
     return filtredCards.filter((e) =>
       e.name.match(RegExp(`${state.text}`, 'i'))
     )
+    }
   })
 
   function getCardId(cardId) {
@@ -44,9 +46,19 @@ const Catalog = () => {
     setCardModal(cards[index])
   }
 
-  const watchChange = (valueMin, valueMax) => {
+  const watchChange = (valueMin, valueMax,val) => {
     let filtredCards = cards.slice();
-    setFiltredCards(filtredCards.filter((el) => valueMin <= parseInt(el.price.match(/\d+/)) && parseInt(el.price.match(/\d+/)) <= valueMax))
+    if (val === "1") {
+      setFiltredCards(filtredCards.sort((a, b) => parseInt(a.price.match(/\d+/)) - parseInt(b.price.match(/\d+/))))
+    } else if (val === "2") {
+      setFiltredCards(filtredCards.sort((a, b) => parseInt(b.price.match(/\d+/)) - parseInt(a.price.match(/\d+/))))
+    } else {
+      setFiltredCards(filtredCards)
+    }
+    if (valueMin !== "" | valueMax !== "") {
+      setFiltredCards(filtredCards.filter((el) => valueMin <= parseInt(el.price.match(/\d+/)) && 
+      parseInt(el.price.match(/\d+/)) <= valueMax))
+    }
   }
 
 
@@ -67,10 +79,10 @@ const Catalog = () => {
         {currentCountry.map(card => <Card card={card} cardId={getCardId} key={card.id} />)}
       </div>
       <Pagination
-      countriesPerPage={countriesPerPage}
-      totalCoutries={cards.length}
-      paginate={paginate}
-      currentPage={currentPage}
+        countriesPerPage={countriesPerPage}
+        totalCoutries={cards.length}
+        paginate={paginate}
+        currentPage={currentPage}
       />
       {
         modalShow &&
