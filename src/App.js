@@ -15,6 +15,7 @@ import PersonalData from './components/account/PersonalData'
 import CompletedApplications from './components/account/CompletedApplications'
 import SubscriptionManagement from './components/account/SubscriptionManagement'
 import ImpressionsCatalog from './pages/ImpressionsCatalog'
+import CommentUser from './components/account/CommentUser'
 
 import './services/firebase'
 
@@ -34,6 +35,7 @@ export default function App() {
             <Route index element={<PersonalData />}></Route>
             <Route path="managment" element={<SubscriptionManagement />}></Route>
             <Route path="completed" element={<CompletedApplications />}></Route>
+            <Route path="comment" element={<CommentUser/>}></Route>
           </Route>
           <Route path="signup" element={<PublicRoute component={<SignUpPage />} />}></Route>
           <Route path='*' element={<ErrorPage />}></Route>

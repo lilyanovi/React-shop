@@ -9,6 +9,7 @@ import Sended from '../sended/Sended'
 import { writeApplicationWithoutLogin, writeUserApplication, writeUserApplicationStatus, applicationsWithAuth } from '../../services/firebase'
 import { useAuth } from '../../hooks/use-auth'
 import { addAuthApplications } from '../../store/auth/action'
+import SelectImpression from '../selectImpression/SelectImpression'
 
 export function Application() {
     const { isAuth, id } = useAuth()
@@ -159,7 +160,7 @@ export function Application() {
                         ></input>
                     )
                 }
-                {isAuth
+                { isAuth
                     ? <p className="application__user-text">{userEmail ? userEmail : 'Email'}</p>
                     : (errorEmail ? <input className='application__input_false' type='email'
                         placeholder='Email'
@@ -175,13 +176,9 @@ export function Application() {
                         ></input>)
                 }
 
-                <textarea
-                    className='application__input'
-                    placeholder="Комментарий"
-                    rows={5}
-                    value={commit}
-                    onChange={(event) => setCommit(event.target.value)}
-                ></textarea>
+                <div className="application__select">
+                    <SelectImpression/>
+                </div>
 
                 <label className='application__checkbox' ><input className='application__checkbox__input}=' type='checkbox'
                     onChange={() => setAgree(!agree)}></input>

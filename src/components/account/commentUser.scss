@@ -1,0 +1,70 @@
+.commentUser {
+  max-width: 860px;
+  width: 100%;
+  border: 1px solid #547147;
+  backdrop-filter: blur(25px);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & h3 {
+    margin-top: 30px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #547147;
+  }
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 55px auto 22px;
+  }
+
+  &__item {
+    display: flex;  
+    margin-bottom: 17px;
+    gap: 40px;
+
+    &-text {
+      width: 100px;
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      color: #547147;
+    }
+
+    &-select {
+      position: relative;
+      top: 0;
+    }
+
+    & input {
+      width: 440px;
+      height: 52px;
+      background: #FFFFFF;
+      border: 1px solid #C2C2C2;
+      border-radius: 10px;
+      padding: 6px 12px;
+    }
+
+    & textarea {
+      width: 440px;
+      height: 220px;
+      background: #FFFFFF;
+      border: 1px solid #C2C2C2;
+      border-radius: 10px;
+      padding: 6px 12px;
+    }
+  }
+}
+
+.comment-textarea {
+  margin-top: 31px;
+}

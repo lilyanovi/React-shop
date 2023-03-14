@@ -46,6 +46,12 @@ const Account = () => {
             >
               Управление подпиской
             </NavLink>
+            <NavLink
+              className="account__sideBar-wrapper-link-active"
+              to="comment"
+            >
+              Оставить отзыв
+            </NavLink>
             <button
             className="account__sideBar-btn-exit"
             onClick={(e) => handleLogOut(e)}

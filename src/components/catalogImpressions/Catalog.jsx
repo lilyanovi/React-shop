@@ -21,8 +21,7 @@ const Catalog = () => {
 
   useEffect(() => {
     fetchCards()
-  }, []
-  )
+  }, [])
 
 
   async function fetchCards() {
