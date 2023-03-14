@@ -27,6 +27,11 @@ export const links = [
   },
   {
     id: 3,
+    name: 'Как\u00A0это\u00A0работает',
+    to: 'howto'
+  },
+  {
+    id: 4,
     name: 'Контакты',
     to: 'contacts'
   }
@@ -36,17 +41,21 @@ export const links = [
 
 const Header = () => {
 
-  const {isAuth} = useAuth();
-
+  const { isAuth } = useAuth();
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
 
   const enterFilter = useCallback((e) => {
-    dispatch(pushText(e.target.value))
+    if (e.target.value !== "") {
+      navigate("/catalog")
+      dispatch(pushText(e.target.value))
+    } else {
+      dispatch(pushText(e.target.value))
+    }
   }, [dispatch])
 
- 
+
   useEffect(() => {
      const rememberMe = localStorage.getItem('remember');
      const auth = getAuth();
@@ -81,28 +90,28 @@ const Header = () => {
           dispatch(removeUser());
           localStorage.removeItem('remember')
           navigate('/login');
-        }).catch ((error) => {
+        }).catch((error) => {
           console.log(error)
         })
-     }
-     // eslint-disable-next-line
-   }, [])
+    }
+    // eslint-disable-next-line
+  }, [])
 
-   /*
-   const handleLogOut = (e) => {
-    e.preventDefault();
+  /*
+  const handleLogOut = (e) => {
+   e.preventDefault();
 
-    signOut(auth)
-      .then(() => {
-        dispatch(removeUser());
-        localStorage.removeItem('remember');
-        navigate('/login');
-    }).catch ((error) => {
-      console.log(error)
-    })
+   signOut(auth)
+     .then(() => {
+       dispatch(removeUser());
+       localStorage.removeItem('remember');
+       navigate('/login');
+   }).catch ((error) => {
+     console.log(error)
+   })
 
-  }*/
-  
+ }*/
+
   return (
     <>
       <header className="header">

@@ -29,11 +29,7 @@ export default function SelectStatus({propsKey, changeStatus}) {
 
   return (
     <div>
-      {/* <Button sx={{ display: 'block', mt: 2 }} onClick={handleOpen}>
-        Open the select
-      </Button> */}
       <FormControl sx={{ m: 1, minWidth: 161 }}>
-        {/* <InputLabel id="demo-controlled-open-select-label">Age</InputLabel> */}
         <Select
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
@@ -43,7 +39,10 @@ export default function SelectStatus({propsKey, changeStatus}) {
           value={status}
           label="Age"
           onChange={handleChange}
-          className="completed__select"
+          className={ status === 'Отменить'
+            ? 'completed__select completed__selected-delete'
+            : 'completed__select'
+          }
           style={{ color: 'white'}}
         >
           <MenuItem value={"В обработке"}>В обработке</MenuItem>

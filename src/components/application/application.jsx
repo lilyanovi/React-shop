@@ -9,17 +9,24 @@ import Sended from '../sended/Sended'
 import { writeApplicationWithoutLogin, writeUserApplication, writeUserApplicationStatus, applicationsWithAuth } from '../../services/firebase'
 import { useAuth } from '../../hooks/use-auth'
 import { addAuthApplications } from '../../store/auth/action'
+import SelectImpression from '../selectImpression/SelectImpression'
 
-export function Application () {
+export function Application() {
     const { isAuth, id } = useAuth()
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
     const [commit, setCommit] = useState('')
+    const [email, setEmail] = useState('')
+    const [errorName, setErrorName] = useState(false)
+    const [errorPhone, setErrorPhone] = useState(false)
+    const [errorEmail, setErrorEmail] = useState(false)
+    const [agree, setAgree] = useState(false)
     const idApplication = nanoid()
     const modalSended = useSelector(store => store.modal.modalSended)
     const card = useSelector(store => store.card)
     const userName = useSelector(store => store.user.name)
     const userPhone = useSelector(store => store.user.phone)
+    const userEmail = useSelector(store => store.user.email)
 
     const getDate = () => {
         const currentDate = new Date()
@@ -40,97 +47,151 @@ export function Application () {
     const codeDuplication = () => {
         setName('')
         setPhone('')
+        setEmail('')
         setCommit('')
         dispatch(closeModal(false))
         dispatch(openModalSended(true))
     }
-    
+
     const handleSubmit = event => {
         event.preventDefault()
         if (!isAuth) {
-            if (name !== '' &&  phone !== '') {
+            if (!errorName && !errorPhone && !errorEmail && phone && name && email && agree) {
                 let applicationObj = {
                     [idApplication]: {
                         name,
                         phone,
+                        email,
                         commit,
                         card
                     }
                 }
-                
+
                 dispatch(addApplication(applicationObj))
                 codeDuplication()
-                writeApplicationWithoutLogin(idApplication, name, phone, commit, card)
+                writeApplicationWithoutLogin(idApplication, name, phone, email, commit, card)
             } else {
                 return
             }
         } else {
-           let applicationObj = {
+            let applicationObj = {
                 [idApplication]: {
                     card,
                     status: {status: 'В обработке'},
                     date: getDate()
                 }
-           }
-        
-           const date = getDate()
-           const status = 'В обработке'
-           dispatch(addAuthApplications(applicationObj))
-           codeDuplication()
-           writeUserApplication(id, idApplication, name, phone, commit, card, date) 
-           writeUserApplicationStatus(id, idApplication, status)
+            }
+
+            const date = getDate()
+            const status = 'В обработке'
+            dispatch(addAuthApplications(applicationObj))
+            codeDuplication()
+            writeUserApplication(id, idApplication, name, phone, email, commit, card, date)
+            writeUserApplicationStatus(id, idApplication, status)
+        }
+    }
+
+    function checkName(event) {
+        setName(event.target.value)
+        if (/^[А-ЯЁ,\s]+$/i.test(event.target.value) && name.length) {
+            setErrorName(false)
+        } else {
+            setErrorName(true)
+        }
+    }
+
+    function checkPhone(event) {
+        setPhone(event.target.value)
+        if (/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/.test(event.target.value) && phone.length) {
+            setErrorPhone(false)
+        } else {
+            setErrorPhone(true)
+        }
+    }
+
+    function checkEmail(event) {
+        setEmail(event.target.value)
+        if (/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu.test(event.target.value) && email.length) {
+            setErrorEmail(false)
+        } else {
+            setErrorEmail(true)
         }
     }
 
     return (
-       <>
+        <>
             <form className='application' onSubmit={(event) => handleSubmit(event)}>
                 <div className='application__head'>
                     <h2 className='application__head__title' >Отправьте заявку</h2>
                     <p className='application__head__subtitle' >Мы свяжемся с Вами в ближайшее время</p>
                 </div>
-                { isAuth
+                {isAuth
                     ? <p className="application__user-text">{userName ? userName : 'Имя'}</p>
-                    : <input
-                        className='application__input'
-                        type='text'
-                        placeholder='Имя' 
+                    : (errorName ? <input className='application__input_false' type='text'
+                        placeholder='Имя кирилицей'
                         required
                         value={name}
-                        onChange={(event) => setName(event.target.value)}
+                        onChange={checkName}
                     ></input>
+                        : <input className='application__input' type='text'
+                            placeholder='Имя'
+                            required
+                            value={name}
+                            onChange={checkName}
+                        ></input>)
                 }
-                { isAuth
+                {isAuth
                     ? <p className="application__user-text">{userPhone ? userPhone : 'Телефон'}</p>
-                    : <input
-                        className='application__input'
-                        type='tel'
+                    : (errorPhone ? <input
+                        className='application__input_false'
+                        type='text'
                         placeholder='Телефон'
                         required
                         value={phone}
-                        onChange={(event) => setPhone(event.target.value)}
-                    ></input>
+                        onChange={checkPhone}
+                    ></input> :
+                        <input
+                            className='application__input'
+                            type='text'
+                            placeholder='Телефон'
+                            required
+                            value={phone}
+                            onChange={checkPhone}
+                        ></input>
+                    )
                 }
-                
-                <textarea
-                    className='application__input'
-                    placeholder="Комментарий"
-                    rows={5}
-                    value={commit}
-                    onChange={(event) => setCommit(event.target.value)}
-                ></textarea>
+                { isAuth
+                    ? <p className="application__user-text">{userEmail ? userEmail : 'Email'}</p>
+                    : (errorEmail ? <input className='application__input_false' type='email'
+                        placeholder='Email'
+                        required
+                        value={email}
+                        onChange={checkEmail}
+                    ></input>
+                        : <input className='application__input' type='email'
+                            placeholder='Email'
+                            required
+                            value={email}
+                            onChange={checkEmail}
+                        ></input>)
+                }
 
-                <label className='application__checkbox' ><input className='application__checkbox__input}=' type='checkbox' ></input>
-                Отправляя заявку Вы соглашаетесь на обработку <span>персональных данных</span></label>
+                <div className="application__select">
+                    <SelectImpression/>
+                </div>
+
+                <label className='application__checkbox' ><input className='application__checkbox__input}=' type='checkbox'
+                    onChange={() => setAgree(!agree)}></input>
+                    Отправляя заявку Вы соглашаетесь на обработку <span>персональных данных</span></label>
 
                 <button className='application__btn' type='submit'>Отправить заявку</button>
             </form>
             {
                 modalSended &&
                 <Modal>
-                    <Sended/>
+                    <Sended />
                 </Modal>
             }
-       </> 
+        </>
     )
 }

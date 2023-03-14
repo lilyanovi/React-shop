@@ -4,6 +4,8 @@ import { modalReducer } from './modal/reducer'
 import { userReducer } from './auth/reducer'
 import { filterNameReducer } from './filterName/reducer'
 import { cardReducer } from './card/reducer'
+import { commentsReducer } from './comments/reducer'
+
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
@@ -20,7 +22,8 @@ const rootReducer = combineReducers({
   modal: modalReducer,
   user: userReducer,
   text: filterNameReducer,
-  card: cardReducer
+  card: cardReducer,
+  comments: commentsReducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
