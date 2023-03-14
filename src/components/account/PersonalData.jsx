@@ -3,16 +3,22 @@ import { useState } from 'react'
 import { useAuth } from '../../hooks/use-auth'
 import imgPersonalArea from '../../assets/personalArea.png'
 import imgEdit from '../../assets/edit.png'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { editUser } from '../../store/auth/action'
+import { editUserName, editUserEmail, editUserPhone } from '../../services/firebase'
+import { LinearProgress } from '@mui/material';
+
 
 const PersonalData = () => {
-  const {email, name} = useAuth()
+  const {email, name, id, phone } = useAuth()
   const [editName, setEditName] = useState(false)
   const [userName, setUserName] = useState(name)
-  const phone = useSelector(store => store.user.phone)
   const [userPhone, setUserPhone] = useState(phone)
   const [editPhone, setEditPhone] = useState(false)
+  const [userEmail, setUserEmail] = useState(email)
+  const [editEmail, setEditEmail] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -24,13 +30,23 @@ const PersonalData = () => {
     setEditPhone(!editPhone)
   }
 
+  const handleEditEmail = () => {
+    setEditEmail(!editEmail)
+  }
+
   const handleSaveUserData = () => {
+    setLoading(true)  
     dispatch(editUser({
-      name: userName,
-      phone: userPhone
-    }))
-    setEditName(false)
-    setEditPhone(false)
+        name: userName,
+        phone: userPhone,
+        email: userEmail
+      }))
+      editUserEmail(id, userEmail, setErrorMessage, setLoading)
+      editUserName(id, userName)
+      editUserPhone(id, userPhone)
+      setEditName(false)
+      setEditPhone(false)
+      setEditEmail(false)
   }
 
   return (
@@ -39,7 +55,15 @@ const PersonalData = () => {
         <img src={imgPersonalArea} alt="img personal area" />
         <h2>Личные данные</h2>
       </div>
+      {loading && (
+       <div className='container'>
+        <LinearProgress color="success"/>
+       </div>
+      )}
       <div className="personalData__wrapper">
+      {errorMessage ?
+        <div className="personalData__error" >{errorMessage}</div> : null
+      }
         <div className="personalData__input-item">
           <span>Имя</span>
           { editName
@@ -72,8 +96,18 @@ const PersonalData = () => {
         </div>
         <div className="personalData__input-item">
           <span>Email</span>
-          <p>{email}</p>
-          <img src={imgEdit} alt="edit" />
+          { editEmail
+            ? <input
+                type="text"
+                value={userEmail}
+                autoFocus={true}
+                onChange={(event) => setUserEmail(event.target.value)}
+              />
+            : <p>{email}</p>
+          }
+          <button onClick={handleEditEmail}>
+            <img src={imgEdit} alt="edit" />
+          </button>
         </div>
       </div>
       <button onClick={handleSaveUserData} className="personalData__btn-save">Сохранить</button>

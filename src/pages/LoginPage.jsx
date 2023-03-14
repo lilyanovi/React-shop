@@ -7,12 +7,13 @@ import FormLogin from "../components/formLogin/formLogin"
 
 import { setUser } from "../store/auth/action";
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { writeUserEmail, writeUserName } from '../services/firebase'
-
+import { writeUserEmail, writeUserName, getUserValue } from '../services/firebase'
+import { LinearProgress } from '@mui/material';
 
 const LoginPage = () => {
 
   const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState(false)
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const auth = getAuth();
@@ -20,22 +21,33 @@ const LoginPage = () => {
   const handleLogin = (e, email, password, rememberMe) => {
     e.preventDefault();
     setErrorMessage('')
+    setLoading(true)
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
 
         const user = userCredential.user
+        getUserValue(user)
+        .then((data) => {
+          const dataUser = data
 
-        dispatch(setUser({
-          email: user.email,
-          id: user.uid,
-          token: user.accessToken,
-          name: null,
-          rememberMe: rememberMe
-        }));
-
-        if (rememberMe === true) {
-          localStorage.setItem('remember', true)
-        }
+          dispatch(setUser({
+            email: dataUser.email.email,
+            id: user.uid,
+            token: user.accessToken,
+            name: dataUser.name?.name || null,
+            phone: dataUser.phone?.phone || null,
+            applications: dataUser?.applications || {},
+            subscribe: dataUser.subscribe?.subscribe || null,
+            comments: dataUser.comments?.comments || {},
+              
+          }));
+          if (rememberMe === true) {
+            localStorage.setItem('remember', true)
+          }
+        })
+        .catch((error) => {
+          console.error(error)
+        })     
       })
       .catch((error) => {
 
@@ -59,6 +71,10 @@ const LoginPage = () => {
             break;
         }
       })
+      .finally(()=> {
+        setLoading(false)
+      }
+      )
   }
 
   const handleSubmitGoogle = (e) => {
@@ -69,17 +85,31 @@ const LoginPage = () => {
       .then((result) => {
 
         const user = result.user;
-
-        dispatch(setUser({
-          email: user.email,
-          id: user.uid,
-          token: user.accessToken,
-          name: user.displayName
-        }));
-        navigate('/account');
-        localStorage.setItem('remember', true) 
         writeUserEmail(user)
         writeUserName(user)
+        getUserValue(user)
+          .then((data) => {
+            const dataUser = data
+            dispatch(setUser({
+              email: dataUser.email.email,
+              id: user.uid,
+              token: user.accessToken,
+              name: dataUser.name?.name || null,
+              phone: dataUser.phone?.phone || null,
+              applications: dataUser?.applications || {},
+              subscribe: dataUser.subscribe?.subscribe || null,
+              comments: dataUser.commentss?.comments || {},
+                
+            }));
+          })
+          .catch((error) => {
+            console.error(error)
+          })
+        navigate('/account');
+        localStorage.setItem('remember', true) 
+     
+        
+
       })
       .catch((error) => {
 
@@ -98,29 +128,35 @@ const LoginPage = () => {
 
   return (
     <>
-      <section className="formLogin container">
-        {errorMessage ?
-          <div className="formLogin__error">
-            {errorMessage}
-          </div> : <h1>Войти</h1>}
-        <div className="formLogin__box">
-          <FormLogin
-            handleClick={handleLogin}
-            title='Войти'
-          />
-          <button
-            onClick={handleSubmitGoogle}
-            className="formLogin__googleAuth"
-          >
-            <img src={imgGoogleAuth} alt="google icon" />
-            <p>Войти с помощью Google</p>
-          </button>
-          <div>
-            <p className="formLogin__question">Нет учётной записи?</p>
-            <NavLink className="formLogin__link" to='/signup'>Зарегистрироваться</NavLink>
-          </div>
-        </div>   
-      </section>
+      {loading && (
+       <div className='container'>
+        <LinearProgress color="success"/>
+       </div>
+      )}
+        <section className="formLogin container">
+          {errorMessage ?
+            <div className="formLogin__error">
+              {errorMessage}
+            </div> : <h1>Войти</h1>}
+          <div className="formLogin__box">
+            <FormLogin
+              handleClick={handleLogin}
+              title='Войти'
+            />
+            <button
+              onClick={handleSubmitGoogle}
+              className="formLogin__googleAuth"
+            >
+              <img src={imgGoogleAuth} alt="google icon" />
+              <p>Войти с помощью Google</p>
+            </button>
+            <div>
+              <p className="formLogin__question">Нет учётной записи?</p>
+              <NavLink className="formLogin__link" to='/signup'>Зарегистрироваться</NavLink>
+            </div>
+          </div>   
+        </section>
+      
     </>
   )
 }

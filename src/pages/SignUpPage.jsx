@@ -4,14 +4,16 @@ import { useDispatch } from "react-redux"
 import { useState } from "react";
 import imgGoogleAuth from '../assets/googleIcon.png'
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { writeUserEmail, writeUserName } from '../services/firebase'
+import { writeUserEmail, writeUserName, getUserValue } from '../services/firebase'
 import { setUser } from "../store/auth/action";
 
 import FormLogin from "../components/formLogin/formLogin"
+import { LinearProgress } from '@mui/material';
 
 const SignUpPage = () => {
 
   const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState(false)
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const auth = getAuth();
@@ -19,6 +21,7 @@ const SignUpPage = () => {
   const handleRegister = (e, email, password) => {
     e.preventDefault();
     setErrorMessage('')
+    setLoading(true)
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
 
@@ -49,7 +52,12 @@ const SignUpPage = () => {
             break;
         }
 
-      });
+      })
+      .finally(()=> {
+        setLoading(false)
+        console.log('Конец загрузки')
+      }
+      )
   }
 
   const handleSubmitGoogle = (e) => {
@@ -61,12 +69,24 @@ const SignUpPage = () => {
 
         const user = result.user;
 
-        dispatch(setUser({
-          email: user.email,
-          id: user.uid,
-          token: user.accessToken,
-          name: user.displayName
-        }));
+        getUserValue(user)
+          .then((data) => {
+            const dataUser = data
+            console.log(dataUser)
+            dispatch(setUser({
+              email: dataUser.email.email,
+              id: user.uid,
+              token: user.accessToken,
+              name: dataUser.name?.name || null,
+              phone: dataUser.phone?.phone || null,
+              applications: dataUser?.applications || {},
+              subscribe: dataUser.subscribe?.subscribe || null,
+              comments: dataUser.comments?.comments || {},      
+            }));
+          })
+          .catch((error) => {
+            console.error(error)
+          })
         navigate('/account');
         localStorage.setItem('remember', true); 
         writeUserEmail(user)
@@ -88,6 +108,11 @@ const SignUpPage = () => {
 
   return (
     <>
+      {loading && (
+       <div className='container'>
+        <LinearProgress color="success"/>
+       </div>
+      )}
       <section className="formLogin container">
         {errorMessage ?
           <div className="formLogin__error">

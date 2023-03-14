@@ -1,15 +1,18 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { useEffect } from 'react'
+import React, { useEffect, useCallback } from 'react'
+
 import './header.scss'
+
 import imgLogo from '../../assets/logo.png'
 import imgSearch from '../../assets/search.png'
+
 import { useAuth } from '../../hooks/use-auth'
 //import { useDispatch } from 'react-redux'
 import { removeUser, setUser } from '../../store/auth/action'
 import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth'
 import { pushText } from '../../store/filterName/actions'
-import React, { useCallback } from 'react'
+import { getUserValue } from '../../services/firebase'
 
 export const links = [
   {
@@ -54,25 +57,36 @@ const Header = () => {
 
 
   useEffect(() => {
-    const rememberMe = localStorage.getItem('remember');
-    const auth = getAuth();
-    if (rememberMe) {
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-
-          dispatch(setUser({
-            email: user.email,
-            id: user.uid,
-            token: user.accessToken,
-            name: null
-          }));
-        } else {
-          console.log('No user is signed in.')
-        }
-      });
-    } else {
-      signOut(auth)
-        .then(() => {
+     const rememberMe = localStorage.getItem('remember');
+     const auth = getAuth();
+     if (rememberMe){
+       onAuthStateChanged(auth, (user) => {
+         if (user) {
+          getUserValue(user)
+          .then((data) => {
+            const dataUser = data
+            dispatch(setUser({
+              email: dataUser.email.email,
+              id: user.uid,
+              token: user.accessToken,
+              name: dataUser.name?.name || null,
+              phone: dataUser.phone?.phone || null,
+              applications: dataUser?.applications || {},
+              subscribe: dataUser.subscribe?.subscribe || null,
+              comments: dataUser.comments?.comments || {},
+                
+            }));
+          })
+          .catch((error) => {
+            console.error(error)
+          })
+         } else {
+           console.log('No user is signed in.')
+         }
+       });
+     } else {
+       signOut(auth)
+       .then(() => {
           dispatch(removeUser());
           localStorage.removeItem('remember')
           navigate('/login');

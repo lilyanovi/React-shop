@@ -7,7 +7,9 @@ const initialState = {
     name: null,
     phone: null,
     rememberMe: localStorage.getItem('remember') ? true : false,
-    applications: {}
+    applications: {},
+    subscribe: false,
+    comments: {}
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -22,7 +24,11 @@ export const userReducer = (state = initialState, action) => {
                 token: payload.token,
                 id: payload.id,
                 name: payload.name,
-                rememberMe: payload.rememberMe
+                rememberMe: payload.rememberMe,
+                subscribe: payload.subscribe,
+                phone: payload.phone,
+                comments: payload.reviews,
+                applications: payload.applications
             }
 
         case types.REMOVE_USER:
@@ -32,20 +38,31 @@ export const userReducer = (state = initialState, action) => {
                 token: null,
                 id: null,
                 name: null,
-                rememberMe: false
+                rememberMe: false,
+                phone: null,
+                applications: {},
+                subscribe: false,
+                comments: {}
             }
 
         case types.EDIT_USER:
             return {
                 ...state,
                 name: payload.name,
-                phone: payload.phone
+                phone: payload.phone,
+                email: payload.email
             }
 
         case types.ADD_AUTH_APPLICATION:
             let copy = Object.assign({}, state)
             copy.applications = {...copy.applications, ...payload}
             return copy
+
+        case types.SET_USER_SUBSCRIBE:
+            return {
+                ...state,
+                subscribe: payload.subscribe
+            }
 
         default:
             return state

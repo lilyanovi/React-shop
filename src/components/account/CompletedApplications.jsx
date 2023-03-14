@@ -2,18 +2,22 @@ import { useSelector, useDispatch } from 'react-redux'
 import './completedApplications.scss'
 import SelectStatus from '../../ui/SelectStatus'
 import { addAuthApplications } from '../../store/auth/action'
+import { selectUserApplications } from '../../store/auth/selector'
 import { writeUserApplicationStatus } from '../../services/firebase'
 import { useAuth } from '../../hooks/use-auth'
 import deleteImg from '../../assets/delete.png'
 
 const CompletedApplications = () => {
-  const applications = useSelector(store => store.user.applications)
+  const applications = useSelector(selectUserApplications)
   const dispatch = useDispatch()
   const { id } = useAuth()
 
+  console.log(applications)
+
   const changeStatus = (status, key) => {
     let copy = Object.assign({}, applications)
-    copy[key].status = status
+    copy[key].status.status = status
+    console.log(`copy: ${copy}`)
     dispatch(addAuthApplications(copy))
     const idApplication = [key]
     writeUserApplicationStatus(id, idApplication, status)
@@ -24,7 +28,7 @@ const CompletedApplications = () => {
       {
         Object.keys(applications).map(key => (
           <div
-          className={ applications[key].status === 'Отменить'
+          className={ applications[key].status.status === 'Отменить'
             ? "completed__item completed-delete"
             : "completed__item"
           }
@@ -39,7 +43,7 @@ const CompletedApplications = () => {
               </div>
             </div>
             <div className="completed__item-right">
-              { applications[key].status === 'Отменить'
+              { applications[key].status.status === 'Отменить'
                 ? <button className="completed__info-delete">
                     <span>Удалить заявку</span>
                     <img src={deleteImg} alt="delete img" height="20"/>
@@ -47,7 +51,7 @@ const CompletedApplications = () => {
                 : <h3 className="completed__info">Подробнее</h3>
               }
               <div className="completed__item-status">
-                <h4 className={ applications[key].status === 'Отменить'
+                <h4 className={ applications[key].status.status === 'Отменить'
                   ? 'completed__item-status-text completed__delete-text'
                   : 'completed__item-status-text'
                 }
