@@ -38,7 +38,7 @@ const LoginPage = () => {
             phone: dataUser.phone?.phone || null,
             applications: dataUser?.applications || {},
             subscribe: dataUser.subscribe?.subscribe || null,
-            reviews: dataUser.reviews?.reviews || {},
+            comments: dataUser.comments?.comments || {},
               
           }));
           if (rememberMe === true) {
@@ -98,7 +98,7 @@ const LoginPage = () => {
               phone: dataUser.phone?.phone || null,
               applications: dataUser?.applications || {},
               subscribe: dataUser.subscribe?.subscribe || null,
-              reviews: dataUser.reviews?.reviews || {},
+              comments: dataUser.commentss?.comments || {},
                 
             }));
           })

@@ -81,7 +81,7 @@ const SignUpPage = () => {
               phone: dataUser.phone?.phone || null,
               applications: dataUser?.applications || {},
               subscribe: dataUser.subscribe?.subscribe || null,
-              reviews: dataUser.reviews?.reviews || {},      
+              comments: dataUser.comments?.comments || {},      
             }));
           })
           .catch((error) => {
