@@ -21,3 +21,10 @@ export const addAuthApplications = (data) => ({
     type: types.ADD_AUTH_APPLICATION,
     payload: data
 })
+
+export const setUserSubscribe = (data) => {
+    return {
+        type: types.SET_USER_SUBSCRIBE,
+        payload: data   
+    }
+}

@@ -68,7 +68,7 @@ export function Application () {
            let applicationObj = {
                 [idApplication]: {
                     card,
-                    status: 'В обработке',
+                    status: {status: 'В обработке'},
                     date: getDate()
                 }
            }

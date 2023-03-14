@@ -9,6 +9,10 @@ export default function SelectStatus({propsKey, changeStatus}) {
   const [status, setStatus] = React.useState(applications[propsKey].status);
   const [open, setOpen] = React.useState(false);
 
+  React.useEffect(() => {
+    setStatus(applications[propsKey].status.status);
+  }, [applications[propsKey].status.status]);  
+
 
   const handleChange = (event) => {
     setStatus(event.target.value);

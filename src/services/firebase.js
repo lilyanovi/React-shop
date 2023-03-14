@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from 'firebase/auth'
-import { getDatabase, ref, set, get, child, update, onValue, onChildChanged } from "firebase/database";
+import { getAuth, updateEmail, reauthenticateWithCredential } from 'firebase/auth'
+import { getDatabase, ref, set, onValue } from "firebase/database";
 
 
 const firebaseConfig = {
@@ -23,10 +23,15 @@ export const db = getDatabase(app);
 // получить всю информацию о пользователе
 export const getUserValue = (user) => {
   const uid = user.uid;
-  onValue(ref(db, 'users/' + uid), (data) => {
-    const dataUser = data.val();
-    console.log(dataUser)
-});
+  return new Promise((resolve, reject) => {
+    onValue(ref(db, 'users/' + uid), (data) => {
+        const dataUser = data.val();
+        resolve(dataUser)
+    }, (error) => {
+      reject(error)
+    }
+    )
+  })
 }
 
 //записать e-mail 
@@ -37,11 +42,49 @@ export const writeUserEmail = (user) => {
   });
 }
 
+//изменить e-mail 
+export const editUserEmail = (id, email, onError, setLoading) => {
+  
+  updateEmail(firebaseAuth.currentUser, email).then(() => {
+    console.log('Email updated!')
+    set(ref(db, 'users/' + id + '/email'), {
+      email: email,
+    });
+  }).catch((error) => {
+    switch (error.code) {
+      case "auth/requires-recent-login":
+        onError("Для изменения e-mail необходимо обновить данные об авторизации");
+        break;
+      default:
+        onError(error.message);
+        break;
+    }
+  })
+  .finally(()=> {
+    setLoading(false)
+  }
+  )
+}
+
 //записать имя
 export const writeUserName = (user) => {
   const uid = user.uid;
   set(ref(db, 'users/' + uid + '/name'), {
     name: user.displayName,
+  });
+}
+
+//изменить имя
+export const editUserName = (id, name) => {
+  set(ref(db, 'users/' + id + '/name'), {
+    name: name,
+  });
+}
+
+//изменить телефон
+export const editUserPhone = (id, phone) => {
+  set(ref(db, 'users/' + id + '/phone'), {
+    phone: phone,
   });
 }
 
@@ -52,20 +95,6 @@ export const writeUserSubscribe = (id, subscribe) =>   {
     subscribe: subscribe
   });
 }
-
-// получить информацию о статусе подписки пользователе
-export const getUserValueSubscribe = (id) => {
-  return get(ref(db, 'users/' + id + '/subscribe'))
-    .then((data) => {
-      if (data.exists()) {
-        return data.val().subscribe;
-      } else {
-        console.log("No data available");
-      }
-    }).catch((error) => {
-      console.error(error);
-    });
-  }
 
 //добавить пользователя в список подписавшихся
 export const writeSubscribeList = (id, email) => {
