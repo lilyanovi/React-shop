@@ -14,8 +14,6 @@ const CompletedApplications = () => {
 
   console.log(applications)
 
-  
-
   const changeStatus = (status, key) => {
     let copy = Object.assign({}, applications)
     copy[key].status.status = status
@@ -30,7 +28,7 @@ const CompletedApplications = () => {
       {
         Object.keys(applications).map(key => (
           <div
-          className={ applications[key].status === 'Отменить'
+          className={ applications[key].status.status === 'Отменить'
             ? "completed__item completed-delete"
             : "completed__item"
           }
@@ -45,7 +43,7 @@ const CompletedApplications = () => {
               </div>
             </div>
             <div className="completed__item-right">
-              { applications[key].status === 'Отменить'
+              { applications[key].status.status === 'Отменить'
                 ? <button className="completed__info-delete">
                     <span>Удалить заявку</span>
                     <img src={deleteImg} alt="delete img" height="20"/>
@@ -53,7 +51,7 @@ const CompletedApplications = () => {
                 : <h3 className="completed__info">Подробнее</h3>
               }
               <div className="completed__item-status">
-                <h4 className={ applications[key].status === 'Отменить'
+                <h4 className={ applications[key].status.status === 'Отменить'
                   ? 'completed__item-status-text completed__delete-text'
                   : 'completed__item-status-text'
                 }

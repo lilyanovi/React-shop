@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, updateEmail, reauthenticateWithCredential } from 'firebase/auth'
-import { getDatabase, ref, set, onValue } from "firebase/database";
+import { getAuth, updateEmail } from 'firebase/auth'
+import { getDatabase, ref, set, onValue, push, child } from "firebase/database";
 
 
 const firebaseConfig = {
@@ -88,6 +88,24 @@ export const editUserPhone = (id, phone) => {
   });
 }
 
+
+//отправить отзыв
+export const editUserComment = (id, name, rating, comment, card ) => {
+  const newCommentKey = push(ref(db, 'users/' + id + '/comments/'));
+  set(newCommentKey, {
+    name: name,
+    rating: rating, 
+    comment: comment, 
+    card: card
+  });
+  set(push(ref(db, 'commentsList/')), {
+    name: name,
+    rating: rating, 
+    comment: comment, 
+    card: card
+  });
+}
+
 //записать статус подписки
 export const writeUserSubscribe = (id, subscribe) =>   {
   
@@ -136,11 +154,12 @@ export const writeUserApplicationStatus = (id, idApplication, status) => {
 }
 
 //отправить заявку без авторизации
-export const writeApplicationWithoutLogin = (idApplication, name, phone, commit, card) => {
+export const writeApplicationWithoutLogin = (idApplication, name, phone, commit, card, email) => {
   set(ref(db, 'applicationsWithoutLogin/'+idApplication), {
     name: name,
     phone: phone,
     commit: commit,
-    idCard: card
+    idCard: card,
+    email: email
   });
 }

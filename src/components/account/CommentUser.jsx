@@ -5,12 +5,15 @@ import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { addComment } from '../../store/comments/actions'
 import { selectCard } from '../../store/card/actions'
+import { editUserComment } from '../../services/firebase'
+import { useAuth } from '../../hooks/use-auth'
 
 const CommentUser = () => {
   const [rating, setRating] = useState(0)
   const [name, setName] = useState('')
   const [comment, setComment] = useState('')
   const card = useSelector(store => store.card.name)
+  const {id} = useAuth()
 
   const dispatch = useDispatch()
 
@@ -29,6 +32,7 @@ const CommentUser = () => {
       card
     }
     dispatch(addComment(commentObj))
+   editUserComment(id, name, rating, comment, card )
     setRating(0)
     setComment('')
     setName('')
