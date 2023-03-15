@@ -84,6 +84,7 @@
     background-position: center;
     background-size: 90%;
     background-repeat: no-repeat;
+    margin: 0 auto;
 
     &:hover {
       filter: brightness(80%);
@@ -97,4 +98,7 @@
 
 .search-img-hidden {
   display: none;
+}
+.userName{
+  text-align: center;
 }

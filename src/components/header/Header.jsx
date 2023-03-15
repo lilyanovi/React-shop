@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import React, { useEffect, useCallback } from 'react'
 
 import './header.scss'
@@ -96,7 +96,8 @@ const Header = () => {
     }
     // eslint-disable-next-line
   }, [])
-
+  const  name  = useSelector((state) => state.user.name)
+ 
   /*
   const handleLogOut = (e) => {
    e.preventDefault();
@@ -149,6 +150,7 @@ const Header = () => {
             {isAuth ?
               <div className="header__auth">
                 <NavLink to='/account'></NavLink>
+                <p className='userName'>{name}</p>
               </div>
               :
               <div className="header__auth">
