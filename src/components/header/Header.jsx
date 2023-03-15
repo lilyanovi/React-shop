@@ -55,7 +55,6 @@ const Header = () => {
     }
   }, [dispatch])
 
-
   useEffect(() => {
      const rememberMe = localStorage.getItem('remember');
      const auth = getAuth();
