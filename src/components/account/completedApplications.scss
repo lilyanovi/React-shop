@@ -106,8 +106,12 @@
       align-items: center;
       gap: 20px;
 
-      & span:hover {
-        text-decoration: underline;
+      & span {
+        color: #9B0F0F;
+        
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
