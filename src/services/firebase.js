@@ -151,12 +151,11 @@ export const writeUserApplicationStatus = (id, idApplication, status) => {
 }
 
 //отправить заявку без авторизации
-export const writeApplicationWithoutLogin = (idApplication, name, phone, commit, card, email) => {
+export const writeApplicationWithoutLogin = (idApplication, name, phone, card, email) => {
   set(ref(db, 'applicationsWithoutLogin/'+idApplication), {
     name: name,
     phone: phone,
-    commit: commit,
-    idCard: card,
+    card: card,
     email: email
   });
 }
