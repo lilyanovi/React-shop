@@ -151,12 +151,41 @@ export const writeUserApplicationStatus = (id, idApplication, status) => {
 }
 
 //отправить заявку без авторизации
-export const writeApplicationWithoutLogin = (idApplication, name, phone, commit, card, email) => {
+export const writeApplicationWithoutLogin = (idApplication, name, phone, card, email) => {
   set(ref(db, 'applicationsWithoutLogin/'+idApplication), {
     name: name,
     phone: phone,
-    commit: commit,
-    idCard: card,
+    card: card,
     email: email
   });
+}
+
+// получить весь список отзывов
+/*
+
+Если нужно получать информацию более одного раза, то убрать {onlyOnce: true}. 
+Тогда объект будет обнаовляться каждый раз, когда добавляется commit в  db.
+
+В файле, где нужно получить список вставлять следущим образом:
+getCommitsList()
+    .then((data) => {
+      const dataList = data
+      console.log(dataList)
+      //...
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+*/
+export const getCommitsList = () => {
+  return new Promise((resolve, reject) => {
+    onValue(ref(db, 'commentsList/'), (data) => {
+        const dataList = data.val();
+        resolve(dataList)
+    }, (error) => {
+      reject(error)
+    })
+  }, {
+    onlyOnce: true
+  })
 }

@@ -69,7 +69,7 @@ export function Application() {
 
                 dispatch(addApplication(applicationObj))
                 codeDuplication()
-                writeApplicationWithoutLogin(idApplication, name, phone, email, commit, card)
+                writeApplicationWithoutLogin(idApplication, name, phone, card, email)
             } else {
                 return
             }
