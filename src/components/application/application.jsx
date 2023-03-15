@@ -86,7 +86,7 @@ export function Application() {
             const status = 'В обработке'
             dispatch(addAuthApplications(applicationObj))
             codeDuplication()
-            writeUserApplication(id, idApplication, name, phone, email, commit, card, date)
+            writeUserApplication(id, idApplication, card, date)
             writeUserApplicationStatus(id, idApplication, status)
         }
     }

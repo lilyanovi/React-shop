@@ -129,11 +129,8 @@ export const deliteInSubscribeList = (id) => {
 }
 
 //отправить заявку от авторизованного пользователя
-export const writeUserApplication = (id, idApplication, name, phone, commit, card, date) => {
+export const writeUserApplication = (id, idApplication, card, date) => {
   set(ref(db, 'users/' + id + '/applications/'+ idApplication), {
-    name: name,
-    phone: phone,
-    commit: commit,
     card: card,
     date: date
   });
