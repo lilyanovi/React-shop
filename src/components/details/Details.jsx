@@ -55,7 +55,7 @@ const Details = ({ card }) => {
                 <button className={style.details__btn} onClick={(event) => handleOpenModal(event)}>Заказать впечатление</button>
                 <div className={style.details__description}>
                     <h3>Подробнее о впечатлении: </h3>
-                    {desc.map((desc, index) => <p key={index}>{desc}</p>)}
+                    <div className={style.details__text}>{desc.map((desc, index) => <p key={index}>{desc}</p>)}</div>
                 </div>
             </div>
         </div>

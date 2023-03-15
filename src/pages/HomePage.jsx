@@ -4,6 +4,7 @@ import CatalogHomePage from '../components/catalogImpressions/CatalogHomePage'
 import Questions from '../components/questions/QuestionsContent'
 import Sertificates from '../components/sertificates/Sertificates'
 import Stocksslider from '../components/stocksslider/Stocksslider'
+import Reviews from '../components/reviews/Reviews'
 
 const HomePage = () => {
   return (
@@ -13,6 +14,7 @@ const HomePage = () => {
       <CatalogHomePage/>
       <Stocksslider/>
       <Sertificates/>
+      <Reviews/>
       <Questions/>
     </>
   )

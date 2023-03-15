@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  overflow-y: scroll;
 }
 
 main {
@@ -26,9 +27,8 @@ main {
   @media all and (max-width: 1300px) {
     padding: 0 10px;
   }
-  
+
   @media (max-width:450px) {
     padding: 0 20px;
   }
 }
-
