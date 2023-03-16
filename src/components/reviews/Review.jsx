@@ -6,11 +6,18 @@ const Review = ({reviews}) => {
     
     const [correntIndex, setCorrentIndex] = useState(0)
 
+    
+    // let searchName = 'barry';
+    // let index = inputArr.findIndex(el => el.name === searchName);
+
+
     useEffect(() => {
         setTimeout(() => {
             forwardReview()}, 5000)
         }, [correntIndex])
 
+
+    //Кнопка назад
     function backReview() {
         const back = correntIndex - 1
     if(back >= 0) {
@@ -19,7 +26,8 @@ const Review = ({reviews}) => {
         setCorrentIndex(reviews.length-1)
     }
 }
-
+ 
+//Кнопка вперед
     function forwardReview() {
         const forward = correntIndex + 1
         if(forward <= reviews.length-1) {
@@ -35,7 +43,6 @@ const Review = ({reviews}) => {
                 <svg xmlns="http://www.w3.org/2000/svg" width="482.667" height="482.667" version="1.0" viewBox="0 0 362 362"><path d="M215.5 55.9c-5.1 3.2-110.3 109.4-111.5 112.5-2.7 7.4-3.9 5.9 55.3 65.3 38.8 38.9 56.1 55.6 58.4 56.4 9.3 3 18.8-6 16.2-15.4-.6-2.4-13.7-16-50.4-52.7L134 172.5l50-50c51.9-51.9 50.8-50.7 50.1-57.5-1-8.9-11.1-13.8-18.6-9.1z"/></svg>
             </div>
             <div className='review'>
-                {/* <h3>{reviews[correntIndex].title} </h3> */}
                 <div className='review__body'>
                     <div className="review__card">
                         <img src={reviews[correntIndex].img}/>  

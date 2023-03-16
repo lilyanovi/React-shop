@@ -6,13 +6,12 @@ import { selectUserApplications } from '../../store/auth/selector'
 import { writeUserApplicationStatus } from '../../services/firebase'
 import { useAuth } from '../../hooks/use-auth'
 import deleteImg from '../../assets/delete.png'
+import { toggleQuestionModal } from '../../store/modal/actions'
 
 const CompletedApplications = () => {
   const applications = useSelector(selectUserApplications)
   const dispatch = useDispatch()
   const { id } = useAuth()
-
-  console.log(applications)
 
   const changeStatus = (status, key) => {
     let copy = Object.assign({}, applications)
@@ -21,6 +20,10 @@ const CompletedApplications = () => {
     dispatch(addAuthApplications(copy))
     const idApplication = [key]
     writeUserApplicationStatus(id, idApplication, status)
+  }
+
+  const handleModalQuestion = key => {
+    dispatch(toggleQuestionModal({ show: true, key: key }))
   }
 
   return (
@@ -44,7 +47,7 @@ const CompletedApplications = () => {
             </div>
             <div className="completed__item-right">
               { applications[key].status.status === 'Отменить'
-                ? <button className="completed__info-delete">
+                ? <button className="completed__info-delete" onClick={() => handleModalQuestion(key)}>
                     <span>Удалить заявку</span>
                     <img src={deleteImg} alt="delete img" height="20"/>
                   </button>

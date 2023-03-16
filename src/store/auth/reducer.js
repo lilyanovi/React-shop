@@ -64,6 +64,11 @@ export const userReducer = (state = initialState, action) => {
                 subscribe: payload.subscribe
             }
 
+        case types.DELETE_AUTH_APPLICATION:
+            let obj = Object.assign({}, state)
+            delete obj.applications[payload]
+            return obj
+
         default:
             return state
 

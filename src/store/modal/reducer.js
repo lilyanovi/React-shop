@@ -1,7 +1,12 @@
 const initialState = {
   modalShow: false,
   modalDetails: false,
-  modalSended: false
+  modalSended: false,
+  modalQuestion: {
+    show: false,
+    key: ''
+  },
+  modalDelete: false
 }
 
 export const modalReducer = (state = initialState, action) => {
@@ -34,6 +39,16 @@ export const modalReducer = (state = initialState, action) => {
   if (type === 'CLOSE_MODAL_SENDED') {
     let copy = Object.assign({}, state)
     copy.modalSended = payload
+    return copy
+  }
+  if (type === 'TOGGLE_QUESTION_MODAL') {
+    let copy = Object.assign({}, state)
+    copy.modalQuestion = payload
+    return copy
+  }
+  if (type === 'TOGGLE_DELETE_MODAL') {
+    let copy = Object.assign({}, state)
+    copy.modalDelete = payload
     return copy
   }
   return state

@@ -1,4 +1,4 @@
-.background {
+.questionModalWindow__background {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,7 +13,7 @@
   z-index: 10;
 }
 
-.modal{
+.questionModalWindow__modal{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,7 +27,7 @@
   box-sizing: border-box;
 }
 
-.blockText{
+.questionModalWindow__blockText{
 text-align: center;
 font-style: normal;
 font-weight: 400;
@@ -37,22 +37,22 @@ color: #333333;
 font-family: 'Montserrat';
 margin-bottom: 50px;
 }
-.text{
+.questionModalWindow__text{
   margin: 0;
   margin-bottom: 5px;
 }
-.boldText{
+.questionModalWindow__boldText{
   font-weight: bold;
   margin: 0;
 }
 
-.button_container{
+.questionModalWindow__button_container{
   display: flex;
   justify-content: space-between;
   width: 460px;
 }
 
-.button{
+.questionModalWindow__button{
   font-family: 'Montserrat';
   width: 200px;
   height: 56px;
@@ -69,7 +69,7 @@ margin-bottom: 50px;
   border: 1px solid #547147;
 }
 
-.button:hover{
+.questionModalWindow__button:hover{
   cursor: pointer;
   background-color: #FFFFFF;
   color: #547147;
