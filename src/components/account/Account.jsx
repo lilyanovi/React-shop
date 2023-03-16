@@ -1,13 +1,17 @@
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import './account.scss'
 import { getAuth, signOut } from 'firebase/auth'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { removeUser } from '../../store/auth/action'
+import QuestionModalWindow from '../questionModal/QuestionModalWindow'
+import CancelModalWindow from '../cancelModal/CancelModalWindow'
 
 const Account = () => {
   const auth = getAuth();
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const modalQuestion = useSelector(store => store.modal.modalQuestion.show)
+  const modalDelete = useSelector(store => store.modal.modalDelete)
 
   const handleLogOut = event => {
     event.preventDefault()
@@ -62,6 +66,8 @@ const Account = () => {
         </div>
         <Outlet/>
       </div>
+      { modalQuestion && <QuestionModalWindow/> }
+      { modalDelete && <CancelModalWindow/> }
     </div>
   )
 }

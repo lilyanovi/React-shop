@@ -27,3 +27,13 @@ export const closeModalSended = data => ({
   type: 'CLOSE_MODAL_SENDED',
   payload: data
 })
+
+export const toggleQuestionModal = data => ({
+  type: 'TOGGLE_QUESTION_MODAL',
+  payload: data
+})
+
+export const toggleDeleteModal = data => ({
+  type: 'TOGGLE_DELETE_MODAL',
+  payload: data
+})

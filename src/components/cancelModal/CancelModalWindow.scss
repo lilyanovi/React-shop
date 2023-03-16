@@ -1,4 +1,4 @@
-.background {
+.cancelModal__background {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,7 +13,7 @@
   z-index: 10;
 }
 
-.modal{
+.cancelModal__modal{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,16 +28,16 @@
   position: relative;
 }
 
-.close{
+.cancelModal__close{
   position: absolute;
   top: 25px;
   right: 30px;
 }
 
-.close:hover{
+.cancelModal__close:hover{
   cursor: pointer;
 }
-.text{
+.cancelModal__text{
   margin: 0;
   font-weight: 400;
   font-size: 30px;
@@ -47,11 +47,11 @@
   margin-bottom: 140px;
 
 }
-.boldText{
+.cancelModal__boldText{
   font-weight: bold;
 }
 
-.hrefText{
+.cancelModal__hrefText{
   font-family: 'Montserrat';
   font-weight: 600;
   font-size: 24px;

@@ -28,3 +28,8 @@ export const setUserSubscribe = (data) => {
         payload: data   
     }
 }
+
+export const deleteAuthApplication = (data) => ({
+    type: types.DELETE_AUTH_APPLICATION,
+    payload: data
+}) 
