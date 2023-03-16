@@ -2,6 +2,8 @@ import React from 'react';
 import "./Reviews.scss"
 import { useState } from 'react';
 import Review from './Review';
+import {getCommitsList} from '../../services/firebase'
+
 
 const Reviews = () => {
     const [reviews, setReviews] = useState([
@@ -35,6 +37,16 @@ const Reviews = () => {
         }
     ])
 
+  
+    getCommitsList()
+    .then((data) => {
+      const dataList = data
+      console.log(Object.values(dataList)[0].card)
+      //...
+    })
+    .catch((error) => {
+      console.error(error)
+    })
 
     return (
         <div className="reviews container">
