@@ -25,9 +25,9 @@ const Review = ({review}) => {
         <div className='review'>
             <div className='review__body'>
                 <div className="review__card">
-                    <img
-                        src={cardModal.img}
-                        alt={cardModal.title} />
+                    {/* <img
+                        src={cardModal.img} */}
+                        {/* // alt={cardModal.title} /> */}
                 </div>
                 <div className='review__text'>
                     <h2>
