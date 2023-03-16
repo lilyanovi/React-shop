@@ -8,26 +8,28 @@ import axios from 'axios'
 
 const Review = ({review}) => {
 
-   const [cardModal, setCardModal] = useState('')
+   const [cards, setCards] = useState([])
   
    useEffect(() => {
-    getCardId()
+    fethCards()
    },[])
   
-    async function getCardId() {
+    async function fethCards() {
         const cards = await axios.get('https://kaori318.github.io/site/cards.json')
         const card = review.card
-        const index = cards.data.findIndex(el => el.name == card);
-        setCardModal(cards.data[index])
+        const index = cards.data.findIndex(el => el.name === card);
+        setCards(cards.data[index].img)
     }
+
+    // console.log(cards)
 
     return (       
         <div className='review'>
             <div className='review__body'>
                 <div className="review__card">
-                    {/* <img
-                        src={cardModal.img} */}
-                        {/* // alt={cardModal.title} /> */}
+                    <img
+                        src={cards}
+                        alt={review.card}/>
                 </div>
                 <div className='review__text'>
                     <h2>
