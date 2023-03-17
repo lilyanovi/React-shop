@@ -27,7 +27,7 @@
 
       &-link-active {
         width: 100%;
-        background: #FFFFFF;
+        background: #547147;
         border: 1px solid #547147;
         backdrop-filter: blur(25px);
         border-radius: 20px;
@@ -35,13 +35,18 @@
         font-size: 20px;
         line-height: 24px;
         text-align: center;
-        color: #547147;
+        color: #FFFFFF;
         height: 60px;
         margin-bottom: 40px;
         text-decoration: none;
         display: flex;
         justify-content: center;
         align-items: center;
+        &:hover {
+          color: #547147;
+          background-color: #FFFFFF;
+          border: 1px solid #547147;
+          }
       }
     }
 

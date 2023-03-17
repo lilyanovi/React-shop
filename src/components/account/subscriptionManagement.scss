@@ -1,0 +1,60 @@
+.history{
+    width:100%;
+    border: 1px solid #547147;
+    border-radius: 20px;
+    margin-left: 5%;
+}
+.info{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.text-info{
+    max-width: 500px;
+    margin-top: 25px;
+    margin-bottom: 55px;
+    font-family: 'Montserrat';
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #404936;
+    .span-info {
+        font-weight: 700;
+    }
+}
+.button-subscribe{
+    min-width: 170px;
+    padding: 16px 32px;
+    text-align: center;
+    background: #547147;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 24px;
+    color: #FFFFFF;
+    border: 1px solid #547147;
+    cursor: pointer;
+
+    &:hover {
+    color: #547147;
+    background-color: #FFFFFF;
+    border: 1px solid #547147;
+    }
+}
+.message-subscribe_box{
+    position: relative;
+}
+.message-info{
+    min-width: 160px;
+    position: absolute;
+    top:-50%;
+    left: 4%;
+    color:#DFA650 ;
+    font-size: 20px;
+}
+
