@@ -41,7 +41,7 @@ export const links = [
 
 const Header = () => {
 
-  const { isAuth } = useAuth();
+  const { isAuth, name } = useAuth();
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
@@ -95,7 +95,6 @@ const Header = () => {
     }
     // eslint-disable-next-line
   }, [])
-  const  name  = useSelector((state) => state.user.name)
  
   /*
   const handleLogOut = (e) => {

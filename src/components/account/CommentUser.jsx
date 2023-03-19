@@ -13,7 +13,7 @@ const CommentUser = () => {
   const [name, setName] = useState('')
   const [comment, setComment] = useState('')
   const card = useSelector(store => store.card.name)
-  const {id} = useAuth()
+  const {id, comments} = useAuth()
 
   const dispatch = useDispatch()
 

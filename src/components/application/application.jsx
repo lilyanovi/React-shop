@@ -6,7 +6,7 @@ import { addApplication } from '../../store/applications/actions'
 import { closeModal, openModalSended } from '../../store/modal/actions'
 import { Modal } from '../modal/modal'
 import Sended from '../sended/Sended'
-import { writeApplicationWithoutLogin, writeUserApplication, writeUserApplicationStatus, applicationsWithAuth } from '../../services/firebase'
+import { writeApplicationList, writeUserApplication, writeUserApplicationStatus } from '../../services/firebase'
 import { useAuth } from '../../hooks/use-auth'
 import { addAuthApplications } from '../../store/auth/action'
 import SelectImpression from '../selectImpression/SelectImpression'
@@ -69,7 +69,7 @@ export function Application() {
 
                 dispatch(addApplication(applicationObj))
                 codeDuplication()
-                writeApplicationWithoutLogin(idApplication, name, phone, card, email)
+                writeApplicationList(idApplication, name, phone, card, email)
             } else {
                 return
             }
@@ -86,7 +86,7 @@ export function Application() {
             const status = 'В обработке'
             dispatch(addAuthApplications(applicationObj))
             codeDuplication()
-            writeUserApplication(id, idApplication, card, date)
+            writeUserApplication(id, idApplication, card, date, userName, userPhone, userEmail)
             writeUserApplicationStatus(id, idApplication, status)
         }
     }

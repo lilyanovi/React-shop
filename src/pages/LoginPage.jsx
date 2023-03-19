@@ -98,7 +98,7 @@ const LoginPage = () => {
               phone: dataUser.phone?.phone || null,
               applications: dataUser?.applications || {},
               subscribe: dataUser.subscribe?.subscribe || null,
-              comments: dataUser.commentss?.comments || {},
+              comments: dataUser?.comments || {},
                 
             }));
           })
