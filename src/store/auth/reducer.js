@@ -27,7 +27,7 @@ export const userReducer = (state = initialState, action) => {
                 rememberMe: payload.rememberMe,
                 subscribe: payload.subscribe,
                 phone: payload.phone,
-                comments: payload.reviews,
+                comments: payload.comments,
                 applications: payload.applications
             }
 

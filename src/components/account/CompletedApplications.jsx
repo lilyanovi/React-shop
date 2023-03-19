@@ -16,7 +16,6 @@ const CompletedApplications = () => {
   const changeStatus = (status, key) => {
     let copy = Object.assign({}, applications)
     copy[key].status.status = status
-    console.log(`copy: ${copy}`)
     dispatch(addAuthApplications(copy))
     const idApplication = [key]
     writeUserApplicationStatus(id, idApplication, status)
