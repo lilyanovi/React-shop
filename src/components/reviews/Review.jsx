@@ -7,7 +7,9 @@ import Rating from '@mui/material/Rating';
 const Review = ({ review, cards}) => {
 
     const [cardIndex, setCardIndex] = useState('')
+    //const [reviewImg, setReviewsImg] = useState(cardIndex.img)
     
+ //console.log(reviewImg)
 
     useEffect(() => {
         getIndex()
@@ -19,14 +21,16 @@ const Review = ({ review, cards}) => {
         const index = cards.findIndex(el => el.name === card);
         setCardIndex(cards[index])
     }
+
+    console.log(cardIndex)
     return (       
         <div className='review'>
             <div className='review__body'>
                 <div className="review__card">
-                    <img
-                        src={cardIndex.img}
+                    {/* <img
+                        src={cardIndex}
                         alt={review.card}
-                    />
+                    /> */}
                 </div>
                 <div className='review__text'>
                     <h2>
