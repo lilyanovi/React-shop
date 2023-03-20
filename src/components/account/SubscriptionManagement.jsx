@@ -1,6 +1,6 @@
 import './subscriptionManagement.scss'
 import picture from '../../assets/subscriptionManagement/picture subscr.png'
-import { writeUserSubscribe, writeSubscribeList, deliteInSubscribeList, getUserValueSubscribe } from '../../services/firebase'
+import { writeUserSubscribe, writeSubscribeList, deliteInSubscribeList } from '../../services/firebase'
 import { useAuth } from '../../hooks/use-auth'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
@@ -9,7 +9,7 @@ import { setUserSubscribe } from '../../store/auth/action'
 
 const SubscriptionManagement = () => {
 
-  const { id, email, subscribe } = useAuth()
+  const { id, email, subscribe, name } = useAuth()
   const [subscribeStatus, setSubscribeStatus] = useState(subscribe)
   const dispatch = useDispatch()
 
@@ -18,7 +18,7 @@ const SubscriptionManagement = () => {
     setSubscribeStatus(true)
     dispatch(setUserSubscribe({ subscribe: true }))
     writeUserSubscribe(id, true)
-    writeSubscribeList(id, email)
+    writeSubscribeList(id, email, name)
   }
 
   const handleSubscribeOff = (e) => {

@@ -49,13 +49,13 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    width: 270px;
+    width: 200px;
     height: 50px;
     border: 1px solid #547147;
     border-radius: 40px;
     cursor: pointer;
 
-    &-img{
+    &-img {
       position: absolute;
       left: 15px;
     }
@@ -63,24 +63,24 @@
     &-input {
       border: none;
       outline: none;
-      font-family: 'Montserrat';
+      font-family: "Montserrat";
       font-style: normal;
       font-weight: 500;
       font-size: 16px;
       line-height: 24px;
       color: #888888;
-      padding: 0 10px 0 30px;
+      padding: 0 10px 0 40px;
       overflow: hidden;
       border-radius: 40px;
     }
   }
 
-  &__auth a{
+  &__auth a {
     display: block;
     justify-self: end;
     width: 50px;
     height: 50px;
-    background-image: url('../../assets/personalArea.png');
+    background-image: url("../../assets/personalArea.png");
     background-position: center;
     background-size: 90%;
     background-repeat: no-repeat;
@@ -99,6 +99,6 @@
 .search-img-hidden {
   display: none;
 }
-.userName{
+.userName {
   text-align: center;
 }

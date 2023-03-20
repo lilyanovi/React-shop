@@ -6,13 +6,12 @@ import { useSelector } from 'react-redux'
 
 export default function SelectStatus({propsKey, changeStatus}) {
   const applications = useSelector(store => store.user.applications)
-  const [status, setStatus] = React.useState(applications[propsKey].status);
+  const [status, setStatus] = React.useState(applications[propsKey].status.status);
   const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
     setStatus(applications[propsKey].status.status);
-  }, [applications[propsKey].status.status]);  
-
+  }, [applications[propsKey].status.status]);
 
   const handleChange = (event) => {
     setStatus(event.target.value);

@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import './completedApplications.scss'
 import SelectStatus from '../../ui/SelectStatus'
@@ -16,7 +17,6 @@ const CompletedApplications = () => {
   const changeStatus = (status, key) => {
     let copy = Object.assign({}, applications)
     copy[key].status.status = status
-    console.log(`copy: ${copy}`)
     dispatch(addAuthApplications(copy))
     const idApplication = [key]
     writeUserApplicationStatus(id, idApplication, status)
@@ -26,16 +26,31 @@ const CompletedApplications = () => {
     dispatch(toggleQuestionModal({ show: true, key: key }))
   }
 
+  const changeStyleItem = () => {
+    let items = document.querySelectorAll('.completed__item')
+    items.forEach(item => {
+      if (applications[item.dataset.key].status.status === 'Завершена') {
+        item.className = 'completed__item completed-end'
+      } else if (applications[item.dataset.key].status.status === 'Отменить') {
+        item.className = 'completed__item completed-delete'
+      } else {
+        item.className = 'completed__item'
+      }
+    })
+  }
+
+  useEffect(() => {
+    changeStyleItem()
+  }, [applications])
+
   return (
     <div className="completed">
       {
         Object.keys(applications).map(key => (
           <div
-          className={ applications[key].status.status === 'Отменить'
-            ? "completed__item completed-delete"
-            : "completed__item"
-          }
-          key={applications[key].card.id}
+            key={key}
+            className='completed__item'
+            data-key={key}
           >
             <div className="completed__item-left">
               <img src={applications[key].card.img} alt="some img" height="84"/>

@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, updateEmail } from 'firebase/auth'
-import { getDatabase, ref, set, onValue, push, child } from "firebase/database";
+import { getDatabase, ref, set, onValue, push } from "firebase/database";
 
 
 const firebaseConfig = {
@@ -88,23 +88,83 @@ export const editUserPhone = (id, phone) => {
   });
 }
 
+// ОТЗЫВЫ
 
 //отправить отзыв
 export const editUserComment = (id, name, rating, comment, card ) => {
-  const newCommentKey = push(ref(db, 'users/' + id + '/comments/'));
-  set(newCommentKey, {
+  const newCommentKey = push(ref(db, 'users/' + id + '/comments/')).key;
+  set(ref(db, 'users/' + id + '/comments/' + newCommentKey), {
     name: name,
     rating: rating, 
     comment: comment, 
     card: card
   });
-  set(push(ref(db, 'commentsList/')), {
+  set(ref(db, 'commentsList/' + newCommentKey), {
     name: name,
     rating: rating, 
     comment: comment, 
     card: card
   });
 }
+
+//удалить отзыв из личного кабинета
+export const editUserCommentAccount = (id, idComment) => {
+  set(ref(db, 'users/' + id + '/comments/' + idComment), {
+    name: null
+  });
+  set(ref(db, 'commentsList/' + idComment), {
+    name: null
+  });
+}
+
+//удалить отзыв для Админа
+export const editUserCommentAdmin = (idComment) => {
+  set(ref(db, 'commentsList/' +  idComment), {
+    name: null
+  });
+}
+
+// получить весь список отзывов
+export const getCommitsList = () => {
+  return new Promise((resolve, reject) => {
+    onValue(ref(db, 'commentsList/'), (data) => {
+        const dataList = data.val();
+        resolve(dataList)
+    }, (error) => {
+      reject(error)
+    })
+  }, {
+    onlyOnce: true
+  })
+}
+
+// получить список отзывов пользователя (для личного кабинета)
+/*
+В файле, где нужно получить список вставлять следущим образом:
+ getCommitsUserList(id) 
+ .then((data) => {
+  const dataList = data
+  console.log(dataList)
+  //...
+})
+.catch((error) => {
+  console.error(error)
+}) 
+*/
+export const getCommitsUserList = (id) => {
+  return new Promise((resolve, reject) => {
+    onValue(ref(db, 'users/' + id + '/comments'), (data) => {
+        const dataList = data.val();
+        resolve(dataList)
+    }, (error) => {
+      reject(error)
+    })
+  }, {
+    onlyOnce: true
+  })
+}
+
+// ПОДПИСКИ
 
 //записать статус подписки
 export const writeUserSubscribe = (id, subscribe) =>   {
@@ -115,9 +175,10 @@ export const writeUserSubscribe = (id, subscribe) =>   {
 }
 
 //добавить пользователя в список подписавшихся
-export const writeSubscribeList = (id, email) => {
+export const writeSubscribeList = (id, email, name) => {
   set(ref(db, 'subscribeList/' + id ), {
-    email: email
+    email: email,
+    name: name
   });
 }
 
@@ -128,11 +189,60 @@ export const deliteInSubscribeList = (id) => {
   });
 }
 
+// получить весь список подписавшихся (для Админа)
+/*
+
+Если нужно получать информацию более одного раза, то убрать {onlyOnce: true}. 
+Тогда объект будет обнаовляться каждый раз, когда добавляется commit в  db.
+
+В файле, где нужно получить список вставлять следущим образом:
+getSubscribeList()
+    .then((data) => {
+      const dataList = data
+      console.log(dataList)
+      //...
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+*/
+export const getSubscribeList = () => {
+  return new Promise((resolve, reject) => {
+    onValue(ref(db, 'subscribeList/'), (data) => {
+        const dataList = data.val();
+        resolve(dataList)
+    }, (error) => {
+      reject(error)
+    }, {onlyOnce: true})
+  })
+}
+
+// ЗАЯВКИ
+
 //отправить заявку от авторизованного пользователя
-export const writeUserApplication = (id, idApplication, card, date) => {
+export const writeUserApplication = (id, idApplication, card, date, name, phone, email) => {
   set(ref(db, 'users/' + id + '/applications/'+ idApplication), {
     card: card,
     date: date
+  });
+  set(ref(db, 'applicationList/'+idApplication), {
+    userId: id,
+    name: name,
+    phone: phone,
+    card: card,
+    email: email,
+    date: new Date().toLocaleDateString('en-US')
+  });
+}
+
+//отправить заявку без авторизации
+export const writeApplicationList = (idApplication, name, phone, card, email) => {
+  set(ref(db, 'applicationList/'+idApplication), {
+    name: name,
+    phone: phone,
+    card: card,
+    email: email,
+    date: new Date().toLocaleDateString('en-US')
   });
 }
 
@@ -148,26 +258,23 @@ export const writeUserApplicationStatus = (id, idApplication, status) => {
   set(ref(db, 'users/' + id + '/applications/'+ idApplication + '/status'), {
     status: status
   });
-}
-
-//отправить заявку без авторизации
-export const writeApplicationWithoutLogin = (idApplication, name, phone, card, email) => {
-  set(ref(db, 'applicationsWithoutLogin/'+idApplication), {
-    name: name,
-    phone: phone,
-    card: card,
-    email: email
+  set(ref(db, 'applicationList/'+idApplication + '/status'), {
+    status: status
   });
 }
 
-// получить весь список отзывов
+//указать статус для заявки для Админа
+export const writeApplicationStatusAdmin = (idApplication, statusAdmin) => {
+  set(ref(db, 'applicationList/'+idApplication + '/statusAdmin'), {
+    statusAdmin: statusAdmin
+  });
+}
+
+// получить весь список заявок (для Админа)
 /*
 
-Если нужно получать информацию более одного раза, то убрать {onlyOnce: true}. 
-Тогда объект будет обнаовляться каждый раз, когда добавляется commit в  db.
-
 В файле, где нужно получить список вставлять следущим образом:
-getCommitsList()
+getApplicationList()
     .then((data) => {
       const dataList = data
       console.log(dataList)
@@ -177,15 +284,15 @@ getCommitsList()
       console.error(error)
     })
 */
-export const getCommitsList = () => {
+export const getApplicationList = () => {
   return new Promise((resolve, reject) => {
-    onValue(ref(db, 'commentsList/'), (data) => {
+    onValue(ref(db, 'applicationList/'), (data) => {
         const dataList = data.val();
         resolve(dataList)
     }, (error) => {
       reject(error)
-    })
-  }, {
-    onlyOnce: true
+    }, {onlyOnce: true})
   })
 }
+
+

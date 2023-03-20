@@ -27,7 +27,7 @@ export const userReducer = (state = initialState, action) => {
                 rememberMe: payload.rememberMe,
                 subscribe: payload.subscribe,
                 phone: payload.phone,
-                comments: payload.reviews,
+                comments: payload.comments,
                 applications: payload.applications
             }
 
@@ -68,6 +68,11 @@ export const userReducer = (state = initialState, action) => {
             let obj = Object.assign({}, state)
             delete obj.applications[payload]
             return obj
+
+        case types.ADD_AUTH_COMMENT:
+            let comments = Object.assign({}, state)
+            comments.comments = {...comments.comments, ...payload}
+            return comments
 
         default:
             return state

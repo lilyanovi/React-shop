@@ -1,19 +1,21 @@
 import './commentUser.scss'
 import  StarRating from '../../ui/StarRating'
 import SelectImpression from '../selectImpression/SelectImpression'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { addComment } from '../../store/comments/actions'
+import { addAuthComment } from '../../store/auth/action'
 import { selectCard } from '../../store/card/actions'
 import { editUserComment } from '../../services/firebase'
 import { useAuth } from '../../hooks/use-auth'
+import { nanoid } from 'nanoid'
 
 const CommentUser = () => {
   const [rating, setRating] = useState(0)
   const [name, setName] = useState('')
   const [comment, setComment] = useState('')
   const card = useSelector(store => store.card.name)
-  const {id} = useAuth()
+  const {id, comments} = useAuth()
+  const idComment = nanoid()
 
   const dispatch = useDispatch()
 
@@ -26,13 +28,15 @@ const CommentUser = () => {
       return
     }
     let commentObj = {
-      name,
-      rating,
-      comment,
-      card
+      [idComment]: {
+        name,
+        rating,
+        comment,
+        card
+      }
     }
-    dispatch(addComment(commentObj))
-   editUserComment(id, name, rating, comment, card )
+    dispatch(addAuthComment(commentObj)) // добавляет комментарий в стор user, в свойство comments
+    editUserComment(id, name, rating, comment, card )
     setRating(0)
     setComment('')
     setName('')
