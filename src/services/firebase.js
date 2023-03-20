@@ -103,7 +103,8 @@ export const editUserComment = (id, name, rating, comment, card ) => {
     name: name,
     rating: rating, 
     comment: comment, 
-    card: card
+    card: card,
+    date: new Date().toLocaleDateString('en-US')
   });
 }
 
