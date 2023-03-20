@@ -230,7 +230,8 @@ export const writeUserApplication = (id, idApplication, card, date, name, phone,
     name: name,
     phone: phone,
     card: card,
-    email: email
+    email: email,
+    date: new Date().toLocaleDateString('en-US')
   });
 }
 
@@ -240,7 +241,8 @@ export const writeApplicationList = (idApplication, name, phone, card, email) =>
     name: name,
     phone: phone,
     card: card,
-    email: email
+    email: email,
+    date: new Date().toLocaleDateString('en-US')
   });
 }
 
