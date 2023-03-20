@@ -4,10 +4,12 @@ import { useAuth } from '../hooks/use-auth';
 
 const PrivateRoute = ({ component }) => {
   
-    const {isAuth} = useAuth();
+    const {isAuth, isAdmin} = useAuth();
 
     if (!isAuth) {
         return <Navigate to="/login" />;
+    } else if (isAdmin) {
+        return <Navigate to="/admin" />;
     }
 
     return component ? component : <Outlet />;

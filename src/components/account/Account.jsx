@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { removeUser } from '../../store/auth/action'
 import QuestionModalWindow from '../questionModal/QuestionModalWindow'
 import CancelModalWindow from '../cancelModal/CancelModalWindow'
+import { useAuth } from '../../hooks/use-auth'
 
 const Account = () => {
   const auth = getAuth();
@@ -12,6 +13,11 @@ const Account = () => {
   const navigate = useNavigate()
   const modalQuestion = useSelector(store => store.modal.modalQuestion.show)
   const modalDelete = useSelector(store => store.modal.modalDelete)
+  const {isAdmin} = useAuth()
+
+  if (isAdmin) {
+    navigate('/admin')
+  }
 
   const handleLogOut = event => {
     event.preventDefault()
