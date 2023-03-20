@@ -44,6 +44,7 @@ const LoginPage = () => {
           if (rememberMe === true) {
             localStorage.setItem('remember', true)
           }
+      
         })
         .catch((error) => {
           console.error(error)

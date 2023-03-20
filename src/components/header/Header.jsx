@@ -8,7 +8,6 @@ import imgLogo from '../../assets/logo.png'
 import imgSearch from '../../assets/search.png'
 
 import { useAuth } from '../../hooks/use-auth'
-//import { useDispatch } from 'react-redux'
 import { removeUser, setUser } from '../../store/auth/action'
 import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth'
 import { pushText } from '../../store/filterName/actions'
@@ -95,21 +94,6 @@ const Header = () => {
     }
     // eslint-disable-next-line
   }, [])
- 
-  /*
-  const handleLogOut = (e) => {
-   e.preventDefault();
-
-   signOut(auth)
-     .then(() => {
-       dispatch(removeUser());
-       localStorage.removeItem('remember');
-       navigate('/login');
-   }).catch ((error) => {
-     console.log(error)
-   })
-
- }*/
 
   return (
     <>
