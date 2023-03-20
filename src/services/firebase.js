@@ -262,7 +262,7 @@ export const writeUserApplicationStatus = (id, idApplication, status) => {
 }
 
 //указать статус для заявки для Админа
-export const writeApplicationStatusAdmin = (id, idApplication, statusAdmin) => {
+export const writeApplicationStatusAdmin = (idApplication, statusAdmin) => {
   set(ref(db, 'applicationList/'+idApplication + '/statusAdmin'), {
     statusAdmin: statusAdmin
   });

@@ -16,8 +16,14 @@ import CompletedApplications from './components/account/CompletedApplications'
 import SubscriptionManagement from './components/account/SubscriptionManagement'
 import ImpressionsCatalog from './pages/ImpressionsCatalog'
 import CommentUser from './components/account/CommentUser'
+import AdminPage from './pages/AdminPage'
+import ApplicationManagementAdmin from './components/admin/applicationManagement/applicationManagement'
+import SubscriptionManagementAdmin from './components/admin/subscriptionManagement/subscriptionManagement'
+import CommentsManagementAdmin from './components/admin/commentsManagement/commentsManagement'
+import PrivateRouteAdmin from './utils/PrivateRouteAdmin'
 
 import './services/firebase'
+
 
 export default function App() {
 
@@ -36,6 +42,11 @@ export default function App() {
             <Route path="managment" element={<SubscriptionManagement />}></Route>
             <Route path="completed" element={<CompletedApplications />}></Route>
             <Route path="comment" element={<CommentUser/>}></Route>
+          </Route>
+          <Route path="admin" element={<PrivateRouteAdmin component={<AdminPage />} />}>
+            <Route index element={<ApplicationManagementAdmin />}></Route>
+            <Route path="subscriptions" element={<SubscriptionManagementAdmin />}></Route>
+            <Route path="comments" element={<CommentsManagementAdmin />}></Route>
           </Route>
           <Route path="signup" element={<PublicRoute component={<SignUpPage />} />}></Route>
           <Route path='*' element={<ErrorPage />}></Route>
