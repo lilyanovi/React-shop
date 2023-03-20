@@ -1,0 +1,88 @@
+.applicationManagmentAdminFilter {
+    display: flex;
+    gap: 35px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    height: 40px;
+    background: #547147;
+    border-radius: 0px 20px 0px 0px;
+
+    &__title {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 16px;
+        color: #FFFFFF;
+    }
+
+    &__radioBox {
+        & label {
+            display: flex;
+
+            & span {
+                font-style: normal;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 16px;
+                color: #FFFFFF;
+            }
+        }
+    }
+}
+
+.applicationManagmentAdmin {
+    font-family: 'Montserrat', Times, serif;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background: #FFFFFF;
+    border: 1px solid #547147;
+    margin-bottom: 95px;
+    backdrop-filter: blur(25px);
+    border-radius: 0px 0px 20px 20px;
+
+    &__item {
+        display: flex;
+        margin-bottom: 15px;
+        border: 1px solid #404936;
+        backdrop-filter: blur(25px);
+        border-radius: 15px;
+
+        &_iner:nth-last-child(1) {
+            border-right: 0px;
+            width: 192px;
+        }
+
+        &_iner {
+            height: 90px;
+            width: 136px;
+            border-right: 1px solid #404936;
+
+            &-title {
+                display: flex;
+                justify-content: center;
+                height: 33px;
+                align-items: center;
+                height: 33px;
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 20px;
+                background: rgba(217, 217, 217, 0.5);
+                color: #333333;
+            }
+
+            &-key {
+                height: 57px;
+                overflow-wrap: break-word;
+                text-align: center;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 20px;
+                color: #333333;
+            }
+        }
+    }
+}
