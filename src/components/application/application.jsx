@@ -85,7 +85,6 @@ export function Application() {
             dispatch(addAuthApplications(applicationObj))
             dispatch(addApplication(applicationObj)) // добавляю в стор applications
             codeDuplication()
-            // writeApplicationList(idApplication, name, phone, card, email) отправить заявку без авторизации 
             writeUserApplication(id, idApplication, card, date, userName, userPhone, userEmail)
             writeUserApplicationStatus(id, idApplication, status)
         }
