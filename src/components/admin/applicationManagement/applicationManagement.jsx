@@ -19,7 +19,6 @@ const ApplicationManagementAdmin = () => {
   const handleStatusAdmin = (e, key) => {
     const idApplication = key
     writeApplicationStatusAdmin(idApplication, e.target.value)
- 
   }
 
   return (
