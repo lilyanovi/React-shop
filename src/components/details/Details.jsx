@@ -8,11 +8,15 @@ import { openModal, closeModalDetail } from '../../store/modal/actions'
 
 const Details = ({ card }) => {
 
-    const [wordData, setWordData] = useState(card.imgs[0])
-    const [prices, setPrices] = useState(card.prices)
-    const [selectedMesurement, setSelectedMesurement] = useState(prices[0].price);
+
+    console.log(card)
+    //const [wordData, setWordData] = useState(card.imgs[0])
+    //const [prices, setPrices] = useState(card.prices)
+    //const [selectedMesurement, setSelectedMesurement] = useState(prices[0].price);
     //const [desc1, setDesc1] =useState(Object.values(card.desc)[0]) Если надо чтоб менялось описание  "desc":{"900":"Описание1", "1000": "Описание2"}
 
+
+    //console.log(wordData)
 
     const modalShow = useSelector(store => store.modal.modalShow)
     const dispatch = useDispatch()
@@ -22,10 +26,10 @@ const Details = ({ card }) => {
         dispatch(closeModalDetail(false))
     };
 
-    const handleClick = (index) => {
-        const wordSlider = card.imgs[index];
-        setWordData(wordSlider)
-    }
+    // const handleClick = (index) => {
+    //     const wordSlider = card.imgs[index];
+    //     setWordData(wordSlider)
+    // }
     // console.log(prices)
     // console.log(card.prices)
 
@@ -38,19 +42,19 @@ const Details = ({ card }) => {
         <>
             <div className={style.details} key={card.id}>
                 <div className={style.details__images}>
-                    <img className={style.details__images_img} src={wordData.value} alt="img" />
-                    <div className={style.flex_row}>
+                    {/* <img className={style.details__images_img} src={wordData.value} alt="img" /> */}
+                    {/* <div className={style.flex_row}>
                         {card.imgs.map((data, i) =>
                             <img key={i} className={style.details__images_img_mini} src={data.value} alt="img"/>
-                        )}
-                    </div>
+                        )} */}
+                    {/* </div> */}
                 </div>
 
                 <div className={style.details__body}>
-                    <h2 className={style.details__body_title} >{card.name.toUpperCase()}</h2>
+                    {/* <h2 className={style.details__body_title} >{card.name.toUpperCase()}</h2> */}
                     <div className={style.details__body_info}>
-                            <h1 className={style.details__price}>{selectedMesurement} ₽</h1>
-                            {prices.length>1
+                            {/* <h1 className={style.details__price}>{selectedMesurement} ₽</h1> */}
+                            {/* {prices.length>1
                                 ?<div className={style.dropdownList}>
                                     <select className={style.dropdownListItem} value={selectedMesurement} onChange={e =>
                                         setSelectedMesurement(e.target.value)}>
@@ -58,12 +62,15 @@ const Details = ({ card }) => {
                                     </select>
                                 </div>
                                 : <p style={{visibility: 'hidden'}}></p>
-                            }   
+                            }    */}
                         </div>
                     <button className={style.details__btn} onClick={(event) => handleOpenModal(event)}>Заказать впечатление</button>
                     <div className={style.details__description}>
                         <h3>Подробнее о впечатлении: </h3>
-                        {card.desc.map((desc, index) => <p key={index}>{desc}</p>)}
+                        <div className={style.details__text}>
+                        {/* {card.desc.map((desc, index) => <p key={index}>{desc}</p>)} */}
+                        </div>
+                        
                     </div>
                 </div>
             </div>
