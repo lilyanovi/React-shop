@@ -1,5 +1,4 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom"
-import React, { useState } from 'react';
 import './admin.scss'
 import { useDispatch } from "react-redux"
 import { signOut, getAuth } from "firebase/auth"

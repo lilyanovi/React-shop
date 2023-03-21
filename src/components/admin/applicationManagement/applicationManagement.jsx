@@ -4,8 +4,8 @@ import './applicationManagement.scss'
 
 const ApplicationManagementAdmin = () => {
   const [list, setList] = useState({})
-  const [setFilter] = useState(false);
-  const [value] = useState('');
+  const [setFilter] = useState(false)
+  const [value] = useState('')
 
   useEffect(() => {
     getApplicationList()
@@ -15,6 +15,11 @@ const ApplicationManagementAdmin = () => {
   }, [])
 
   console.log(list)
+
+  const handleStatusAdmin = (e, key) => {
+    const idApplication = key
+    writeApplicationStatusAdmin(idApplication, e.target.value)
+  }
 
   return (
     <>
@@ -72,7 +77,15 @@ const ApplicationManagementAdmin = () => {
             </div>
             <div className="applicationManagmentAdmin__item_iner">
               <div className="applicationManagmentAdmin__item_iner-title borderRight">Комментарий</div>
-              <div className="applicationManagmentAdmin__item_iner-key">{list[key].statusAdmin?.statusAdmin}</div>
+              <div className="applicationManagmentAdmin__item_iner-key">
+              
+              <textarea className="applicationManagmentAdmin__item_iner-key-input"
+                type='text' 
+                onBlur={(e) => handleStatusAdmin(e, key)}
+                placeholder='Введите...'
+                defaultValue={list[key].statusAdmin?.statusAdmin?.statusAdmin}
+            ></textarea>
+              </div>
             </div>
           </div>
         ))}
