@@ -39,7 +39,7 @@ const ApplicationManagementAdmin = () => {
         {Object.keys(list).map(key => (
           <div className="applicationManagmentAdmin__item" key={key}>
             <div className="applicationManagmentAdmin__item_iner">
-              <div className="applicationManagmentAdmin__item_iner-title">№ заказа</div>
+              <div className="applicationManagmentAdmin__item_iner-title borderLeft">№ заказа</div>
               <div className="applicationManagmentAdmin__item_iner-key">{key}</div>
             </div>
             <div className="applicationManagmentAdmin__item_iner">
@@ -71,7 +71,7 @@ const ApplicationManagementAdmin = () => {
               <div className="applicationManagmentAdmin__item_iner-key">{list[key].status?.status}</div>
             </div>
             <div className="applicationManagmentAdmin__item_iner">
-              <div className="applicationManagmentAdmin__item_iner-title">Комментарий</div>
+              <div className="applicationManagmentAdmin__item_iner-title borderRight">Комментарий</div>
               <div className="applicationManagmentAdmin__item_iner-key">{list[key].statusAdmin?.statusAdmin}</div>
             </div>
           </div>
