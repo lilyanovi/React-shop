@@ -48,7 +48,7 @@ const ApplicationManagementAdmin = () => {
             </div>
             <div className="applicationManagmentAdmin__item_iner">
               <div className="applicationManagmentAdmin__item_iner-title">Название</div>
-              <div className="applicationManagmentAdmin__item_iner-key">Название</div>
+              <div className="applicationManagmentAdmin__item_iner-key">{list[key].card?.name}</div>
             </div>
             <div className="applicationManagmentAdmin__item_iner">
               <div className="applicationManagmentAdmin__item_iner-title">Id пользователя</div>
@@ -68,11 +68,11 @@ const ApplicationManagementAdmin = () => {
             </div>
             <div className="applicationManagmentAdmin__item_iner">
               <div className="applicationManagmentAdmin__item_iner-title">Статус</div>
-              <div className="applicationManagmentAdmin__item_iner-key">status</div>
+              <div className="applicationManagmentAdmin__item_iner-key">{list[key].status?.status}</div>
             </div>
             <div className="applicationManagmentAdmin__item_iner">
               <div className="applicationManagmentAdmin__item_iner-title">Комментарий</div>
-              <div className="applicationManagmentAdmin__item_iner-key">comment</div>
+              <div className="applicationManagmentAdmin__item_iner-key">{list[key].statusAdmin}</div>
             </div>
           </div>
         ))}
