@@ -19,7 +19,7 @@ const ApplicationManagementAdmin = () => {
   return (
     <>
       <div className='applicationManagmentAdminFilter'>
-        <div className='applicationManagmentAdminFilter__title' onClick={() => setFilter(false)}>Сортировать по цене:</div>
+        <div className='applicationManagmentAdminFilter__title' onClick={() => setFilter(false)}>Сортировать по:</div>
         <div className='applicationManagmentAdminFilter__radioBox'>
           <label htmlFor="radioDown">
             <input id="radioDown" className='radio' type="radio" name="radio" value="1"
@@ -72,7 +72,7 @@ const ApplicationManagementAdmin = () => {
             </div>
             <div className="applicationManagmentAdmin__item_iner">
               <div className="applicationManagmentAdmin__item_iner-title">Комментарий</div>
-              <div className="applicationManagmentAdmin__item_iner-key">{list[key].statusAdmin}</div>
+              <div className="applicationManagmentAdmin__item_iner-key">{list[key].statusAdmin?.statusAdmin}</div>
             </div>
           </div>
         ))}
