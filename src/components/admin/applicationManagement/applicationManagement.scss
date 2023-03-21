@@ -43,7 +43,6 @@
     backdrop-filter: blur(25px);
     border-radius: 0px 0px 20px 20px;
 
-
     &__item {
         display: flex;
         margin-bottom: 15px;
@@ -54,7 +53,6 @@
         &_iner:nth-last-child(1) {
             border-right: 0px;
             width: 192px;
-
         }
 
         &_iner {
@@ -71,8 +69,15 @@
                 font-size: 14px;
                 line-height: 20px;
                 background: rgba(217, 217, 217, 0.5);
-
                 color: #333333;
+            }
+
+            .borderRight {
+                border-radius: 0 15px 0 0;
+            }
+
+            .borderLeft {
+                border-radius: 15px 0 0 0;
             }
 
             &-key {

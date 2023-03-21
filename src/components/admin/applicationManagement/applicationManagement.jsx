@@ -24,7 +24,7 @@ const ApplicationManagementAdmin = () => {
   return (
     <>
       <div className='applicationManagmentAdminFilter'>
-        <div className='applicationManagmentAdminFilter__title' onClick={() => setFilter(false)}>Сортировать по цене:</div>
+        <div className='applicationManagmentAdminFilter__title' onClick={() => setFilter(false)}>Сортировать по:</div>
         <div className='applicationManagmentAdminFilter__radioBox'>
           <label htmlFor="radioDown">
             <input id="radioDown" className='radio' type="radio" name="radio" value="1"
@@ -44,7 +44,7 @@ const ApplicationManagementAdmin = () => {
         {Object.keys(list).map(key => (
           <div className="applicationManagmentAdmin__item" key={key}>
             <div className="applicationManagmentAdmin__item_iner">
-              <div className="applicationManagmentAdmin__item_iner-title">№ заказа</div>
+              <div className="applicationManagmentAdmin__item_iner-title borderLeft">№ заказа</div>
               <div className="applicationManagmentAdmin__item_iner-key">{key}</div>
             </div>
             <div className="applicationManagmentAdmin__item_iner">
@@ -76,14 +76,14 @@ const ApplicationManagementAdmin = () => {
               <div className="applicationManagmentAdmin__item_iner-key">{list[key].status?.status}</div>
             </div>
             <div className="applicationManagmentAdmin__item_iner">
-              <div className="applicationManagmentAdmin__item_iner-title">Комментарий</div>
+              <div className="applicationManagmentAdmin__item_iner-title borderRight">Комментарий</div>
               <div className="applicationManagmentAdmin__item_iner-key">
               
               <textarea className="applicationManagmentAdmin__item_iner-key-input"
                 type='text' 
                 onBlur={(e) => handleStatusAdmin(e, key)}
                 placeholder='Введите...'
-                defaultValue={list[key].statusAdmin?.statusAdmin}
+                defaultValue={list[key].statusAdmin?.statusAdmin?.statusAdmin}
             ></textarea>
               </div>
             </div>
