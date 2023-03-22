@@ -24,18 +24,31 @@ const ApplicationManagementAdmin = () => {
   return (
     <>
       <div className='applicationManagmentAdminFilter'>
-        <div className='applicationManagmentAdminFilter__title' onClick={() => setFilter(false)}>Сортировать по:</div>
+        <div className='applicationManagmentAdminFilter__title' 
+          onClick={() => setFilter(false)}>Сортировать по:</div>
         <div className='applicationManagmentAdminFilter__radioBox'>
           <label htmlFor="radioDown">
-            <input id="radioDown" className='radio' type="radio" name="radio" value="1"
-              checked={value === '1' ? true : false} />
+            <input 
+              id="radioDown" 
+              className='radio' 
+              type="radio" 
+              name="radio" 
+              value="1"
+              checked={value === '1' ? true : false} 
+            />
             <span>дате</span>
           </label>
         </div>
         <div className='applicationManagmentAdminFilter__radioBox'>
           <label htmlFor="radioUp" >
-            <input id="radioUp" type="radio" className='radio' name="radio" value="2"
-              checked={value === '2' ? true : false} />
+            <input 
+              id="radioUp" 
+              type="radio" 
+              className='radio' 
+              name="radio" 
+              value="2"
+              checked={value === '2' ? true : false} 
+            />
             <span>статусу</span>
           </label>
         </div>
@@ -77,13 +90,12 @@ const ApplicationManagementAdmin = () => {
             </div>
             <div className="applicationManagmentAdmin__item_iner">
               <div className="applicationManagmentAdmin__item_iner-title borderRight">Комментарий</div>
-              <div className="applicationManagmentAdmin__item_iner-key">
-              
+              <div className="applicationManagmentAdmin__item_iner-key">           
               <textarea className="applicationManagmentAdmin__item_iner-key-input"
                 type='text' 
                 onBlur={(e) => handleStatusAdmin(e, key)}
                 placeholder='Введите...'
-                defaultValue={list[key].statusAdmin?.statusAdmin?.statusAdmin}
+                defaultValue={list[key].statusAdmin?.statusAdmin}
             ></textarea>
               </div>
             </div>
