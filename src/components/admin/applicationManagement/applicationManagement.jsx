@@ -134,7 +134,7 @@ const ApplicationManagementAdmin = () => {
                   type='text'
                   onBlur={(e) => handleStatusAdmin(e, key)}
                   placeholder='Введите...'
-                  defaultValue={list[key].statusAdmin?.statusAdmin}
+                  defaultValue={list[key].statusAdmin?.statusAdmin?.statusAdmin}
                 ></textarea>
               </div>
             </div>
