@@ -25,7 +25,7 @@
       width: 100%;
       margin: 107px auto 121px;
 
-      &-link-active {
+      &-link {
         width: 100%;
         background: #547147;
         border: 1px solid #547147;
@@ -63,4 +63,9 @@
       cursor: pointer;
     }
   }
+}
+
+.active {
+  color: #547147;
+  background: #FFFFFF;
 }

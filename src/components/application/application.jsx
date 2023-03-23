@@ -56,7 +56,7 @@ export function Application() {
     const handleSubmit = event => {
         event.preventDefault()
         if (!isAuth) {
-            if (!errorName && !errorPhone && !errorEmail && phone && name && email && agree) {
+            if (!errorName && !errorPhone && !errorEmail && phone && name && email && agree && card) {
                 let applicationObj = {
                     [idApplication]: {
                         name,

@@ -32,32 +32,48 @@ const Account = () => {
       })
   }
 
+  const handleClickLink = event => {
+    let id = event.target.dataset.id
+    let links = document.querySelectorAll('.account__sideBar-wrapper-link')
+    links.forEach(link => {
+      if (link.dataset.id === id) {
+        link.className = 'account__sideBar-wrapper-link active'
+      } else {
+        link.className = 'account__sideBar-wrapper-link'
+      }
+    })
+  }
+
   return (
     <div className="account container">
       <h1>Личный кабинет</h1>
       <div className="account__box">
-        <div className="account__sideBar">
+        <div className="account__sideBar" onClick={(event) => handleClickLink(event)}>
           <div className="account__sideBar-wrapper">
             <NavLink
-              className="account__sideBar-wrapper-link-active"
+              className="account__sideBar-wrapper-link active"
+              data-id="1"
               to="/account"
             >
               Данные пользователя
             </NavLink>
             <NavLink
-              className="account__sideBar-wrapper-link-active"
+              className="account__sideBar-wrapper-link"
+              data-id="2"
               to="completed"
             >
               Оформленные заявки
             </NavLink>
             <NavLink
-              className="account__sideBar-wrapper-link-active"
+              className="account__sideBar-wrapper-link"
+              data-id="3"
               to="managment"
             >
               Управление подпиской
             </NavLink>
             <NavLink
-              className="account__sideBar-wrapper-link-active"
+              className="account__sideBar-wrapper-link"
+              data-id="4"
               to="comment"
             >
               Оставить отзыв
