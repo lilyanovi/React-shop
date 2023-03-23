@@ -17,8 +17,7 @@ const Comment = ({comment, cardsComments, card, id, idComment}) => {
        },[cardsComments])
 
     const date =new Date(comment.date).toLocaleDateString()
-    console.log(date)
-     
+    
     return (
         <div className='comment__container'> 
             <div className='comment__body'>

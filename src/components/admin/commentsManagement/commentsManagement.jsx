@@ -15,7 +15,6 @@ const CommentsManagementAdmin = () => {
   useEffect(() => { getCommitsList()
     .then((data) => {
         const dataList = data
-        console.log(dataList)
         setComments(Object.values(dataList))
         setCommentsId(Object.keys(dataList))
     })
@@ -25,7 +24,9 @@ const CommentsManagementAdmin = () => {
     fetchCards()
   },[])
 
-  //editUserCommentAdmin (idComment)
+  const deleteComment = (idComment) => {
+  editUserCommentAdmin(idComment)
+  }
 
   async function fetchCards() {
     const cards = await axios.get('https://kaori318.github.io/site/cards.json')
@@ -40,7 +41,7 @@ const CommentsManagementAdmin = () => {
           {comments.length>0 && cards.length>0
             ? comments.map((com, i) =>
               <div className='comment' key={i}> 
-                <Comment comment={com} id={commentsId[i]} cardsComments={cards} card={com.card} idComment={editUserCommentAdmin}/>
+                <Comment comment={com} id={commentsId[i]} cardsComments={cards} card={com.card} idComment={deleteComment}/>
               </div>)
             : <h1 style={{textAlign:'center'}}>Загрузка...</h1>
           }  
