@@ -161,3 +161,198 @@
   border: 1px solid #547147;
   border-radius: 5px;
 }
+
+
+
+
+
+@media only screen and (max-width: 620px) {
+  .formLogin {
+    max-width: 500px;
+    margin: 70px auto 70px;
+
+    & h1 {
+      font-style: normal;
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 25px;
+      margin-bottom: 35px;
+      text-align: center;
+      text-transform: uppercase;
+      color: #333333;
+    }
+
+    & form {
+      margin-top: 60px;
+      max-width: 330px;
+      width: 100%;
+
+      & input {
+        width: 100%;
+        height: 46px;
+        border-radius: 10px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 14px;
+        padding: 13px 0 13px 15px;
+        margin-bottom: 15px;
+      }
+    }
+
+    &__btn-enter-exit {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 18px;
+      width: 300px;
+      height: 50px;
+    }
+
+    &__googleAuth {
+      width: 300px;
+      height: 50px;
+      gap: 18px;
+
+      & p {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 18px;
+      }
+    }
+
+
+
+    &__checkbox {
+      gap: 10px;
+
+      & label {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 12px;
+        text-align: center;
+        padding-top: 6px;
+      }
+    }
+
+    &__question {
+      margin-top: 40px;
+      font-size: 16px;
+      line-height: 16px;
+      text-align: center;
+    }
+
+    &__link {
+      margin-top: 10px;
+      font-size: 16px;
+      line-height: 16px;
+    }
+
+    #formLogin-saveMe {
+      width: 24px;
+      height: 24px;
+      background: #FFFFFF;
+      border: 1px solid #547147;
+      border-radius: 5px;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 375px) {
+  .formLogin {
+    margin: 70px auto 60px;
+
+    & h1 {
+      font-style: normal;
+      font-weight: 700;
+      font-size: 21px;
+      line-height: 25px;
+      margin-bottom: 35px;
+      text-align: center;
+      text-transform: uppercase;
+      color: #333333;
+    }
+
+    & form {
+      margin-top: 40px;
+      max-width: 300px;
+      width: 100%;
+
+      & input {
+        width: 100%;
+        height: 40px;
+        border-radius: 10px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 14px;
+        padding: 13px 0 13px 15px;
+        margin-bottom: 15px;
+      }
+    }
+
+    &__btn-enter-exit {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 18px;
+      width: 280px;
+      height: 48px;
+    }
+
+    &__googleAuth {
+      width: 280px;
+      height: 48px;
+      gap: 15px;
+
+      & p {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 18px;
+      }
+    }
+
+
+
+    &__checkbox {
+      gap: 10px;
+
+      & label {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 11px;
+        line-height: 12px;
+        text-align: center;
+        padding-top: 4px;
+      }
+    }
+
+    &__question {
+      margin-top: 40px;
+      font-size: 14px;
+      line-height: 16px;
+      text-align: center;
+    }
+
+    &__link {
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 16px;
+    }
+
+    #formLogin-saveMe {
+      width: 20px;
+      height: 20px;
+      background: #FFFFFF;
+      border: 1px solid #547147;
+      border-radius: 5px;
+    }
+  }
+}
