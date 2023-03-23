@@ -15,45 +15,49 @@ const ApplicationManagementAdmin = () => {
   }, [])
 
   function filterForDate() {
-    const arrayList = Object.values(list).filter(e => e.date)//!!!!чтобы не было прецедентов с заявками без даты.
-    if (Date.parse(arrayList[0].date) >= Date.parse(arrayList[arrayList.length - 1].date)) {
-      const sortList = arrayList.sort((a, b) => Date.parse(a.date) - Date.parse(b.date))
-      setList(Object.assign(sortList))
+    const array = Object.entries(list)
+    const arrayList = array.map(e => Object.entries(e)).filter(e => e[1][1].date)//filter- чтобы исключить заявки без дат
+    if (Date.parse(arrayList[0][1][1].date) >= Date.parse(arrayList[arrayList.length - 1][1][1].date)) {
+      const sortList = arrayList.sort((a, b) => Date.parse(a[1][1].date) - Date.parse(b[1][1].date))
+      setList(Object.fromEntries(sortList.map(e => Object.fromEntries(e))))
       setArrowOne("1")
     } else {
-      const sortList = arrayList.sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
-      setList(Object.assign(sortList))
+      const sortList = arrayList.sort((a, b) => Date.parse(b[1][1].date) - Date.parse(a[1][1].date))
+      setList(Object.fromEntries(sortList.map(e => Object.fromEntries(e))))
       setArrowOne("2")
     }
   }
 
   function filterForStatus() {
-    const arrayList = Object.values(list)
+    const arrayList = Object.entries(list)
+
     const mapping = arrayList.map((e) => {
-      if ("status" in e) {
-        if (e.status.status === "В обработке") {
-          e.controlIndex = "1"
+      if ("status" in e[1]) {
+        if (e[1].status.status === "В обработке") {
+          e[1].controlIndex = "1"
         }
-        if (e.status.status === "Отменить") {
-          e.controlIndex = "3"
+        if (e[1].status.status === "Отменить") {
+          e[1].controlIndex = "3"
         }
-        if (e.status.status === "Завершена") {
-          e.controlIndex = "4"
+        if (e[1].status.status === "Завершена") {
+          e[1].controlIndex = "4"
         }
       } else {
-        e.controlIndex = "2"
+        e[1].controlIndex = "2"
       }
       return e
     })
-    if (mapping[0].controlIndex > mapping[mapping.length - 1].controlIndex) {
-      const sortList = mapping.sort((a, b) => a.controlIndex - b.controlIndex)
-      setList(Object.assign(sortList))
+    if (mapping[0][1].controlIndex > mapping[mapping.length - 1][1].controlIndex) {
+      const sortList = mapping.sort((a, b) => a[1].controlIndex - b[1].controlIndex)
+      setList(Object.fromEntries(sortList))
+      // console.log(sortList)
       setArrowTwo("1")
     } else {
-      const sortList = mapping.sort((a, b) => b.controlIndex - a.controlIndex)
-      setList(Object.assign(sortList))
+      const sortList = mapping.sort((a, b) => b[1].controlIndex - a[1].controlIndex)
+      setList(Object.fromEntries(sortList))
       setArrowTwo("2")
     }
+
   }
 
   const handleStatusAdmin = (e, key) => {
