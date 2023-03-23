@@ -1,7 +1,7 @@
 .comments__container {
     outline: 1px solid #547147;
     border-radius: 0  20px 20px 20px;
-    max-height: 2000px;
+    max-height: 1500px;
     margin-bottom: 100px;
     padding-bottom: 15px;
 }
@@ -24,12 +24,16 @@
 
 .comments__list {
     margin: 15px 25px;
+    // overflow: auto;
+    //     max-height: 1000px;
     .comment {
         min-height: 160px;
         outline: 1px solid #547147;
         border-radius: 20px;
         padding: 20px 20px 10px;
         margin-bottom: 15px;
+        
+
     }
 }
 
