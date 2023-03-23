@@ -89,11 +89,11 @@ const ApplicationManagementAdmin = () => {
         </div>
       </div>
       <div className="applicationManagmentAdmin">
-        {Object.keys(list).map((key, i) => (
+        {Object.keys(list).map((key) => (
           <div className="applicationManagmentAdmin__item" key={key}>
             <div className="applicationManagmentAdmin__item_iner">
-              <div className="applicationManagmentAdmin__item_iner-title borderLeft">№</div>
-              <div className="applicationManagmentAdmin__item_iner-key">{i + 1}</div>
+              <div className="applicationManagmentAdmin__item_iner-title borderLeft">№ заказа</div>
+              <div className="applicationManagmentAdmin__item_iner-key">{key}</div>
             </div>
             <div className="applicationManagmentAdmin__item_iner">
               <div className="applicationManagmentAdmin__item_iner-title">Дата</div>
