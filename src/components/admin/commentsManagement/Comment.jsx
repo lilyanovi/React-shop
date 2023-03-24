@@ -29,7 +29,7 @@ const Comment = ({ comment, cardsComments, card, id, idComment }) => {
                     <p className='comment__text-date'>{date}</p>
                     <p className='comment__text-name'>{comment.name}</p>
                     <Box className='comment__rating-box' sx={{ '& > legend': { mt: 2 }, }}>
-                        <Rating className='comment__rating' name="read-only" value={rating} readOnly />
+                        <Rating className='comment__rating' name="read-only" value={comment.rating} readOnly />
                     </Box>
                     <p className='comment__text-comment'>{comment.comment}</p>
                 </div>

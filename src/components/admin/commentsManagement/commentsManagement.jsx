@@ -4,7 +4,7 @@ import Comment from './Comment';
 import axios from 'axios';
 import './commetnsManagement.scss'
 import { editUserCommentAdmin } from '../../../services/firebase'
-import { set } from 'firebase/database';
+
 
 
 const CommentsManagementAdmin = () => {
