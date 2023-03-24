@@ -50,7 +50,6 @@ const ApplicationManagementAdmin = () => {
     if (mapping[0][1].controlIndex > mapping[mapping.length - 1][1].controlIndex) {
       const sortList = mapping.sort((a, b) => a[1].controlIndex - b[1].controlIndex)
       setList(Object.fromEntries(sortList))
-      // console.log(sortList)
       setArrowTwo("1")
     } else {
       const sortList = mapping.sort((a, b) => b[1].controlIndex - a[1].controlIndex)
