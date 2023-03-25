@@ -134,8 +134,6 @@ export const getCommitsList = () => {
     }, (error) => {
       reject(error)
     })
-  }, {
-    onlyOnce: true
   })
 }
 
