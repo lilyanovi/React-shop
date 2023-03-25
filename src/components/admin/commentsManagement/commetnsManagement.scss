@@ -13,6 +13,7 @@
     background-color: #547147;
     border-radius: 0 17px 0 0;
     align-items: center;
+    gap: 35px;
     p {
         font-family: 'Montserrat';
         font-weight: 600;
@@ -36,7 +37,17 @@
 
     }
 }
-
+span{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
+    pointer-events: none;
+    &.arrow {
+        color: #547147;
+    }
+}
 .comment__container {
     display: flex;
     justify-content: space-between;
