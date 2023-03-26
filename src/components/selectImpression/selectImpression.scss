@@ -58,3 +58,11 @@
 .selectImpression__arrow-rotate {
   transform: rotate(180deg);
 }
+
+@media (max-width: 500px) {
+  .selectImpression {
+    width: 275px;
+    padding: 10px;
+  }
+
+}
