@@ -1,0 +1,18 @@
+.advantages {
+  margin-top: 71px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 86px;
+}
+.advantages__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 17px;
+}
+.advantages__item p {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #333333;
+}/*# sourceMappingURL=advantages.css.map */

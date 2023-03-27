@@ -7,13 +7,13 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,.4);
+  background-color: rgba(0, 0, 0, 0.4);
   width: 100%;
   height: 100%;
   z-index: 10;
 }
 
-.questionModalWindow__modal{
+.questionModalWindow__modal {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,33 +27,35 @@
   box-sizing: border-box;
 }
 
-.questionModalWindow__blockText{
-text-align: center;
-font-style: normal;
-font-weight: 400;
-font-size: 30px;
-line-height: 30px;
-color: #333333;
-font-family: 'Montserrat';
-margin-bottom: 50px;
+.questionModalWindow__blockText {
+  text-align: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 30px;
+  color: #333333;
+  font-family: "Montserrat";
+  margin-bottom: 50px;
 }
-.questionModalWindow__text{
+
+.questionModalWindow__text {
   margin: 0;
   margin-bottom: 5px;
 }
-.questionModalWindow__boldText{
+
+.questionModalWindow__boldText {
   font-weight: bold;
   margin: 0;
 }
 
-.questionModalWindow__button_container{
+.questionModalWindow__button_container {
   display: flex;
   justify-content: space-between;
   width: 460px;
 }
 
-.questionModalWindow__button{
-  font-family: 'Montserrat';
+.questionModalWindow__button {
+  font-family: "Montserrat";
   width: 200px;
   height: 56px;
   border-radius: 40px;
@@ -69,7 +71,7 @@ margin-bottom: 50px;
   border: 1px solid #547147;
 }
 
-.questionModalWindow__button:hover{
+.questionModalWindow__button:hover {
   cursor: pointer;
   background-color: #FFFFFF;
   color: #547147;
@@ -77,26 +79,26 @@ margin-bottom: 50px;
 }
 
 @media (min-width: 300px) and (max-width: 800px) {
-  .questionModalWindow__modal{
+  .questionModalWindow__modal {
     max-width: 325px;
     max-height: 300px;
     padding-top: 70px;
   }
-  .questionModalWindow__blockText{
+  .questionModalWindow__blockText {
     margin-bottom: 40px;
     font-size: 18px;
     line-height: 20px;
   }
-  .questionModalWindow__button_container{
+  .questionModalWindow__button_container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 15px;
   }
-  .questionModalWindow__button{
+  .questionModalWindow__button {
     width: 295px;
     height: 40px;
     padding: 7px 0;
   }
-}
+}/*# sourceMappingURL=QuestionModalWindow.css.map */

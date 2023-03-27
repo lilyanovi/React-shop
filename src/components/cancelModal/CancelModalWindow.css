@@ -7,13 +7,13 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,.4);
+  background-color: rgba(0, 0, 0, 0.4);
   width: 100%;
   height: 100%;
   z-index: 10;
 }
 
-.cancelModal__modal{
+.cancelModal__modal {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,37 +28,34 @@
   position: relative;
 }
 
-.cancelModal__close{
+.cancelModal__close {
   position: absolute;
   top: 25px;
   right: 30px;
 }
 
-.cancelModal__close:hover{
+.cancelModal__close:hover {
   cursor: pointer;
 }
-.cancelModal__text{
+
+.cancelModal__text {
   margin: 0;
   font-weight: 400;
   font-size: 30px;
   line-height: 30px;
   color: #333333;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   margin-bottom: 140px;
-
 }
-.cancelModal__boldText{
+
+.cancelModal__boldText {
   font-weight: bold;
 }
 
-.cancelModal__hrefText{
-  font-family: 'Montserrat';
+.cancelModal__hrefText {
+  font-family: "Montserrat";
   font-weight: 600;
   font-size: 24px;
   line-height: 28px;
   color: #547147;
-}
-
-@media (min-width: 300px) and (max-width: 800px) {
-  
-}
+}/*# sourceMappingURL=CancelModalWindow.css.map */

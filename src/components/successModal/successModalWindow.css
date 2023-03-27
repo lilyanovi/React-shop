@@ -1,4 +1,4 @@
-.cancelModal__background {
+.background {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,58 +7,56 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,.4);
+  background-color: rgba(0, 0, 0, 0.4);
   width: 100%;
   height: 100%;
   z-index: 10;
 }
 
-.cancelModal__modal{
+.modal {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-end;
   margin: auto;
-  padding-bottom: 35px;
-  padding-top: 160px;
+  padding-bottom: 15px;
+  padding-top: 125px;
   width: 530px;
-  height: 400px;
+  height: 590px;
   background-color: #FFFFFF;
   border-radius: 20px;
   box-sizing: border-box;
   position: relative;
 }
 
-.cancelModal__close{
+.close {
   position: absolute;
   top: 25px;
   right: 30px;
 }
 
-.cancelModal__close:hover{
+.close:hover {
   cursor: pointer;
 }
-.cancelModal__text{
-  margin: 0;
+
+.blockText {
+  text-align: center;
+  font-style: normal;
   font-weight: 400;
   font-size: 30px;
   line-height: 30px;
   color: #333333;
-  font-family: 'Montserrat';
-  margin-bottom: 140px;
-
+  font-family: "Montserrat";
+  margin-bottom: 170px;
+  margin-top: 40px;
 }
-.cancelModal__boldText{
+
+.text {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.boldText {
   font-weight: bold;
-}
-
-.cancelModal__hrefText{
-  font-family: 'Montserrat';
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 28px;
-  color: #547147;
-}
-
-@media (min-width: 300px) and (max-width: 800px) {
-  
-}
+  margin: 0;
+}/*# sourceMappingURL=successModalWindow.css.map */
