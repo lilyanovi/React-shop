@@ -47,23 +47,23 @@ const CommentUser = () => {
     <div className="commentUser">
       <h3>Здесь Вы можете поделиться своими впечатлениями</h3>
       <div className="commentUser__box">
-        <div className="commentUser__item">
+        <div className="commentUser__item commentUser__item__raiting">
           <p className="commentUser__item-text">Ваша оценка: </p>
           <div className="commentUser__rating">
             <StarRating rating={rating} selectRating={selectRating}/>
           </div>
         </div>
-        <div className="commentUser__item">
+        <div className="commentUser__item commentUser__item-input">
           <p className="commentUser__item-text">Ваше имя: </p>
           <input type="text" value={name} onChange={(event) => setName(event.target.value)}/>
         </div>
-        <div className="commentUser__item">
+        <div className="commentUser__item commentUser__item-input">
           <p className="commentUser__item-text">Название: </p>
           <div className="commentUser__item-select">
             <SelectImpression/>
           </div>
         </div>
-        <div className="commentUser__item comment-textarea">
+        <div className="commentUser__item comment-textarea commentUser__item-input">
           <p className="commentUser__item-text">Отзыв: </p>
           <textarea
             name="comment"

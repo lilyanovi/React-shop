@@ -69,3 +69,14 @@
   color: #547147;
   background: #FFFFFF;
 }
+
+@media (max-width: 500px) {
+  .account {
+
+    &__box {
+      flex-direction: column;
+      margin-top: 35px;
+      gap: 30px;
+    }
+}
+}

@@ -24,7 +24,11 @@
     justify-content: center;
     margin: 55px auto 22px;
   }
-
+  &__rating {
+    & span {
+      padding: 0;
+    }
+  }
   &__item {
     display: flex;  
     margin-bottom: 17px;
@@ -38,6 +42,7 @@
       font-size: 14px;
       line-height: 20px;
       color: #547147;
+      
     }
 
     &-select {
@@ -45,8 +50,13 @@
       top: 0;
     }
 
+    &__raiting {
+      display: flex;
+      align-items: center;
+    }
     & input {
-      width: 440px;
+      max-width: 440px;
+      width: 100%;
       height: 52px;
       background: #FFFFFF;
       border: 1px solid #C2C2C2;
@@ -55,7 +65,8 @@
     }
 
     & textarea {
-      width: 440px;
+      max-width: 440px;
+      width: 100%;
       height: 220px;
       background: #FFFFFF;
       border: 1px solid #C2C2C2;
@@ -67,4 +78,56 @@
 
 .comment-textarea {
   margin-top: 31px;
+}
+
+@media (max-width: 500px) {
+  .commentUser {
+    padding: 0 20px 15px;
+    gap: 25px;
+  
+    & h3 {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    &__box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0 auto;
+      gap: 25px;
+    }
+
+    &__item {
+      margin: 0;
+      
+      &-input {
+        flex-direction: column;
+        gap: 5px; 
+      }
+
+      & input {
+        height: 48px;
+      }
+
+      & textarea {
+        height: 176px;
+        
+      }
+}
+}
+.comment-textarea {
+  margin-top: 44px;
+}
+.personalData__btn-save {
+  margin: 0;
+  width: 100%;
+  border-radius: 10px;
+  height: 44px;
+  font-size: 16px;
+  line-height: 18px;
+}
+
 }
