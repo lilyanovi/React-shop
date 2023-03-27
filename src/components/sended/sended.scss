@@ -59,7 +59,7 @@
     }
   }
 }
-@media (min-width: 300px) and (max-width: 800px) {
+@media (max-width: 500px) {
   .sended {
     max-width: 325px;
     max-height: 485px ;
@@ -82,14 +82,5 @@
     &__logo {
       margin-top: 70px;
     }
-  
-    & button {
-      
-  
-      & img {
-       
-      }
-    }
-
 }
 }
