@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import questionsClose from '../../assets/questionsClose.png';
+import questionsOpen from '../../assets/questionsOpen.png'
 
 const QuestionsItem = ({ title, content }) => {
     const [isActive, setIsActive] = useState(false);
