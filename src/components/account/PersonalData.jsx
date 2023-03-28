@@ -6,7 +6,7 @@ import imgEdit from '../../assets/edit.png'
 import { useDispatch } from 'react-redux'
 import { editUser } from '../../store/auth/action'
 import { editUserName, editUserEmail, editUserPhone } from '../../services/firebase'
-import Loader from '../../ui/Loader'
+import { LinearProgress } from '@mui/material';
 
 
 const PersonalData = () => {
@@ -56,7 +56,9 @@ const PersonalData = () => {
         <h2>Личные данные</h2>
       </div>
       {loading && (
-          <Loader />
+       <div className='container'>
+        <LinearProgress color="success"/>
+       </div>
       )}
       <div className="personalData__wrapper">
       {errorMessage ?

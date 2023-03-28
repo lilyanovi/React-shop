@@ -134,6 +134,8 @@ export const getCommitsList = () => {
     }, (error) => {
       reject(error)
     })
+  }, {
+    onlyOnce: true
   })
 }
 
@@ -290,7 +292,7 @@ export const getApplicationList = () => {
         resolve(dataList)
     }, (error) => {
       reject(error)
-    })
+    }, {onlyOnce: true})
   })
 }
 
