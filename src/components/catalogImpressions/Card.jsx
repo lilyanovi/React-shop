@@ -26,8 +26,8 @@ const Card = ({ card, setInfo, cardId }) => {
       <div className={style.card__block}>  
         {card.namemobile
         ?<div>
-          <div  className={style.card__title__mobile1300}>{card.name}</div>
-          <div  className={style.card__title__mobile700}>{card.namemobile}</div>
+          <div  className={style.card__title__mobile1300} onClick={handleOpenDetails}>{card.name}</div>
+          <div  className={style.card__title__mobile700} onClick={handleOpenDetails}>{card.namemobile}</div>
           </div>
         :<div className={style.card__title} onClick={handleOpenDetails}>{card.name}</div>
         }
