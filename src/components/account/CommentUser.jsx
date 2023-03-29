@@ -8,22 +8,18 @@ import { selectCard } from '../../store/card/actions'
 import { editUserComment } from '../../services/firebase'
 import { useAuth } from '../../hooks/use-auth'
 import { nanoid } from 'nanoid'
-<<<<<<< HEAD
 import { Rating } from '@mui/material'
-=======
 import MyCommetns from '../myCommetns/MyCommetns'
->>>>>>> 36df456e10485c576cae4fd4249ee7b9f83cf964
+
 
 const CommentUser = () => {
   const [rating, setRating] = useState(0)
   const [name, setName] = useState('')
   const [comment, setComment] = useState('')
   const card = useSelector(store => store.card.name)
-<<<<<<< HEAD
-  const {id} = useAuth()
-=======
+
   const { id } = useAuth()
->>>>>>> 36df456e10485c576cae4fd4249ee7b9f83cf964
+
   const idComment = nanoid()
 
   const dispatch = useDispatch()
@@ -56,7 +52,6 @@ const CommentUser = () => {
     <div className="commentUser__wrraper">
       <div className="commentUser">
       <h3>Здесь Вы можете поделиться своими впечатлениями</h3>
-<<<<<<< HEAD
       <div className="commentUser__box">
         <div className="commentUser__item commentUser__item__raiting">
           <p className="commentUser__item-text">Ваша оценка: </p>
@@ -85,39 +80,9 @@ const CommentUser = () => {
             onChange={(event) => setComment(event.target.value)}
           ></textarea>
         </div>
-=======
-        <div className="commentUser__box">
-          <div className="commentUser__item">
-            <p className="commentUser__item-text">Ваша оценка: </p>
-            <div className="commentUser__rating">
-              <StarRating rating={rating} selectRating={selectRating}/>
-            </div>
-          </div>
-          <div className="commentUser__item">
-            <p className="commentUser__item-text">Ваше имя: </p>
-            <input type="text" value={name} onChange={(event) => setName(event.target.value)}/>
-          </div>
-          <div className="commentUser__item">
-            <p className="commentUser__item-text">Название: </p>
-            <div className="commentUser__item-select">
-              <SelectImpression/>
-            </div>
-          </div>
-          <div className="commentUser__item comment-textarea">
-            <p className="commentUser__item-text">Отзыв: </p>
-            <textarea
-              name="comment"
-              id="commentId"
-              cols="57"
-              rows="10"
-              value={comment}
-              onChange={(event) => setComment(event.target.value)}
-            ></textarea>
-          </div>
-        </div>
-        <button className="commentUser__btn-save" onClick={handleSend}>Отправить</button>
-        <button className="commentUser__btn-myComments">Мои отзывы</button>
->>>>>>> 36df456e10485c576cae4fd4249ee7b9f83cf964
+      </div>
+      <button className="commentUser__btn-save" onClick={handleSend}>Отправить</button>
+      <button className="commentUser__btn-myComments">Мои отзывы</button> 
       </div>
       <MyCommetns/>
     </div>

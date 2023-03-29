@@ -11,7 +11,7 @@ const StyledBox = styled(Box)({
 });
 
 const StarRating = ({ rating, selectRating }) => {
-  const numbers = [1, 2, 3, 4, 5]
+
 
   const handleClick = value => {
     selectRating(value)
@@ -27,7 +27,7 @@ const StarRating = ({ rating, selectRating }) => {
         // name="simple-controlled"
         value={rating}
         onChange={(event, newValue) => {
-          setRating(newValue);
+       //  setRating(newValue);
         }}
       />
     </Box>
