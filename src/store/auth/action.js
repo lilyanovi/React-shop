@@ -38,3 +38,8 @@ export const addAuthComment = comment => ({
     type: 'ADD_COMMENT',
     payload: comment
   })
+
+  export const deleteAuthComment = data => ({
+    type: 'DELETE_COMMENT',
+    payload: data
+  })
