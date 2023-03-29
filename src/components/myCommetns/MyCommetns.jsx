@@ -29,15 +29,20 @@ const MyCommetns = () => {
           {
             Object.keys(comments).map(key => (
               <div className="myComments__item" key={key}>
-                <div className="myComments__img">Photo</div>
+
                 <div className="myComments__desc">
-                  <p className="myComments__desc-date">{comments[key].date}</p>
-                  <p className="myComments__desc-name">{comments[key].name}</p>
-                  <div className="myComments__desc-rating">
-                    <Box className='comment__rating-box' sx={{ '& > legend': { mt: 2 }, }}>
-                      <Rating className='comment__rating' name="read-only" value={comments[key].rating} readOnly />
-                    </Box>
-                  </div>
+                  <div className="myComments__desc_info">
+                    <div className="myComments__img">Photo</div>
+                    <div className="myComments__desc_info__text">
+                      <p className="myComments__desc-date">{comments[key].date}</p>
+                      <p className="myComments__desc-name">{comments[key].name}</p>
+                      <div className="myComments__desc-rating">
+                        <Box className='comment__rating-box' sx={{ '& > legend': { mt: 2 }, }}>
+                          <Rating className='comment__rating' name="read-only" value={comments[key].rating} readOnly />
+                        </Box>
+                      </div>
+                    </div>
+                  </div> 
                   <p className="myComments__desc-text">{comments[key].comment}</p>
                 </div>
                 <button className="myComments__delete" onClick={() => handleDeleteComment(key)}>
