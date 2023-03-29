@@ -3,11 +3,8 @@ import { useState, useEffect } from 'react'
 import { useAuth } from '../../hooks/use-auth'
 import deleteImg from '../../assets/delete_1.png'
 import './myComments.scss'
-
-
-import * as React from 'react';
+import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
-import Stack from '@mui/material/Stack';
 
 const MyCommetns = () => {
   const [comments, setComments] = useState({})
@@ -19,8 +16,6 @@ const MyCommetns = () => {
         setComments(data)
       })
   }, [])
-
-  console.log(comments)
 
   const handleDeleteComment = key => {
     editUserCommentAccount(id, key)
@@ -36,7 +31,13 @@ const MyCommetns = () => {
               <div className="myComments__item" key={key}>
                 <div className="myComments__img">Photo</div>
                 <div className="myComments__desc">
+                  <p className="myComments__desc-date">{comments[key].date}</p>
                   <p className="myComments__desc-name">{comments[key].name}</p>
+                  <div className="myComments__desc-rating">
+                    <Box className='comment__rating-box' sx={{ '& > legend': { mt: 2 }, }}>
+                      <Rating className='comment__rating' name="read-only" value={comments[key].rating} readOnly />
+                    </Box>
+                  </div>
                   <p className="myComments__desc-text">{comments[key].comment}</p>
                 </div>
                 <button className="myComments__delete" onClick={() => handleDeleteComment(key)}>

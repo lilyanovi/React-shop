@@ -10,8 +10,6 @@ const Comment = ({ comment, cardsComments, card, id, idComment }) => {
     const [rating, setRating] = useState(comment.rating)
     const [cards, setCards] = useState(cardsComments)
 
-    console.log('com', comment)
-
     useEffect(() => {
         const card1 = card
         const index = cards.findIndex(el => el.name === card1);
