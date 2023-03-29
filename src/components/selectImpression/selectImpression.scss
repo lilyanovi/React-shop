@@ -59,10 +59,20 @@
   transform: rotate(180deg);
 }
 
+
+@media (max-width: 1058px) {
+  .selectImpression {
+    width: 275px;
+  }
+
+}
 @media (max-width: 500px) {
   .selectImpression {
     width: 275px;
     padding: 10px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
   }
 
 }

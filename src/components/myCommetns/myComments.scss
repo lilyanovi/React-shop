@@ -23,9 +23,11 @@
     align-items: center;
     color: #FFFFFF;
   }
-
+  &__list{
+    width: 100%;
+  }
   &__item {
-    width: 859px;
+    width: 100%;
     min-height: 150px;
     margin: 10px auto;
     background: #FFFFFF;
@@ -33,18 +35,22 @@
     backdrop-filter: blur(25px);
     border-radius: 15px;
     display: grid;
-    grid-template-columns: 88px auto 30px;
-    padding: 20px;
+    grid-template-columns:  auto 30px;
+    padding: 20px 10px 10px 20px;
   }
 
   &__desc {
-    margin-left: 12px;
-
+   
+    &_info {
+      display: flex;
+      gap: 12px;
+    }
     &-date {
       font-weight: 400;
       font-size: 12px;
       line-height: 14px;
       color: #888888;
+    
     }
 
     &-name {
@@ -61,13 +67,15 @@
 
     &-text {
       margin-top: 5px;
-      max-width: 600px;
+      padding-left: 100px;
+      max-width: 638px;
       width: 100%;
       font-style: normal;
       font-weight: 400;
       font-size: 14px;
       line-height: 16px;
       color: #333333;
+      box-sizing: border-box;
     }
   }
 
@@ -82,5 +90,25 @@
     border: none;
     background: transparent;
     cursor: pointer;
+  }
+}
+
+@media (max-width: 870px) {
+  .myComments {
+    margin-top: 35px;
+
+    &__item {
+      margin: 5px auto;
+      padding: 15px 10px 10px 15px;
+    }
+    &__desc {
+   
+      &-text {
+        margin-top: 10px;
+        padding-left: 0;
+
+      }
+    }
+
   }
 }

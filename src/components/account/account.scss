@@ -9,6 +9,7 @@
     margin-top: 53px;
     display: flex;
     justify-content: space-between;
+    gap: 10px;
   }
 
   &__sideBar {
@@ -69,4 +70,16 @@
 .active {
   color: #547147;
   background: #FFFFFF;
+}
+
+@media (max-width: 500px) {
+  .account {
+    margin: 76px auto 60px;
+    
+    &__box {
+      flex-direction: column;
+      margin-top: 35px;
+      gap: 30px;
+    }
+}
 }
