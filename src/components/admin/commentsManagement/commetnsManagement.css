@@ -1,0 +1,118 @@
+.comments__container {
+  outline: 1px solid #547147;
+  border-radius: 0 20px 20px 20px;
+  max-height: 1500px;
+  margin-bottom: 100px;
+  padding-bottom: 15px;
+}
+
+.comments__sort {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  background-color: #547147;
+  border-radius: 0 17px 0 0;
+  align-items: center;
+  gap: 35px;
+}
+.comments__sort p {
+  font-family: "Montserrat";
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
+  color: #FFFFFF;
+}
+
+.comments__list {
+  margin: 15px 25px;
+}
+.comments__list .comment {
+  min-height: 160px;
+  outline: 1px solid #547147;
+  border-radius: 20px;
+  padding: 20px 20px 10px;
+  margin-bottom: 15px;
+}
+
+span {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #FFFFFF;
+  pointer-events: none;
+}
+span.arrow {
+  color: #547147;
+}
+
+.comment__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment__body {
+  display: flex;
+  margin-right: 100px;
+  padding-bottom: 10px;
+}
+.comment__body img {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  margin-right: 10px;
+}
+.comment__body .comment__text {
+  display: flex;
+  flex-direction: column;
+}
+.comment__body .comment__text-date {
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #888888;
+  margin-bottom: 10px;
+}
+.comment__body .comment__text-name {
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  color: #333333;
+  margin-bottom: 10px;
+}
+.comment__body .comment__text-comment {
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #333333;
+}
+.comment__body .comment__rating-box {
+  width: 100px;
+}
+.comment__body .comment__rating-box span {
+  padding: 0;
+}
+.comment__body .comment__rating-box span svg {
+  width: 20px;
+  height: 20px;
+  color: #547147;
+}
+
+.comments__delete {
+  display: flex;
+  justify-content: right;
+  align-items: end;
+}
+.comments__delete button {
+  height: 35px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.comments__delete button img {
+  height: 30px;
+  width: 30px;
+}/*# sourceMappingURL=commetnsManagement.css.map */

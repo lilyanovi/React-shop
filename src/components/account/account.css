@@ -1,0 +1,66 @@
+.account {
+  margin: 76px auto 95px;
+}
+.account h1 {
+  text-align: center;
+}
+.account__box {
+  margin-top: 53px;
+  display: flex;
+  justify-content: space-between;
+}
+.account__sideBar {
+  max-width: 382px;
+  width: 100%;
+  border: 1px solid #547147;
+  -webkit-backdrop-filter: blur(25px);
+          backdrop-filter: blur(25px);
+  border-radius: 20px;
+}
+.account__sideBar-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 304px;
+  width: 100%;
+  margin: 107px auto 121px;
+}
+.account__sideBar-wrapper-link {
+  width: 100%;
+  background: #547147;
+  border: 1px solid #547147;
+  -webkit-backdrop-filter: blur(25px);
+          backdrop-filter: blur(25px);
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #FFFFFF;
+  height: 60px;
+  margin-bottom: 40px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.account__sideBar-wrapper-link:hover {
+  color: #547147;
+  background-color: #FFFFFF;
+  border: 1px solid #547147;
+}
+.account__sideBar-btn-exit {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  color: #888888;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.active {
+  color: #547147;
+  background: #FFFFFF;
+}/*# sourceMappingURL=account.css.map */

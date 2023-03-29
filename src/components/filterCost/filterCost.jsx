@@ -46,21 +46,21 @@ export function FilterCost(props) {
                                     checked={value === '1' ? true : false}
                                     onChange={sortImpressions}
                                 />
-                                <span> Сначала дешевые </span>
+                                <span className='prefix'> Сначала дешевые </span>
                             </label>
                             <label htmlFor="radioUp" >
                                 <input id="radioUp" type="radio" className='radio' name="radio" value="2"
                                     checked={value === '2' ? true : false}
                                     onChange={sortImpressions} />
-                                <span> Сначала догорие </span>
+                                <span className='prefix'> Сначала догорие </span>
                             </label>
                         </div>
                         <div className='inputsBox'>
-                            <span > от </span>
+                            <span className='prefix'> от </span>
                             <input type="number" step={100} id='minCost' min="0" value={min} onChange={changeMin} className='inputFilter min' />
                             <span className='prefix'> до </span>
                             <input type="number" step={100} id='maxCost' min="0" value={max} onChange={changeMax} className='inputFilter max' />
-                            <span > &emsp;  &ensp;</span><button onClick={() => props.watchChange(min, max, value)} className='submit' >Применить</button>
+                            <span className='prefix'> &emsp;  &ensp;</span><button onClick={() => props.watchChange(min, max, value)} className='submit' >Применить</button>
                             <span className='prefix'> &emsp; &ensp;</span>  <button onClick={resetFilter} className='submit' >Сбросить</button>
                         </div>
                     </div>
