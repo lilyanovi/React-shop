@@ -17,6 +17,7 @@ const CommentUser = () => {
   const card = useSelector(store => store.card.name)
   const { id } = useAuth()
   const idComment = nanoid()
+  const [showMyComments, setShowMyComments] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -33,15 +34,20 @@ const CommentUser = () => {
         name,
         rating,
         comment,
-        card
+        card,
+        date: new Date().toLocaleDateString()
       }
     }
     dispatch(addAuthComment(commentObj)) // добавляет комментарий в стор user, в свойство comments
-    editUserComment(id, name, rating, comment, card )
+    editUserComment(id, name, rating, comment, card, new Date().toLocaleDateString() )
     setRating(0)
     setComment('')
     setName('')
     dispatch(selectCard({}))
+  }
+
+  const handleShowComments = () => {
+    setShowMyComments(!showMyComments)
   }
 
   return (
@@ -78,9 +84,9 @@ const CommentUser = () => {
           </div>
         </div>
         <button className="commentUser__btn-save" onClick={handleSend}>Отправить</button>
-        <button className="commentUser__btn-myComments">Мои отзывы</button>
+        <button className="commentUser__btn-myComments" onClick={handleShowComments}>Мои отзывы</button>
       </div>
-      <MyCommetns/>
+      { showMyComments && <MyCommetns/> }
     </div>
   )
 }

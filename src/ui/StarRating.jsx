@@ -1,25 +1,26 @@
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
 
-const StarRating = ({ rating, selectRating }) => {
-  const numbers = [1, 2, 3, 4, 5]
+export default function StarRating({ rating, selectRating }) {
 
-  const handleClick = value => {
+  const setRating = value => {
     selectRating(value)
   }
 
   return (
-    <div>
-      {
-        numbers.map(star => (
-          <i
-            className={star <= rating ? 'fas fa-star stars stars-active' : 'fas fa-star stars'}
-            key={star}
-            data-num={star}
-            onClick={() => handleClick(star)}
-          ></i>
-        ))
-      }
-    </div>
+    <Box
+      sx={{
+        '& > legend': { mt: 2 },
+      }}
+    >
+      <Rating name="size-large" size="large"
+        // name="simple-controlled"
+        value={rating}
+        onChange={(event, newValue) => {
+          setRating(newValue);
+        }}
+      />
+    </Box>
   );
 }
-
-export default StarRating
