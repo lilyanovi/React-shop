@@ -1,0 +1,89 @@
+.personalData {
+  max-width: 860px;
+  width: 100%;
+  border: 1px solid #547147;
+  -webkit-backdrop-filter: blur(25px);
+          backdrop-filter: blur(25px);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.personalData__top {
+  max-width: 766px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 33px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  border-bottom: 1px solid #547147;
+}
+.personalData__wrapper {
+  margin-top: 50px;
+}
+.personalData__input-item {
+  width: 465px;
+  margin: 0 auto 36px;
+  display: flex;
+  align-items: center;
+}
+.personalData__input-item span {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: #547147;
+  width: 56px;
+}
+.personalData__input-item p, .personalData__input-item input {
+  border: 1px solid #C2C2C2;
+  border-radius: 10px;
+  width: 315px;
+  height: 48px;
+  margin: 0 23px 0 64px;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+}
+.personalData__input-item button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.personalData__btn-save {
+  width: 214px;
+  margin: 20px auto 55px;
+  height: 54px;
+  border: none;
+  background: #547147;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+.personalData__btn-save:hover {
+  color: #547147;
+  background-color: #FFFFFF;
+  border: 1px solid #547147;
+}
+.personalData__error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 16px;
+  max-width: 600px;
+  min-height: 84px;
+  outline: 2px solid #4285F4;
+  border-radius: 10px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  color: #4285F4;
+}
+.personalData__loader {
+  margin: 0 auto;
+}/*# sourceMappingURL=personalData.css.map */

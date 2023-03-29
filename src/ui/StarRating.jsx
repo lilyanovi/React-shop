@@ -10,26 +10,28 @@ const StyledBox = styled(Box)({
   },
 });
 
-export default function StarRating({ rating, selectRating }) {
+const StarRating = ({ rating, selectRating }) => {
+  const numbers = [1, 2, 3, 4, 5]
 
-  const setRating = value => {
+  const handleClick = value => {
     selectRating(value)
   }
 
   return (
-    <StyledBox
+    <Box
       sx={{
         '& > legend': { mt: 2 },
       }}
     >
-      <Rating 
-        name="size-large"
+      <Rating name="size-large" size="large"
         // name="simple-controlled"
         value={rating}
         onChange={(event, newValue) => {
           setRating(newValue);
         }}
       />
-    </StyledBox>
+    </Box>
   );
 }
+
+export default StarRating

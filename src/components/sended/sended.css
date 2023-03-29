@@ -1,0 +1,76 @@
+.sended {
+  position: relative;
+  background: #fff;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 530px;
+}
+.sended img {
+  margin-top: 112px;
+}
+.sended__text {
+  margin-top: 40px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-size: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #333333;
+}
+.sended__text-normal {
+  font-weight: 400px;
+}
+.sended__text-bold {
+  font-weight: bold;
+}
+.sended__info {
+  margin-top: 35px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #333333;
+}
+.sended__logo {
+  margin-bottom: 15px;
+}
+.sended button {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.sended button img {
+  margin: 0;
+}
+
+@media (min-width: 300px) and (max-width: 800px) {
+  .sended {
+    max-width: 325px;
+    max-height: 485px;
+  }
+  .sended img {
+    margin-top: 80px;
+  }
+  .sended__text {
+    margin-top: 40px;
+    font-size: 24px;
+    line-height: 26px;
+  }
+  .sended__info {
+    margin-top: 20px;
+    text-align: center;
+    width: 220px;
+  }
+  .sended__logo {
+    margin-top: 70px;
+  }
+}/*# sourceMappingURL=sended.css.map */

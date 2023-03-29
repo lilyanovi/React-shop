@@ -1,0 +1,104 @@
+.questionModalWindow__background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.questionModalWindow__modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding-bottom: 100px;
+  padding-top: 120px;
+  width: 530px;
+  height: 400px;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.questionModalWindow__blockText {
+  text-align: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 30px;
+  color: #333333;
+  font-family: "Montserrat";
+  margin-bottom: 50px;
+}
+
+.questionModalWindow__text {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.questionModalWindow__boldText {
+  font-weight: bold;
+  margin: 0;
+}
+
+.questionModalWindow__button_container {
+  display: flex;
+  justify-content: space-between;
+  width: 460px;
+}
+
+.questionModalWindow__button {
+  font-family: "Montserrat";
+  width: 200px;
+  height: 56px;
+  border-radius: 40px;
+  color: #FFFFFF;
+  background-color: #547147;
+  text-align: center;
+  padding-top: 16px;
+  box-sizing: border-box;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  transition: all 0.5s;
+  border: 1px solid #547147;
+}
+
+.questionModalWindow__button:hover {
+  cursor: pointer;
+  background-color: #FFFFFF;
+  color: #547147;
+  border: 1px solid #547147;
+}
+
+@media (min-width: 300px) and (max-width: 800px) {
+  .questionModalWindow__modal {
+    max-width: 325px;
+    max-height: 300px;
+    padding-top: 70px;
+  }
+  .questionModalWindow__blockText {
+    margin-bottom: 40px;
+    font-size: 18px;
+    line-height: 20px;
+  }
+  .questionModalWindow__button_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .questionModalWindow__button {
+    width: 295px;
+    height: 40px;
+    padding: 7px 0;
+  }
+}/*# sourceMappingURL=QuestionModalWindow.css.map */
