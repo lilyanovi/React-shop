@@ -1,20 +1,21 @@
 import './commentUser.scss'
 import  StarRating from '../../ui/StarRating'
 import SelectImpression from '../selectImpression/SelectImpression'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { addAuthComment } from '../../store/auth/action'
 import { selectCard } from '../../store/card/actions'
 import { editUserComment } from '../../services/firebase'
 import { useAuth } from '../../hooks/use-auth'
 import { nanoid } from 'nanoid'
+import { Rating } from '@mui/material'
 
 const CommentUser = () => {
   const [rating, setRating] = useState(0)
   const [name, setName] = useState('')
   const [comment, setComment] = useState('')
   const card = useSelector(store => store.card.name)
-  const {id, comments} = useAuth()
+  const {id} = useAuth()
   const idComment = nanoid()
 
   const dispatch = useDispatch()

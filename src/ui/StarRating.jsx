@@ -6,7 +6,7 @@ import { styled } from '@mui/system';
 const StyledBox = styled(Box)({
   '& .MuiRating-icon': {
     fontSize: '1.65rem',
-  
+    cursor: 'pointer',
   },
 });
 
@@ -16,15 +16,14 @@ export default function StarRating({ rating, selectRating }) {
     selectRating(value)
   }
 
-  
-
   return (
     <StyledBox
       sx={{
         '& > legend': { mt: 2 },
       }}
     >
-      <Rating name="size-large" size="large"
+      <Rating 
+        name="size-large"
         // name="simple-controlled"
         value={rating}
         onChange={(event, newValue) => {
