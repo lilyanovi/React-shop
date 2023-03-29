@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 5px;
 
   &__top {
     max-width: 766px;
@@ -96,4 +97,44 @@
   &__loader {
     margin: 0 auto;
   }
+}
+@media (max-width: 800px) {
+  .personalData{
+    &__top{
+      & h2{
+        font-size: 16px;
+        line-height: 21px;
+      }
+      & img{
+        width: 30px;
+      }
+    }
+    &__wrapper {
+        margin-top:30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        & span{
+          margin-bottom: 7px;
+          color: #547147;
+        }
+      }
+    &__input-item {
+      max-width: 465px;
+      min-width: 160px;
+      width: 100%;
+      & p{
+        margin: 0 12px;
+        width: 100%;
+        min-width: 160px;
+      }
+  }
+  &__btn-save {
+    width: 95%;
+    max-width: 280px;
+    margin: 20px auto 40px;
+    height: 48px;
+  }
+}
+
 }

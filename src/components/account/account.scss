@@ -17,7 +17,7 @@
     border: 1px solid #547147;
     backdrop-filter: blur(25px);
     border-radius: 20px;
-    height: 568px;
+    height: 100%;
 
     &-wrapper {
       display: flex;
@@ -25,9 +25,10 @@
       max-width: 304px;
       width: 100%;
       margin: 107px auto 121px;
+      padding: 0 8px;
 
       &-link {
-        width: 100%;
+        max-width: 100%;
         background: #547147;
         border: 1px solid #547147;
         backdrop-filter: blur(25px);
@@ -69,4 +70,37 @@
 .active {
   color: #547147;
   background: #FFFFFF;
+}
+@media (max-width: 500px) {
+  .account {
+    margin: 50px auto 60px;
+    
+    & h1 {
+    font-size:21px;
+    line-height:25px;
+    }
+    &__box {
+      margin-top: 35px;
+      flex-direction: column;
+      align-items:center;
+    }
+    &__sideBar {
+      display: none;
+    &-linkItem{
+      margin: 0;
+    }
+    }
+    .shellMenu{
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px ;
+      padding: 15px;
+      border-radius: 20px;
+      border: 1px solid #547147;
+      .item{
+      margin: 0 15px 0 0;
+      }
+    }
+  }
+  
 }

@@ -7,13 +7,15 @@ import QuestionModalWindow from '../questionModal/QuestionModalWindow'
 import CancelModalWindow from '../cancelModal/CancelModalWindow'
 import { useAuth } from '../../hooks/use-auth'
 
+import { useState } from 'react'
+
 const Account = () => {
   const auth = getAuth();
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const modalQuestion = useSelector(store => store.modal.modalQuestion.show)
   const modalDelete = useSelector(store => store.modal.modalDelete)
-  const {isAdmin} = useAuth()
+  const { isAdmin } = useAuth()
 
   if (isAdmin) {
     navigate('/admin')
@@ -79,17 +81,20 @@ const Account = () => {
               Оставить отзыв
             </NavLink>
             <button
-            className="account__sideBar-btn-exit"
-            onClick={(e) => handleLogOut(e)}
+              className="account__sideBar-btn-exit"
+              onClick={(e) => handleLogOut(e)}
             >
               Выйти
             </button>
           </div>
         </div>
-        <Outlet/>
+
+
+
+        <Outlet />
       </div>
-      { modalQuestion && <QuestionModalWindow/> }
-      { modalDelete && <CancelModalWindow/> }
+      {modalQuestion && <QuestionModalWindow />}
+      {modalDelete && <CancelModalWindow />}
     </div>
   )
 }
