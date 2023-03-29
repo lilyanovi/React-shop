@@ -10,6 +10,8 @@ const Comment = ({ comment, cardsComments, card, id, idComment }) => {
     const [rating, setRating] = useState(comment.rating)
     const [cards, setCards] = useState(cardsComments)
 
+    console.log('com', comment)
+
     useEffect(() => {
         const card1 = card
         const index = cards.findIndex(el => el.name === card1);
@@ -22,7 +24,7 @@ const Comment = ({ comment, cardsComments, card, id, idComment }) => {
         <div className='comment__container'>
             <div className='comment__body'>
                 <img
-                    src={cardIndex.img}
+                    src={cardIndex?.img}
                     alt={comment.card}
                 />
                 <div className='comment__text'>

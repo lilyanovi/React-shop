@@ -8,6 +8,13 @@
   flex-direction: column;
   align-items: center;
 
+  &__wrraper {
+    display: flex;
+    flex-direction: column;
+    max-width: 860px;
+    width: 100%;
+  }
+
   & h3 {
     margin-top: 30px;
     font-family: 'Montserrat';
@@ -22,7 +29,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 55px auto 22px;
+    margin: 55px auto 10px;
   }
 
   &__item {
@@ -63,8 +70,53 @@
       padding: 6px 12px;
     }
   }
+
+  &__btn-save {
+    width: 214px;
+    margin: 0 auto 20px;
+    height: 54px;
+    border: none;
+    background: #547147;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FFFFFF;
+    cursor: pointer;
+
+    &:hover {
+      color: #547147;
+      background-color: #FFFFFF;
+      border: 1px solid #547147;
+    }
+  }
+
+  &__btn-myComments {
+    margin: 25px auto 40px;
+    max-width: 468px;
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #547147;
+    border-radius: 10px;
+    height: 44px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #547147;
+  }
 }
 
 .comment-textarea {
   margin-top: 31px;
+}
+
+.stars {
+  color: #ccc;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.stars-active {
+  color: #547147;
 }

@@ -5,8 +5,6 @@ import axios from 'axios';
 import './commetnsManagement.scss'
 import { editUserCommentAdmin } from '../../../services/firebase'
 
-
-
 const CommentsManagementAdmin = () => {
 
   const [commentsId, setCommentsId] = useState([''])
