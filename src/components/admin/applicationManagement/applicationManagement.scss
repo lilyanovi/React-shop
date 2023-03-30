@@ -165,3 +165,23 @@
 .rose {
     background-color: #bc8f8f60;
 }
+
+.adminSelectStatus {
+    background: #fff;
+    color: #547147;
+
+    & option {
+        background: #fff;
+        color: #000;
+    }
+}
+
+.adminStatusCancel {
+    background: #E8E8E8;
+    color: red;
+}
+
+.adminStatusEnd {
+    background: #F6F1E4;
+    color: #547147;
+}
