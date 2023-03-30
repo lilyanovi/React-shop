@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 import { editUser } from '../../store/auth/action'
 import { editUserName, editUserEmail, editUserPhone } from '../../services/firebase'
 import Loader from '../../ui/Loader'
-import burgerPng from '../../assets/Burger.png'
+
 
 const PersonalData = () => {
   const { email, name, id, phone } = useAuth()
@@ -19,8 +19,6 @@ const PersonalData = () => {
   const [editEmail, setEditEmail] = useState(false)
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false)
-  const [mobile, setMobile] = useState(true)
-  const [menu, setMenu] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -53,17 +51,6 @@ const PersonalData = () => {
 
   return (
     <>
-      {mobile ?
-        <div className="shellMenu" onClick={() => setMenu(true)}>
-          <button
-            className="account__sideBar-wrapper-link item"
-            data-id="1"
-            to="/account"
-          >
-            Данные пользователя
-          </button>
-          <img src={burgerPng} alt="close img" />
-        </div> : <></>}
       <div className="personalData">
         <div className="personalData__top">
           <img src={imgPersonalArea} alt="img personal area" />
@@ -77,9 +64,9 @@ const PersonalData = () => {
           {errorMessage ?
             <div className="personalData__error" >{errorMessage}</div> : null
           }
-          {mobile ? <span>Имя</span> : <span></span>}
+          <span className="mobile">Имя</span>
           <div className="personalData__input-item">
-            {mobile ? <span></span> : <span>Имя</span>}
+            <span>Имя</span>
             {editName
               ? <input
                 id='name'
@@ -94,9 +81,9 @@ const PersonalData = () => {
               <img src={imgEdit} alt="edit" />
             </button>
           </div>
-          {mobile ? <span>Тел.</span> : <span></span>}
+          <span className="mobile">Тел.</span>
           <div className="personalData__input-item">
-            {mobile ? <span></span> : <span>Тел.</span>}
+            <span>Тел.</span>
             {editPhone
               ? <input
                 type="text"
@@ -110,9 +97,9 @@ const PersonalData = () => {
               <img src={imgEdit} alt="edit" />
             </button>
           </div>
-          {mobile ? <span>Email</span> : <span></span>}
+          <span className="mobile">Email</span>
           <div className="personalData__input-item">
-            {mobile ? <span></span> : <span>Email</span>}
+            <span>Email</span>
             {editEmail
               ? <input
                 type="text"

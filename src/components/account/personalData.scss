@@ -23,6 +23,7 @@
 
   &__wrapper {
     margin-top:50px;
+    
   }
 
   &__input-item {
@@ -32,12 +33,14 @@
     align-items: center;
 
     & span {
+      display: inline;
       font-weight: 500;
       font-size: 14px;
       line-height: 18px;
       color: #547147;
       width: 56px;
     }
+    
 
     & p,
     & input {
@@ -98,6 +101,12 @@
     margin: 0 auto;
   }
 }
+.shellMenu{
+  display: none;
+}
+.mobile{
+  display: none;
+}
 @media (max-width: 800px) {
   .personalData{
     &__top{
@@ -105,19 +114,13 @@
         font-size: 16px;
         line-height: 21px;
       }
-      & img{
-        width: 30px;
-      }
+      
     }
     &__wrapper {
         margin-top:30px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        & span{
-          margin-bottom: 7px;
-          color: #547147;
-        }
       }
     &__input-item {
       max-width: 465px;
@@ -136,5 +139,47 @@
     height: 48px;
   }
 }
-
 }
+@media(max-width:500px){
+  .shellMenu{
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px ;
+    padding: 15px;
+    border-radius: 20px;
+    border: 1px solid #547147;
+    .item{
+    margin: 0 15px 0 0;
+    }
+  }
+  .mobile{
+      margin-bottom: 7px;
+      color: #547147;
+      display: inline;
+  }
+  .personalData__wrapper{
+    width: 95%;
+  }
+  .personalData__input-item {
+  & span{
+    display: none;
+  }
+  & p{
+    width: 100%;
+  }
+}
+.personalData__top{
+ & h2 {
+  font-size: 16px;
+  line-height: 21px;
+} 
+& img{
+    width: 30px;
+}
+} 
+
+.personalData__btn-save{
+  margin: 0 auto 40px;
+}
+}
+
