@@ -11,6 +11,7 @@ $light-gray: #888888;
 .catalogImpressions {   
   max-width: 1401px;
   margin: 100px auto;
+
   .title {
     font-weight: 700;
     font-size: 40px;
@@ -117,9 +118,6 @@ $light-gray: #888888;
     background-color: $white;
   }
 }
-
-
-
 
 @media (max-width: 1200px) {
   .catalogCard {

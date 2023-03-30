@@ -10,15 +10,13 @@ const Comment = ({ comment, cardsComments, card, id, idComment }) => {
     const [rating, setRating] = useState(comment.rating)
     const [cards, setCards] = useState(cardsComments)
 
-    console.log('com', comment)
-
     useEffect(() => {
         const card1 = card
         const index = cards.findIndex(el => el.name === card1);
         setCardIndex(cards[index])
     }, [cardsComments])
 
-    const date = new Date(comment.date).toLocaleDateString()
+    const date = new Date(comment?.date).toLocaleDateString()
 
     return (
         <div className='comment__container'>
@@ -29,11 +27,11 @@ const Comment = ({ comment, cardsComments, card, id, idComment }) => {
                 />
                 <div className='comment__text'>
                     <p className='comment__text-date'>{date}</p>
-                    <p className='comment__text-name'>{comment.name}</p>
+                    <p className='comment__text-name'>{comment?.name}</p>
                     <Box className='comment__rating-box' sx={{ '& > legend': { mt: 2 }, }}>
-                        <Rating className='comment__rating' name="read-only" value={comment.rating} readOnly />
+                        <Rating className='comment__rating' name="read-only" value={comment?.rating} readOnly />
                     </Box>
-                    <p className='comment__text-comment'>{comment.comment}</p>
+                    <p className='comment__text-comment'>{comment?.comment}</p>
                 </div>
             </div>
             <div className='comments__delete'>

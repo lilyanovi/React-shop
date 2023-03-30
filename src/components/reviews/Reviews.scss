@@ -91,7 +91,7 @@
         margin-right: 30px;
     }    
     .review__body {
-        margin: 0 50px;
+        margin: 0 70px;
     } 
 }
 
@@ -112,10 +112,6 @@
 }
 
 @media (max-width: 660px) {
-    .reviews {
-        font-family: 'Montserrat';
-    }
-    
     .reviews__header {
         font-size: 21px;
         line-height: 25px;
