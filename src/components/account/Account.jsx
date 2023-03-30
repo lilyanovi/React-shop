@@ -81,7 +81,6 @@ const Account = () => {
                 to="/account"
                 onClick={() => {
                   setButton("Данные пользователя");
-                  setMenu(!menu)
                 }
                 }
               >
@@ -93,7 +92,6 @@ const Account = () => {
                 to="completed"
                 onClick={() => {
                   setButton("Оформленные заявки");
-                  setMenu(!menu)
                 }
                 }
               >
@@ -105,7 +103,6 @@ const Account = () => {
                 to="managment"
                 onClick={() => {
                   setButton("Управление подпиской");
-                  setMenu(!menu)
                 }
                 }
               >
@@ -117,7 +114,6 @@ const Account = () => {
                 to="comment"
                 onClick={() => {
                   setButton("Оставить отзыв");
-                  setMenu(!menu)
                 }
                 }
               >
