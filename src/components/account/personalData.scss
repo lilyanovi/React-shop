@@ -131,6 +131,10 @@
         width: 100%;
         min-width: 160px;
       }
+      & input{
+        width: 100%;
+        margin: 0 12px;
+      }
   }
   &__btn-save {
     width: 95%;
@@ -166,6 +170,10 @@
   }
   & p{
     width: 100%;
+  }
+  & input{
+    width: 100%;
+    margin: 0 12px;
   }
 }
 .personalData__top{
