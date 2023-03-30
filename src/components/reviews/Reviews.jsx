@@ -41,6 +41,7 @@ const Reviews = () => {
                 navigation={true}
                 spaceBetween={50}
                 slidesPerView={1}
+                autoHeight={true}
                 autoplay={{
                     delay: 5000,
                     disableOnInteraction: false,
