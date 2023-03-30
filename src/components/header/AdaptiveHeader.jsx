@@ -1,18 +1,26 @@
 import imgLogo from '../../assets/logo.png'
 import adaptiveSearchImg from '../../assets/adaptiveSearch.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/use-auth'
 import menuImg from '../../assets/circleMenu.png'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import closeImg from '../../assets/closeWhite.png'
 import personalAreaMenu from '../../assets/personalAreaMenu.png'
 import insta from '../../assets/footer/insta.png'
 import vk from '../../assets/footer/vk.png'
+import { useDispatch, useSelector } from 'react-redux'
+import { pushText } from '../../store/filterName/actions'
+import { Modal } from '../modal/modal'
+import { Application } from '../application/application'
+import { openModal } from '../../store/modal/actions'
 
 const AdaptiveHeader = () => {
   const { isAuth } = useAuth()
   const [search, setSearch] = useState(false)
   const [menu, setMenu] = useState(false)
+  const modalShow = useSelector(store => store.modal.modalShow)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const handleOpenSearch = () => {
     setSearch(true)
@@ -30,11 +38,30 @@ const AdaptiveHeader = () => {
     setMenu(false)
   }
 
+  const handleSearch = useCallback((event) => {
+    if (event.target.value !== '') {
+      navigate('/catalog')
+      dispatch(pushText(event.target.value))
+    } else {
+      dispatch(pushText(event.target.value))
+    }
+  }, [dispatch])
+
+  const handleOpenModal = (event) => {
+    event.stopPropagation()
+    dispatch(openModal(true))
+  }
+
   return (
     <>
       {/* блок поиска */}
       <div className={search ? "adaptiveHeader__search-show" : "adaptiveHeader__search"}>
-        <input type="search" placeholder="Поиск"/>
+        <input
+          type="search"
+          placeholder="Поиск"
+          onChange={handleSearch}
+          onFocus={handleSearch}
+        />
         <button onClick={handleCloseSearch}>
           <img src={closeImg} alt="close img" />
         </button>
@@ -85,7 +112,7 @@ const AdaptiveHeader = () => {
           <div className="adaptiveHeader__menu-show-question">
               <h3>Остались вопросы?</h3>
               <p>Оставьте заявку, мы свяжемся с Вами в ближайшее время</p>
-              <button>Оставить заявку</button>
+              <button onClick={(event) => handleOpenModal(event)}>Оставить заявку</button>
             </div>
         </div>
         <div className="adaptiveHeader__menu-show-bot">
@@ -102,6 +129,11 @@ const AdaptiveHeader = () => {
           </div>
           <img className="adaptiveHeader__menu-show-logo" src={imgLogo} alt="img logo"/>
         </div>
+        { modalShow &&
+          <Modal>
+            <Application/>
+          </Modal>
+        }
       </div>
     </>
   )

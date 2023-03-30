@@ -2,6 +2,7 @@ import { getApplicationList, writeUserApplicationStatus, writeApplicationStatusA
 import { useState, useEffect } from 'react'
 import './applicationManagement.scss'
 import Pagination from '../../../components/pagination/Pagination';
+import AdminSelectStatus from '../../../ui/AdminSelectStatus'
 
 const ApplicationManagementAdmin = () => {
   const [list, setList] = useState({})
@@ -135,7 +136,10 @@ const ApplicationManagementAdmin = () => {
             </div>
             <div className="applicationManagmentAdmin__item_iner">
               <div className="applicationManagmentAdmin__item_iner-title">Статус</div>
-              <div className="applicationManagmentAdmin__item_iner-key">{list[key].status?.status}</div>
+              {/* <div className="applicationManagmentAdmin__item_iner-key">{list[key].status?.status}</div> */}
+              <div className="applicationManagmentAdmin__item_iner-key">
+                <AdminSelectStatus status={list[key].status?.status} propsKey={key} id={list[key].userId}/>
+              </div>
             </div>
             <div className="applicationManagmentAdmin__item_iner">
               <div className="applicationManagmentAdmin__item_iner-title borderRight">Комментарий</div>
