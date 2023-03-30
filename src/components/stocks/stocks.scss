@@ -1,5 +1,4 @@
 .stocks {
-
     & h1 {
         font-weight: 700;
         font-size: 40px;
@@ -8,7 +7,6 @@
         text-transform: uppercase;
         color: #333333;
         padding-top: 40px;
-
     }
 
     .stockSlider {
@@ -108,6 +106,7 @@
         }
     }
 }
+
 
 @media only screen and (max-width: 620px) {
     .stocks {
