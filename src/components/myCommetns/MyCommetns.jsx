@@ -17,10 +17,11 @@ const MyCommetns = () => {
     dispatch(deleteAuthComment(key))
   }
 
+  console.log(comments)
   return (
     <div className="myComments">
       <h3>Мои отзывы</h3>
-      { comments ?  
+      { (Object.keys(comments).length !== 0) ?  
         <div className="myComments__list">
           {
             Object.keys(comments).map(key => (
@@ -48,7 +49,7 @@ const MyCommetns = () => {
             ))
           }
         </div>
-      : 'Нет отзывов' }
+      : <p className="myComments__no" >Нет отзывов</p> }
     </div>
   )
 }
