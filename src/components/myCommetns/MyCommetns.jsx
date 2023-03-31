@@ -5,20 +5,16 @@ import deleteImg from '../../assets/delete_1.png'
 import './myComments.scss'
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
+import { useDispatch } from 'react-redux'
+import { deleteAuthComment } from '../../store/auth/action'
 
 const MyCommetns = () => {
-  const [comments, setComments] = useState({})
-  const { id } = useAuth()
-
-  useEffect(() => {
-    getCommitsUserList(id)
-      .then(data => {
-        setComments(data)
-      })
-  }, [])
+  const { id, comments } = useAuth()
+  const dispatch = useDispatch()
 
   const handleDeleteComment = key => {
     editUserCommentAccount(id, key)
+    dispatch(deleteAuthComment(key))
   }
 
   return (
