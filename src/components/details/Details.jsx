@@ -45,7 +45,7 @@ const Details = ({ card }) => {
         <>
 
             <div className={style.details} key={card.id}>
-                <div class={style.details__closebtn} onClick={handleCloseModal}></div>
+                <div className={style.details__closebtn} onClick={handleCloseModal}></div>
                 <h2 className={style.details__body_title} >
                     {card.name.toUpperCase()}
                 </h2>

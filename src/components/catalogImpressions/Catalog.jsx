@@ -25,8 +25,8 @@ const Catalog = () => {
 
 
   async function fetchCards() {
-    const cards = await axios.get('https://kaori318.github.io/site/cards.json')
-    // const cards = await axios.get('https://kaori318.github.io/site/test.json')
+    // const cards = await axios.get('https://kaori318.github.io/site/cards.json')
+    const cards = await axios.get('https://kaori318.github.io/site/test.json')
     setCards(cards.data)
     setFiltredCards(cards.data)
   }
