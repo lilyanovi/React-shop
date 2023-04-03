@@ -1,5 +1,4 @@
-import { getCommitsUserList, editUserCommentAccount } from '../../services/firebase'
-import { useState, useEffect } from 'react'
+import { editUserCommentAccount } from '../../services/firebase'
 import { useAuth } from '../../hooks/use-auth'
 import deleteImg from '../../assets/delete_1.png'
 import './myComments.scss'
