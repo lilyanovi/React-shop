@@ -38,7 +38,7 @@ const LoginPage = () => {
             phone: dataUser.phone?.phone || null,
             applications: dataUser?.applications || {},
             subscribe: dataUser.subscribe?.subscribe || null,
-            comments: dataUser?.comments || {},
+            comments: dataUser.comments?.comments || {},
               
           }));
           if (rememberMe === true) {

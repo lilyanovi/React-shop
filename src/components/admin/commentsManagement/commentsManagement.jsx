@@ -28,13 +28,6 @@ const CommentsManagementAdmin = () => {
 
   const deleteComment = (idComment) => {
     editUserCommentAdmin(idComment)
-    const commentsNew = comments.slice(0)
-    const commentsIdNew = commentsId.slice(0)
-    const idDelete = commentsId.indexOf(idComment)
-    commentsIdNew.splice(idDelete, 1)
-    commentsNew.splice(idDelete, 1)
-    setComments(commentsNew)
-    setCommentsId(commentsIdNew)
   }
 
   async function fetchCards() {
