@@ -92,7 +92,27 @@
     cursor: pointer;
   }
   &__no {
-    margin-top: 10px;
+    margin-top: 3px;
+    width: 100%;
+    padding: 50px 5px;
+    background: #FFFFFF;
+    border: 1px solid #547147;
+    backdrop-filter: blur(25px);
+    text-align: center;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    color: #547147;
+    border-radius: 15px;
+
+    &__text {
+      margin-top: 10px;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 20px;
+    }
   }
 }
 
@@ -110,6 +130,16 @@
         margin-top: 10px;
         padding-left: 0;
 
+      }
+    }
+    &__no {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 18px;
+  
+      &__text {
+        font-size: 14px;
+        line-height: 16px;
       }
     }
 
