@@ -1,4 +1,4 @@
-import { getSubscribeList } from '../../../services/firebase'
+import { getSubscribeList, deliteInSubscribeList, writeUserSubscribe  } from '../../../services/firebase'
 import { useState, useEffect } from 'react'
 import './subscriptionManagementAdmin.scss'
 
@@ -13,6 +13,13 @@ useEffect(() => {
       })
   }, [])
  
+  const deleteSubscribe = (key) => {
+    deliteInSubscribeList(key)
+    writeUserSubscribe(key, false)
+    const newList = {...list}
+    delete newList[key]
+    setList(newList)
+  }
     return (
       <>
         <div className="subscription-contain">
@@ -30,7 +37,7 @@ useEffect(() => {
             <div className="box-status">
               <div className="box-status__title"></div>
               <div className="box-status__button">
-                <button className="box-status__button_del">Удалить</button>
+                <button className="box-status__button_del" onClick={() => deleteSubscribe(key)}>Удалить</button>
               </div>
             </div>
             </div>
