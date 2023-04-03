@@ -76,7 +76,7 @@ export const userReducer = (state = initialState, action) => {
                 ...state,
                 comments: newComments
             }
-    
+        
         case types.DELETE_AUTH_COMMENT:
             const newCommentsList = {...comments}
             delete newCommentsList[payload]

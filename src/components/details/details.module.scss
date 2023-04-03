@@ -6,11 +6,61 @@
     margin-left: -17px;
     padding: 90px 40px 40px;
     min-height: 800px;
+    position: relative;
+
+    &__closebtn {
+        position: absolute;
+        top: -15px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+        z-index: 1;
+        margin: 20px auto;
+        cursor: pointer;
+    }
+
+    &__closebtn:before {
+        content: '+';
+        color: #547147;
+        position: absolute;
+        z-index: 2;
+        transform: rotate(45deg);
+        font-size: 50px;
+        line-height: 1;
+        top: -5px;
+        left: 6px;
+        transition: all 0.3s cubic-bezier(0.77, 0, 0.2, 0.85);
+    }
+
+    &__closebtn:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        background: #547147;
+        z-index: 1;
+        transition: all 0.3s cubic-bezier(0.77, 0, 0.2, 0.85);
+        transform: scale(0.01);
+    }
+
+    &__closebtn:hover:after {
+        transform: scale(0.8);
+    }
+
+    &__closebtn:hover:before {
+        transform: scale(0.8) rotate(45deg);
+        color: #fff;
+    }
 }
 
 .details__images {
     margin-right: 40px;
     float: left;
+
     &_img {
         border-radius: 20px;
         margin-bottom: 30px;
@@ -18,14 +68,17 @@
         height: 450px;
         object-fit: cover;
     }
+
     .flex_row {
         display: flex;
         justify-content: space-between;
     }
+
     &_mini {
         display: flex;
         justify-content: space-between;
     }
+
     &_img_mini {
         width: 130px;
         height: 130px;
@@ -39,6 +92,7 @@
 
 .details__body {
     margin-top: 80px;
+
     &_title {
         font-family: 'Montserrat';
         font-weight: 700;
@@ -47,9 +101,11 @@
         color: #333333;
         float: right;
         width: 700px;
-        margin-right: calc(100% - 1190px);   
+        margin-right: calc(100% - 1190px);
     }
-    h3 { //Подробнее о впечатлении
+
+    h3 {
+        //Подробнее о впечатлении
         font-family: 'Montserrat';
         font-weight: 600;
         font-size: 20px;
@@ -57,15 +113,18 @@
         color: #333333;
         margin-bottom: 20px;
     }
+
     .details__description {
         font-family: 'Montserrat';
         font-weight: 400;
         font-size: 16px;
         line-height: 20px;
         color: #333333;
+
         .details__text {
             height: 440px;
             overflow: auto;
+
             p {
                 margin-bottom: 10px;
             }
@@ -76,6 +135,7 @@
 .details__body_info {
     align-items: center;
     display: flex;
+
     .details__price {
         font-family: 'Montserrat';
         font-style: normal;
@@ -85,6 +145,7 @@
         color: #333333;
         margin-right: 50px;
     }
+
     .details__selection {
         padding: 10px 20px;
         background: #E8E8E8;
@@ -98,6 +159,7 @@
     border-radius: 40px;
     height: 40px;
     width: 140px;
+
     &:hover,
     &:active {
         border: none;
@@ -131,6 +193,7 @@
     font-size: 20px;
     line-height: 24px;
     margin: 30px 0 40px;
+
     &:hover,
     &:active {
         color: #547147;
@@ -147,35 +210,43 @@
     }
 }
 
-@media (max-width: 1150px) { 
+@media (max-width: 1150px) {
     .details__images {
         margin-right: 80px;
+
         &_img {
             margin-bottom: 15px;
             width: 295px;
             height: 295px;
         }
+
         &_img_mini {
             width: 89px;
             height: 89px;
         }
-    }   
+    }
+
     .details__body {
         margin-top: 100px;
+
         &_title {
             max-width: 500px;
-            margin-right: calc(100% - 875px);   
+            margin-right: calc(100% - 875px);
         }
     }
-    .details__btn{
+
+    .details__btn {
         margin-top: 30px;
     }
+
     .details__description {
         width: 100%;
         margin-top: 130px;
+
         .details__text {
             max-height: 300px;
             overflow: auto;
+
             p {
                 margin-bottom: 10px;
             }
@@ -187,28 +258,35 @@
     .details {
         padding: 35px 10px 20px;
     }
+
     .details__images {
         margin-right: 40px;
     }
+
     .details__body {
         margin-top: 70px;
+
         &_title {
             font-size: 24px;
             line-height: 28px;
-            margin-bottom:  0;
+            margin-bottom: 0;
             margin-right: calc(100% - 645px);
-            width: 310px;   
+            width: 310px;
         }
-        h3 { 
+
+        h3 {
             font-size: 14px;
             line-height: 18px;
             margin-bottom: 15px;
         }
+
         .details__description {
             margin: 170px 10px 0;
+
             .details__text {
                 max-height: 250px;
                 overflow: auto;
+
                 p {
                     margin-bottom: 10px;
                     font-size: 12px;
@@ -217,11 +295,13 @@
             }
         }
     }
+
     .details__body_info {
         display: flex;
         flex-wrap: wrap;
         max-width: 150px;
         margin-bottom: 30px;
+
         .details__price {
             font-size: 30px;
             line-height: 34px;
@@ -229,6 +309,7 @@
             margin-bottom: 30px;
         }
     }
+
     .details__btn {
         padding: 11px 22px;
         font-size: 14px;
@@ -243,10 +324,12 @@
         flex-wrap: wrap;
         height: calc(100vh - 40px);
         margin: 10px;
-        width: calc(100vw - 40px);;
+        width: calc(100vw - 40px);
+        ;
     }
+
     .details__images {
-        margin:0;
+        margin: 0;
         padding-left: calc((100vw - 60px - 295px)/2);
         padding-right: calc((100vw - 40px - 295px)/2);
         float: none;
@@ -254,35 +337,42 @@
         display: flex;
         flex-wrap: wrap;
         width: calc(100vw - 40px);
+
         &_img_mini {
             border-radius: 10px;
-            &:nth-child(3n-1){
-                margin-left:14px;
-                margin-right:14px;
+
+            &:nth-child(3n-1) {
+                margin-left: 14px;
+                margin-right: 14px;
             }
         }
     }
+
     .details__body {
         margin: 20px 0 0;
+
         &_title {
             float: none;
             margin: 0 0 10px;
             text-align: center;
             width: calc(100vw - 40px);
-            max-width: none;  
+            max-width: none;
         }
-        h3 { 
+
+        h3 {
             margin-bottom: 20px;
         }
+
         .details__description {
             margin: 10px;
+
             .details__text {
                 max-height: 150px;
                 overflow: auto;
             }
         }
     }
-    
+
     .details__body_info {
         align-items: center;
         display: flex;
@@ -290,11 +380,12 @@
         max-width: 295px;
         flex-wrap: nowrap;
         margin: 0 auto;
+
         .details__price {
             margin: 0;
         }
     }
-    
+
     .details__btn {
         margin: 15px auto;
         align-items: center;

@@ -1,5 +1,4 @@
-import { getCommitsUserList, editUserCommentAccount } from '../../services/firebase'
-import { useState, useEffect } from 'react'
+import { editUserCommentAccount } from '../../services/firebase'
 import { useAuth } from '../../hooks/use-auth'
 import deleteImg from '../../assets/delete_1.png'
 import './myComments.scss'
@@ -17,7 +16,6 @@ const MyCommetns = () => {
     dispatch(deleteAuthComment(key))
   }
 
-  console.log(comments)
   return (
     <div className="myComments">
       <h3>Мои отзывы</h3>
@@ -49,7 +47,11 @@ const MyCommetns = () => {
             ))
           }
         </div>
-      : <p className="myComments__no" >Нет отзывов</p> }
+      : 
+      <div className="myComments__no" >
+        <p className="myComments__no__title" >У&nbsp;вас ещё нет отзывов(</p>
+        <p className="myComments__no__text" >Оставьте свой первый отзыв!</p> 
+      </div>}
     </div>
   )
 }

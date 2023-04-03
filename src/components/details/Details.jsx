@@ -30,66 +30,72 @@ const Details = ({ card }) => {
         dispatch(closeModalDetail(false))
     };
 
-    
+
     const handleClick = (index) => {
         const wordSlider = card.imgs[index];
         setWordData(wordSlider)
     }
 
+
+    const handleCloseModal = () => {
+        dispatch(closeModalDetail(false))
+    }
+
     return (
-    <>
-       
-        <div className={style.details} key={card.id}>
-        <h2 className={style.details__body_title} >
-            {card.name.toUpperCase()}
-         </h2>
-            <div className={style.details__images}>
-                <img className={style.details__images_img} src={wordData.value} alt="img" />
-                <div className={style.flex_row}>
-                    {card.imgs.map((data, i) =>
-                        <img key={i}
-                        className={style.details__images_img_mini}
-                        src={data.value} alt="img"
-                        onClick={() => handleClick(i)}/>
-                    )}
+        <>
+
+            <div className={style.details} key={card.id}>
+                <div class={style.details__closebtn} onClick={handleCloseModal}></div>
+                <h2 className={style.details__body_title} >
+                    {card.name.toUpperCase()}
+                </h2>
+                <div className={style.details__images}>
+                    <img className={style.details__images_img} src={wordData.value} alt="img" />
+                    <div className={style.flex_row}>
+                        {card.imgs.map((data, i) =>
+                            <img key={i}
+                                className={style.details__images_img_mini}
+                                src={data.value} alt="img"
+                                onClick={() => handleClick(i)} />
+                        )}
+                    </div>
                 </div>
-            </div>
-       
-            <div className={style.details__body}>
-                <div className={style.details__body_info}>
-                    <h1 className={style.details__price} >
-                    {selectedMesurement} ₽
-                    </h1>
-                    {prices.length>1
-                        ?<div className={style.dropdownList}>
-                            <select className={style.dropdownListItem}
-                                value={selectedMesurement}
-                                onChange={e =>setSelectedMesurement(e.target.value)}
-                            >
-                                {prices.map(p => <option key={p.id} value={p.price}>{p.mesurement}</option>)}
-                            </select>
+
+                <div className={style.details__body}>
+                    <div className={style.details__body_info}>
+                        <h1 className={style.details__price} >
+                            {selectedMesurement} ₽
+                        </h1>
+                        {prices.length > 1
+                            ? <div className={style.dropdownList}>
+                                <select className={style.dropdownListItem}
+                                    value={selectedMesurement}
+                                    onChange={e => setSelectedMesurement(e.target.value)}
+                                >
+                                    {prices.map(p => <option key={p.id} value={p.price}>{p.mesurement}</option>)}
+                                </select>
+                            </div>
+                            : <p style={{ visibility: 'hidden' }}></p>
+                        }
+                    </div>
+                    <button className={style.details__btn} onClick={(event) => handleOpenModal(event)}>
+                        Заказать впечатление
+                    </button>
+                    <div className={style.details__description}>
+                        <h3>Подробнее о впечатлении: </h3>
+                        <div className={style.details__text}>
+                            {card.desc.map((desc, index) => <p key={index}>{desc}</p>)}
                         </div>
-                        : <p style={{visibility: 'hidden'}}></p>
-                    }   
-                </div>
-                <button className={style.details__btn} onClick={(event) => handleOpenModal(event)}>
-                    Заказать впечатление
-                </button>
-                <div className={style.details__description}>
-                    <h3>Подробнее о впечатлении: </h3>
-                    <div className={style.details__text}>
-                        {card.desc.map((desc, index) => <p key={index}>{desc}</p>)}
                     </div>
                 </div>
             </div>
-        </div>
-        {
-        modalShow &&
-        <Modal>
-            <Application />
-        </Modal>
-        }
-    </>
+            {
+                modalShow &&
+                <Modal>
+                    <Application />
+                </Modal>
+            }
+        </>
     )
 }
 

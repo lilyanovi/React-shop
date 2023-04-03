@@ -28,6 +28,7 @@ export function Application() {
     const userPhone = useSelector(store => store.user.phone)
     const userEmail = useSelector(store => store.user.email)
 
+
     const getDate = () => {
         const currentDate = new Date()
         let day = currentDate.getDate()
@@ -43,6 +44,10 @@ export function Application() {
     }
 
     const dispatch = useDispatch()
+
+    const handleCloseModal = () => {
+        dispatch(closeModal(false))
+    }
 
     const codeDuplication = () => {
         setName('')
@@ -77,7 +82,7 @@ export function Application() {
                 let applicationObj = {
                     [idApplication]: {
                         card,
-                        status: {status: 'В обработке'},
+                        status: { status: 'В обработке' },
                         date: getDate()
                     }
                 }
@@ -124,8 +129,9 @@ export function Application() {
     return (
         <>
             <form className='application' onSubmit={(event) => handleSubmit(event)}>
+                <div class="application-closebtn" onClick={handleCloseModal}></div>
                 <div className='application__head'>
-                    <h2 className='application__head__title' >Отправьте заявку</h2>
+                    <h2 className='application__head__title'>Отправьте заявку</h2>
                     <p className='application__head__subtitle' >Мы свяжемся с Вами в ближайшее время</p>
                 </div>
                 {isAuth
@@ -163,7 +169,7 @@ export function Application() {
                         ></input>
                     )
                 }
-                { isAuth
+                {isAuth
                     ? <p className="application__user-text">{userEmail ? userEmail : 'Email'}</p>
                     : (errorEmail ? <input className='application__input_false' type='email'
                         placeholder='Email'
@@ -180,10 +186,10 @@ export function Application() {
                 }
 
                 <div className="application__select">
-                    <SelectImpression/>
+                    <SelectImpression />
                 </div>
 
-                <label className='application__checkbox' ><input className='application__checkbox__input}=' type='checkbox'
+                <label className='application__checkbox' ><input className='application__checkbox__input' type='checkbox'
                     onChange={() => setAgree(!agree)}></input>
                     Отправляя заявку Вы соглашаетесь на обработку <span>персональных данных</span></label>
 

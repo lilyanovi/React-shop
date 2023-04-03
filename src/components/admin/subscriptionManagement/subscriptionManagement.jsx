@@ -9,10 +9,11 @@ const SubscriptionManagementAdmin = () => {
 useEffect(() => {
     getSubscribeList()
       .then(data => {
-        setList(data)
+        if (Object.keys(data).length !== 0)
+       {setList(data)}
       })
   }, [])
-
+ 
   const deleteSubscribe = (key) => {
     deliteInSubscribeList(key)
     writeUserSubscribe(key, false)
@@ -20,11 +21,11 @@ useEffect(() => {
     delete newList[key]
     setList(newList)
   }
- 
-    return (
+  // console.log(Object.keys(list).length)
+   return (
       <>
-        <div className="subscription-contain">
-
+        {(Object.keys(list).length !== 0) ?
+        <div className="subscription-contain">        
           {Object.keys(list).map((key, i) => (
             <div className="subscription-box" key={key}>
             <div className="box-name">
@@ -42,9 +43,14 @@ useEffect(() => {
               </div>
             </div>
             </div>
-          ))}
-          
+          ))
+        } </div> :
+          <div className="subscription__no" >
+          <p className="subscription__no__title" >У&nbsp;вас ещё нет подписок(</p>
         </div>
+        }
+          
+        
       </>
     )
   }

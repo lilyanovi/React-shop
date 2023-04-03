@@ -1,7 +1,6 @@
 import './sended.scss'
 import goodSend from '../../assets/goodSend.png'
 import imgLogo from '../../assets/logo.png'
-import closeModal from '../../assets/close.png'
 import { useDispatch } from 'react-redux'
 import { closeModalSended } from '../../store/modal/actions'
 
@@ -21,9 +20,8 @@ const Sended = () => {
       </div>
       <p className="sended__info">Мы свяжемся с Вами в ближайшее время</p>
       <img src={imgLogo} alt="img logo" height="58" className="sended__logo" />
-      <button onClick={handleCloseModal}>
-        <img src={closeModal} alt="close" />
-      </button>
+      <div class="sended-closebtn" onClick={handleCloseModal}>
+      </div>
     </div>
   )
 }
