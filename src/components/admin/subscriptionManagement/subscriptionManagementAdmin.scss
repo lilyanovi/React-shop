@@ -20,6 +20,20 @@
     flex-basis: 100%;
 }
 
+.subscription__no {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    color: #547147;
+    padding: 50px 5px; 
+    background: #FFFFFF;
+    border: 1px solid #547147;
+    backdrop-filter: blur(25px);
+    border-radius: 0px 20px 20px 20px; 
+}
+
 .box-name {
     flex-basis: 100%;
     text-align: center;

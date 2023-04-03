@@ -47,7 +47,11 @@ const MyCommetns = () => {
             ))
           }
         </div>
-      : <p className="myComments__no" >Нет отзывов</p> }
+      : 
+      <div className="myComments__no" >
+        <p className="myComments__no__title" >У&nbsp;вас ещё нет отзывов(</p>
+        <p className="myComments__no__text" >Оставьте свой первый отзыв!</p> 
+      </div>}
     </div>
   )
 }

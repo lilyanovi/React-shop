@@ -94,13 +94,14 @@ const CommentsManagementAdmin = () => {
         </div>
       </div>
       <div className='comments__list'>
-        {comments.length > 0 && cards.length > 0
+        {(comments.length > 0 && cards.length > 1 && comments.length !== [''] && cards.length !== [''])
           ? comments.map((com, i) =>
             <div className='comment' key={i}>
               <Comment comment={com} id={commentsId[i]} cardsComments={cards} card={com.card} idComment={deleteComment} />
             </div>)
-          : <h1 style={{ textAlign: 'center' }}>Загрузка...</h1>
-        }
+          : <div className="comments__no" >
+          <p className="comments__no__title" >У&nbsp;вас ещё нет отзывов(</p>
+        </div>}    
       </div>
     </div>
   )
