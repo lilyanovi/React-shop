@@ -5,23 +5,26 @@ import deleteImg from '../../assets/delete_1.png'
 import './myComments.scss'
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
-import { useDispatch } from 'react-redux'
-import { deleteAuthComment } from '../../store/auth/action'
 
 const MyCommetns = () => {
-  const { id, comments } = useAuth()
-  const dispatch = useDispatch()
+  const [comments, setComments] = useState({})
+  const { id } = useAuth()
+
+  useEffect(() => {
+    getCommitsUserList(id)
+      .then(data => {
+        setComments(data)
+      })
+  }, [])
 
   const handleDeleteComment = key => {
     editUserCommentAccount(id, key)
-    dispatch(deleteAuthComment(key))
   }
 
-  console.log(comments)
   return (
     <div className="myComments">
       <h3>Мои отзывы</h3>
-      { (Object.keys(comments).length !== 0) ?  
+      { comments ?  
         <div className="myComments__list">
           {
             Object.keys(comments).map(key => (
@@ -49,7 +52,7 @@ const MyCommetns = () => {
             ))
           }
         </div>
-      : <p className="myComments__no" >Нет отзывов</p> }
+      : 'Нет отзывов' }
     </div>
   )
 }
