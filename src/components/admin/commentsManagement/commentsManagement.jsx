@@ -101,12 +101,8 @@ const CommentsManagementAdmin = () => {
             </div>)
           : <div className="comments__no" >
           <p className="comments__no__title" >У&nbsp;вас ещё нет отзывов(</p>
-        </div>}
-        
+        </div>}    
       </div>
-      <div className="comments__no" >
-          <p className="comments__no__title" >У&nbsp;вас ещё нет отзывов(</p>
-        </div>
     </div>
   )
 }
