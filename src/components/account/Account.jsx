@@ -35,7 +35,6 @@ const Account = () => {
         console.log(error)
       })
   }
-
   const handleClickLink = event => {
     let id = event.target.dataset.id
     let links = document.querySelectorAll('.account__sideBar-wrapper-link')
@@ -54,6 +53,7 @@ const Account = () => {
         setMenu(true)
       } else {
         setMenu(false)
+        setButton("Данные пользователя")
       }
     }
     window.addEventListener('resize', handleResize);
@@ -69,13 +69,17 @@ const Account = () => {
               className="account__sideBar-wrapper-link active"
               data-id="1"
               to="/account"
+              onClick={() => {
+                setButton("Данные пользователя");
+              }
+              }
             >
               {button}
             </NavLink>
           </div> :
             <div className="account__sideBar-wrapper">
               <NavLink
-                className="account__sideBar-wrapper-link active"
+                className="account__sideBar-wrapper-link"
                 data-id="1"
                 to="/account"
                 onClick={() => {
@@ -133,7 +137,7 @@ const Account = () => {
       </div>
       {modalQuestion && <QuestionModalWindow />}
       {modalDelete && <CancelModalWindow />}
-    </div>
+    </div >
   )
 }
 
