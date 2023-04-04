@@ -3,15 +3,14 @@ import arrowImg from '../../assets/arrowDown.png'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectCard } from '../../store/card/actions'
+import { toggleRatioModal } from '../../store/modal/actions'
 
 const SelectImpression = () => {
-
-  const [showSelect, setShowSelect] = useState(false)
   const [cards, setCards] = useState([])
   const [value, setValue] = useState(null)
   const card = useSelector(store => store.card)
-
   const dispatch = useDispatch()
+  const selector = useSelector(store => store.modal.modalRatio)
 
   useEffect(() => {
     fetch('https://kaori318.github.io/site/cards.json')
@@ -32,7 +31,7 @@ const SelectImpression = () => {
   }, [])
 
   const handleShowSelect = () => {
-    setShowSelect(!showSelect)
+    dispatch(toggleRatioModal(!selector))
   }
 
   const handleChange = (event, card) => {
@@ -47,22 +46,23 @@ const SelectImpression = () => {
         box.classList.add('selectImpression__box-checked')
       }
     }
+    dispatch(toggleRatioModal(false))
   }
 
   return (
-    <div className="selectImpression">
+    <div className="selectImpression" >
       <div className="selectImpression__main" onClick={handleShowSelect}>
-        { card.name !== undefined ? <p>{card.name}</p> : <p>Выбрать впечаление</p>}
+        {card.name !== undefined ? <p>{card.name}</p> : <p>Выбрать впечаление</p>}
         <img
           src={arrowImg}
           alt="arrow down"
           height="26"
-          className={!showSelect
+          className={!selector
             ? 'selectInpression__arrow'
             : 'selectInpression__arrow selectImpression__arrow-rotate'}
         />
       </div>
-      { showSelect && 
+      {selector &&
         <div className="selectImpression__list">
           {
             cards.map(card => (
@@ -78,7 +78,7 @@ const SelectImpression = () => {
                 />
                 <label htmlFor={card.id} className="selectImpression__label">
                   <div className="selectImpression__label-info-card">
-                    <img src={card.img} alt="card img" height="30"/>
+                    <img src={card.img} alt="card img" height="30" />
                     <p>{card.name}</p>
                   </div>
                   <div className="selectImpression__item-box" data-id={card.id}></div>

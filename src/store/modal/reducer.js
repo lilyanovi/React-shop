@@ -6,7 +6,8 @@ const initialState = {
     show: false,
     key: ''
   },
-  modalDelete: false
+  modalDelete: false,
+  modalRatio: false
 }
 
 export const modalReducer = (state = initialState, action) => {
@@ -51,5 +52,11 @@ export const modalReducer = (state = initialState, action) => {
     copy.modalDelete = payload
     return copy
   }
+  if (type === 'TOGGLE_RATIO_MODAL') {
+    let copy = Object.assign({}, state)
+    copy.modalRatio = payload
+    return copy
+  }
+
   return state
 }
