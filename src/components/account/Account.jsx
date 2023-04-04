@@ -67,12 +67,17 @@ const Account = () => {
           {menu ? <div className="account__sideBar-wrapper">
             <NavLink
               className="account__sideBar-wrapper-link active"
+<<<<<<< HEAD
               data-id="1"
               to="/account"
               onClick={() => {
                 setButton("Данные пользователя");
               }
               }
+=======
+              data-id={document.querySelector(".active").getAttribute("data-id")}
+              to={document.querySelector(".active").getAttribute("href")}
+>>>>>>> main
             >
               {button}
             </NavLink>
