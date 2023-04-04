@@ -129,7 +129,7 @@ export function Application() {
     return (
         <>
             <form className='application' onSubmit={(event) => handleSubmit(event)}>
-                <div class="application-closebtn" onClick={handleCloseModal}></div>
+                <div className="application-closebtn" onClick={handleCloseModal}></div>
                 <div className='application__head'>
                     <h2 className='application__head__title'>Отправьте заявку</h2>
                     <p className='application__head__subtitle' >Мы свяжемся с Вами в ближайшее время</p>
