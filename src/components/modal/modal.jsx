@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { closeModal, closeModalDetail, closeModalSended } from '../../store/modal/actions'
 import { selectCard } from '../../store/card/actions'
 
-export function Modal ({ children }) {
+export function Modal({ children }) {
     const dispatch = useDispatch()
 
     const handleCloseModal = () => {
@@ -16,9 +16,9 @@ export function Modal ({ children }) {
     return (
         <>
             <div className="modal" onClick={handleCloseModal}>
-               <div onClick={e => e.stopPropagation()}>
+                <div onClick={e => e.stopPropagation()}>
                     {children}
-               </div>
+                </div>
             </div>
         </>
     )
