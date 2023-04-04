@@ -14,7 +14,7 @@ const Card = ({ card, setInfo, cardId }) => {
   const handleOpenDetails = () => {
     dispatch(openModalDetail(true))
   }
-
+console.log(card.img)
   return (
     <div className={style.card} onClick={() => cardId(card.id)}>
       <div className={style.card__img}

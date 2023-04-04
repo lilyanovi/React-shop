@@ -13,7 +13,7 @@ export default function CancelModalWindow() {
   return (
     <div className='cancelModal__background' onClick={handleCloseModal}>
       <div className='cancelModal__modal'>
-        <div class="cancelModal__modal-closebtn">
+        <div className="cancelModal__modal-closebtn">
         </div>
         <p className='cancelModal__text'>Ваша заявка <span className='cancelModal__boldText'>отменена!</span></p>
         <Link className='cancelModal__hrefText' to='/catalog'>Перейти в каталог</Link>

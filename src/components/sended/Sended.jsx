@@ -20,7 +20,7 @@ const Sended = () => {
       </div>
       <p className="sended__info">Мы свяжемся с Вами в ближайшее время</p>
       <img src={imgLogo} alt="img logo" height="58" className="sended__logo" />
-      <div class="sended-closebtn" onClick={handleCloseModal}>
+      <div className="sended-closebtn" onClick={handleCloseModal}>
       </div>
     </div>
   )
