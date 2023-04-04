@@ -73,8 +73,8 @@ const CommentsManagementAdmin = () => {
   return (
     <div className="comments__container">
       <div className="comments__sort">
-        <p>Сортировать по:</p>
-        <div>
+        <p>Сортировать:</p>
+        <label>
           <button id="radioDown" className='radio' name="radio"
             onClick={filterAmount}>
             {arrowAmmount === "1" && <span className='arrow'> &#9650;</span>}
@@ -82,8 +82,8 @@ const CommentsManagementAdmin = () => {
             {arrowAmmount === "" && <span> </span>}
           </button>
           <span>  по рейтингу </span>
-        </div>
-        <div>
+        </label>
+        <label>
           <button id="radioDown" className='radio' name="radio"
             onClick={filterDate}>
             {arrowDate === "1" && <span className='arrow'> &#9650;</span>}
@@ -91,7 +91,7 @@ const CommentsManagementAdmin = () => {
             {arrowDate === "" && <span> </span>}
           </button>
           <span>  по дате </span>
-        </div>
+        </label>
       </div>
       <div className='comments__list'>
         {(comments.length > 0 && cards.length > 1 && comments.length !== [''] && cards.length !== [''])
@@ -100,8 +100,8 @@ const CommentsManagementAdmin = () => {
               <Comment comment={com} id={commentsId[i]} cardsComments={cards} card={com.card} idComment={deleteComment} />
             </div>)
           : <div className="comments__no" >
-          <p className="comments__no__title" >У&nbsp;вас ещё нет отзывов(</p>
-        </div>}    
+            <p className="comments__no__title" >У&nbsp;вас ещё нет отзывов(</p>
+          </div>}
       </div>
     </div>
   )

@@ -1,6 +1,6 @@
 .comments__container {
-    outline: 1px solid #547147;
-    border-radius: 0  20px 20px 20px;
+    border: 1px solid #547147;
+    border-radius: 0 20px 20px 20px;
     max-height: 1500px;
     margin-bottom: 100px;
     padding-bottom: 15px;
@@ -9,22 +9,55 @@
 .comments__sort {
     height: 40px;
     display: flex;
+    align-items: center;
     justify-content: center;
     background-color: #547147;
     border-radius: 0 17px 0 0;
     align-items: center;
     gap: 35px;
-    p {
-        font-family: 'Montserrat';
+
+    & p {
         font-weight: 600;
         font-size: 16px;
         line-height: 16px;
         color: #FFFFFF;
     }
+
+    & label {
+        display: flex;
+        align-items: center;
+
+        & span {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 16px;
+            color: #FFFFFF;
+            pointer-events: none;
+
+            &.arrow {
+                color: #547147;
+            }
+        }
+
+        &.radio {
+            width: 35px;
+            height: 25px;
+            border-radius: 10% 50%;
+            border: none;
+
+            &:hover {
+                box-shadow: 0px 0px 4px 4px #547147 inset;
+                border: 1px #FFFFFF solid;
+            }
+        }
+    }
+
 }
 
 .comments__list {
     margin: 15px 25px;
+
     // overflow: auto;
     //     max-height: 1000px;
     .comment {
@@ -33,10 +66,11 @@
         border-radius: 20px;
         padding: 20px 20px 10px;
         margin-bottom: 15px;
-        
+
 
     }
 }
+
 .comments__no {
     font-style: normal;
     font-weight: 600;
@@ -44,10 +78,10 @@
     line-height: 28px;
     text-align: center;
     color: #547147;
-    margin: 50px 5px;   
+    margin: 50px 5px;
 }
 
-.arrow{
+.arrow {
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -58,6 +92,7 @@
     //     color: #547147;
     // }
 }
+
 .comment__container {
     display: flex;
     justify-content: space-between;
@@ -66,16 +101,19 @@
 .comment__body {
     display: flex;
     margin-right: 100px;
-    padding-bottom: 10px ;
+    padding-bottom: 10px;
+
     img {
         width: 120px;
         height: 120px;
         border-radius: 8px;
         margin-right: 10px;
     }
+
     .comment__text {
         display: flex;
         flex-direction: column;
+
         &-date {
             font-family: 'Montserrat';
             font-weight: 400;
@@ -84,6 +122,7 @@
             color: #888888;
             margin-bottom: 10px;
         }
+
         &-name {
             font-family: 'Montserrat';
             font-weight: 500;
@@ -92,6 +131,7 @@
             color: #333333;
             margin-bottom: 10px;
         }
+
         &-comment {
             font-family: 'Montserrat';
             font-weight: 400;
@@ -100,10 +140,13 @@
             color: #333333;
         }
     }
+
     .comment__rating-box {
         width: 100px;
+
         span {
             padding: 0;
+
             svg {
                 width: 20px;
                 height: 20px;
@@ -117,11 +160,13 @@
     display: flex;
     justify-content: right;
     align-items: end;
+
     button {
         height: 35px;
         border: none;
         background: none;
         cursor: pointer;
+
         img {
             height: 30px;
             width: 30px;
