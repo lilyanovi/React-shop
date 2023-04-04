@@ -37,3 +37,7 @@ export const toggleDeleteModal = data => ({
   type: 'TOGGLE_DELETE_MODAL',
   payload: data
 })
+export const toggleRatioModal = data => ({
+  type: 'TOGGLE_RATIO_MODAL',
+  payload: data
+})

@@ -26,7 +26,6 @@ const Account = () => {
 
   const handleLogOut = event => {
     event.preventDefault()
-
     signOut(auth)
       .then(() => {
         dispatch(removeUser())
