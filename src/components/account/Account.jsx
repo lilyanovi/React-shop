@@ -35,7 +35,6 @@ const Account = () => {
         console.log(error)
       })
   }
-
   const handleClickLink = event => {
     let id = event.target.dataset.id
     let links = document.querySelectorAll('.account__sideBar-wrapper-link')
@@ -68,15 +67,19 @@ const Account = () => {
           {menu ? <div className="account__sideBar-wrapper">
             <NavLink
               className="account__sideBar-wrapper-link active"
-              data-id={document.querySelector(".active").getAttribute("data-id")}
-              to={document.querySelector(".active").getAttribute("href")}
+              data-id="1"
+              to="/account"
+              onClick={() => {
+                setButton("Данные пользователя");
+              }
+              }
             >
               {button}
             </NavLink>
           </div> :
             <div className="account__sideBar-wrapper">
               <NavLink
-                className="account__sideBar-wrapper-link active"
+                className="account__sideBar-wrapper-link"
                 data-id="1"
                 to="/account"
                 onClick={() => {
@@ -134,7 +137,7 @@ const Account = () => {
       </div>
       {modalQuestion && <QuestionModalWindow />}
       {modalDelete && <CancelModalWindow />}
-    </div>
+    </div >
   )
 }
 
