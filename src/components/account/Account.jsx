@@ -54,6 +54,7 @@ const Account = () => {
         setMenu(true)
       } else {
         setMenu(false)
+        setButton("Данные пользователя")
       }
     }
     window.addEventListener('resize', handleResize);
@@ -67,8 +68,8 @@ const Account = () => {
           {menu ? <div className="account__sideBar-wrapper">
             <NavLink
               className="account__sideBar-wrapper-link active"
-              data-id="1"
-              to="/account"
+              data-id={document.querySelector(".active").getAttribute("data-id")}
+              to={document.querySelector(".active").getAttribute("href")}
             >
               {button}
             </NavLink>
