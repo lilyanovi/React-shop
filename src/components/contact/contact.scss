@@ -93,8 +93,6 @@
       font-size: 24px;
     }
   }
-
-
 }
 
 @media only screen and (max-width: 680px) {
@@ -139,10 +137,14 @@
         margin-bottom: 30px;
       }
     }
+
+    .num {
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 22px;
+      text-align: left !important;
+      margin-bottom: 0px !important;
+    }
   }
 
-  .num {
-    text-align: left !important;
-    margin-bottom: 0px !important;
-  }
 }

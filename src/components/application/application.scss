@@ -75,7 +75,10 @@
         margin-top: 56px;
 
         &__input {
+            scale: 1.4;
             margin-right: 10px;
+            position: relative;
+            top: 2px;
         }
     }
 
@@ -180,6 +183,10 @@
 
         &__checkbox {
             margin-top: 46px;
+
+            &__input {
+                scale: 1.0;
+            }
         }
 
         &__btn {
