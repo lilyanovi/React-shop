@@ -56,6 +56,5 @@
   "license": "ISC",
   "devDependencies": {
     "webpack": "^5.77.0"
-  },
-  "homepage": "https://matrenin.github.io/React-shop"
+  }
 }
