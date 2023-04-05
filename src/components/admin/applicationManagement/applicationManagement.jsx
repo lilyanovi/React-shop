@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react'
 import './applicationManagement.scss'
 import Pagination from '../../../components/pagination/Pagination';
 import AdminSelectStatus from '../../../ui/AdminSelectStatus'
+import { useSelector } from 'react-redux'
+import QuestionModalWindow from '../../questionModal/QuestionModalWindow'
+import CancelModalWindow from '../../cancelModal/CancelModalWindow'
 
 const ApplicationManagementAdmin = () => {
   const [list, setList] = useState({})
@@ -11,13 +14,15 @@ const ApplicationManagementAdmin = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [countriesPerPage] = useState(10)
   const [value, setValue] = useState('')
+  const modalQuestion = useSelector(store => store.modal.modalQuestion.show)
+  const modalDelete = useSelector(store => store.modal.modalDelete)
 
   useEffect(() => {
     getApplicationList()
       .then(data => {
         setList(data)
       })
-  }, [value])
+  }, [list])
 
   function filterForDate() {
     const array = Object.entries(list)
@@ -173,7 +178,13 @@ const ApplicationManagementAdmin = () => {
             currentPage={currentPage}
           />
       </div>
-     
+      { modalQuestion &&
+        <QuestionModalWindow/>
+      }
+      {
+        modalDelete &&
+        <CancelModalWindow/>
+      }
     </>
   )
 }

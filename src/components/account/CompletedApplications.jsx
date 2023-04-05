@@ -23,7 +23,7 @@ const CompletedApplications = () => {
   }
 
   const handleModalQuestion = key => {
-    dispatch(toggleQuestionModal({ show: true, key: key }))
+    dispatch(toggleQuestionModal({ show: true, key: key, userId: '' }))
   }
 
   const changeStyleItem = () => {

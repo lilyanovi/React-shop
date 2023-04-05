@@ -4,15 +4,18 @@ import { toggleQuestionModal, toggleDeleteModal } from '../../store/modal/action
 import { deleteAuthApplication } from '../../store/auth/action'
 import { useAuth } from '../../hooks/use-auth'
 import { deliteUserApplication } from '../../services/firebase'
+import { writeUserApplicationStatus } from '../../services/firebase'
 
 export default function QuestionModalWindow () {
   const key = useSelector(store => store.modal.modalQuestion.key)
+  const userId = useSelector(store => store.modal.modalQuestion.userId)
   const { id } = useAuth()
 
   const dispatch = useDispatch()
 
   const handleCloseModal = () => {
-    dispatch(toggleQuestionModal({ show: false, key: ''}))
+    dispatch(toggleQuestionModal({ show: false, key: '', userId: '' }))
+    writeUserApplicationStatus(userId, key, "В обработке")
   }
 
   const handleClick = event => {
@@ -22,7 +25,8 @@ export default function QuestionModalWindow () {
   const handleDeleteItem = () => {
     dispatch(deleteAuthApplication(key))
     deliteUserApplication(id, key)
-    dispatch(toggleQuestionModal({ show: false, key: ''}))
+    deliteUserApplication(userId, key)
+    dispatch(toggleQuestionModal({ show: false, key: '', userId: '' }))
     dispatch(toggleDeleteModal(true))
   }
 

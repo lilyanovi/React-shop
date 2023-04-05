@@ -4,7 +4,8 @@ const initialState = {
   modalSended: false,
   modalQuestion: {
     show: false,
-    key: ''
+    key: '',
+    userId: ''
   },
   modalDelete: false,
   modalRatio: false
