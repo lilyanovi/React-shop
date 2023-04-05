@@ -1,11 +1,6 @@
-import { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { addAuthApplications } from '../store/auth/action'
-import { writeUserApplicationStatus } from '../services/firebase'
+import { useEffect } from 'react'
 
-const AdminSelectStatus = ({ status, propsKey, id }) => {
-  const [value, setValue] = useState('')
-  const dispatch = useDispatch()
+const AdminSelectStatus = ({ status, propsKey, id, changeStatus }) => {
 
   useEffect(() => {
     let selectEls = document.querySelectorAll('.adminSelectStatus')
@@ -21,7 +16,7 @@ const AdminSelectStatus = ({ status, propsKey, id }) => {
   }, [status])
 
   const handleChangeStatus = (event) => {
-    setValue(event.target.value)
+    changeStatus(id, propsKey, event.target.value)
   }
 
   return (
