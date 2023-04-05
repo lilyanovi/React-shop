@@ -80,10 +80,13 @@
   }
 
   &__img {
-    width: 88px;
-    height: 84px;
-    border: 1px solid #ccc;
-  }
+  
+    img {
+        width: 88px;
+        height: 88px;
+        border-radius: 8px;
+    }
+}
 
   &__delete {
     align-self: end;
@@ -142,6 +145,13 @@
         line-height: 16px;
       }
     }
+    &__img {
+  
+      img {
+          width: 60px;
+          height: 60px;
+      }
+  }
 
   }
 }

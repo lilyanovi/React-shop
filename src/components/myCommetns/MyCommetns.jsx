@@ -27,7 +27,11 @@ const MyCommetns = () => {
 
                 <div className="myComments__desc">
                   <div className="myComments__desc_info">
-                    <div className="myComments__img">Photo</div>
+                    <div className="myComments__img">
+                      <img 
+                        src={comments[key].card?.img} 
+                        alt={comments[key].card?.name}/>
+                    </div>
                     <div className="myComments__desc_info__text">
                       <p className="myComments__desc-date">{comments[key].date}</p>
                       <p className="myComments__desc-name">{comments[key].name}</p>

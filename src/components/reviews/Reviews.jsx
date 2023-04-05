@@ -52,7 +52,7 @@ const Reviews = () => {
                 {reviews.map((review, i) =>
                     <SwiperSlide key={i}>
                         {review && cards.length>0
-                        ? <Review review={review} cardReview={review.card} cardsReview={cards}/>
+                        ? <Review review={review} />
                         : <h1 style={{textAlign:'center'}}>Загрузка...</h1>}
                         
                     </SwiperSlide>)

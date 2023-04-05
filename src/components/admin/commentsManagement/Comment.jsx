@@ -4,17 +4,17 @@ import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import imgDelete from '../../../assets/delete_1.png'
 
-const Comment = ({ comment, cardsComments, card, id, idComment }) => {
+const Comment = ({ comment, id, idComment }) => {
 
-    const [cardIndex, setCardIndex] = useState('')
-    const [rating, setRating] = useState(comment.rating)
+  /*  const [cardIndex, setCardIndex] = useState('')
+   const [rating, setRating] = useState(comment.rating)
     const [cards, setCards] = useState(cardsComments)
 
     useEffect(() => {
         const card1 = card
         const index = cards.findIndex(el => el.name === card1);
         setCardIndex(cards[index])
-    }, [cardsComments])
+    }, [cardsComments])*/
 
     const date = new Date(comment.date).toLocaleDateString()
 
@@ -22,8 +22,8 @@ const Comment = ({ comment, cardsComments, card, id, idComment }) => {
         <div className='comment__container'>
             <div className='comment__body'>
                 <img
-                    src={cardIndex?.img}
-                    alt={comment.card}
+                    src={comment.card?.img}
+                    alt={comment.card?.name}
                 />
                 <div className='comment__text'>
                     <p className='comment__text-date'>{date}</p>
