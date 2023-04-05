@@ -14,7 +14,7 @@ const CommentUser = () => {
   const [rating, setRating] = useState(0)
   const [name, setName] = useState('')
   const [comment, setComment] = useState('')
-  const card = useSelector(store => store.card.name)
+  const card = useSelector(store => store.card)
   const { id } = useAuth()
   const idComment = nanoid()
   const [showMyComments, setShowMyComments] = useState(false)

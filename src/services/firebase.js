@@ -253,6 +253,9 @@ export const deliteUserApplication = (id, idApplication) => {
   set(ref(db, 'users/' + id + '/applications/'+ idApplication ), {
     application: null
   });
+  set(ref(db, 'applicationList/'+idApplication), {
+    application: null
+  });
 }
 
 //указать статус для заявки от авторизованного пользователя
