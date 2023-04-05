@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { nanoid } from 'nanoid'
 import { useDispatch, useSelector } from 'react-redux'
 import { addApplication } from '../../store/applications/actions'
-import { closeModal, openModalSended } from '../../store/modal/actions'
+import { closeModal, openModalSended, toggleRatioModal } from '../../store/modal/actions'
 import { Modal } from '../modal/modal'
 import Sended from '../sended/Sended'
 import { writeApplicationList, writeUserApplication, writeUserApplicationStatus } from '../../services/firebase'
@@ -126,9 +126,21 @@ export function Application() {
         }
     }
 
+    const handleCloseSelectImpression = (event) => {
+        if (event.target.closest('.selectImpression')) {
+            return
+        } else {
+            dispatch(toggleRatioModal(false))
+        }
+    }
+
     return (
         <>
-            <form className='application' onSubmit={(event) => handleSubmit(event)}>
+            <form
+                className='application'
+                onSubmit={(event) => handleSubmit(event)}
+                onClick={(event) => handleCloseSelectImpression(event)}
+            >
                 <div className="application-closebtn" onClick={handleCloseModal}></div>
                 <div className='application__head'>
                     <h2 className='application__head__title'>Отправьте заявку</h2>
