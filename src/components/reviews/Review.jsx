@@ -4,10 +4,10 @@ import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 
 
-const Review = ({ review, cardsReview, cardReview}) => {
+const Review = ({ review}) => {
 
-    const [cardIndex, setCardIndex] = useState('')
-    const [rating, setRating] = useState(review.rating)
+  /*  const [cardIndex, setCardIndex] = useState('')
+   const [rating, setRating] = useState(review.rating)
     const [cards, setCards] = useState(cardsReview)
 
     useEffect(() => {
@@ -18,15 +18,15 @@ const Review = ({ review, cardsReview, cardReview}) => {
         const card = cardReview
         const index = cards.findIndex(el => el.name === card);
         setCardIndex(cards[index])
-    }
+    }*/
 
     return (       
         <div className='review'>
             <div className='review__body'>
                 <div className="review__card">
                     <img
-                        src={cardIndex.img}
-                        alt={review.card}
+                        src={review.card?.img}
+                        alt={review.card?.name}
                     />
                 </div>
                 <div className='review__text'>

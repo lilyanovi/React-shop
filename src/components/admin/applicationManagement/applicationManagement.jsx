@@ -10,13 +10,14 @@ const ApplicationManagementAdmin = () => {
   const [arrowTwo, setArrowTwo] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
   const [countriesPerPage] = useState(10)
+  const [value, setValue] = useState('')
 
   useEffect(() => {
     getApplicationList()
       .then(data => {
         setList(data)
       })
-  }, [])
+  }, [value])
 
   function filterForDate() {
     const array = Object.entries(list)
@@ -75,6 +76,11 @@ const ApplicationManagementAdmin = () => {
   const currentCountry = Object.entries(list).slice(firstCountryIndex, lastCountryIndex)
   const currentCountryList = Object.fromEntries(currentCountry)
   const paginate = pageNumber => setCurrentPage(pageNumber)
+
+  const changeStatus = (id, applicationId, value) => {
+    writeUserApplicationStatus(id, applicationId, value)
+    setValue(value)
+  }
 
   return (
     <>
@@ -138,7 +144,12 @@ const ApplicationManagementAdmin = () => {
               <div className="applicationManagmentAdmin__item_iner-title">Статус</div>
               {/* <div className="applicationManagmentAdmin__item_iner-key">{list[key].status?.status}</div> */}
               <div className="applicationManagmentAdmin__item_iner-key">
-                <AdminSelectStatus status={list[key].status?.status} propsKey={key} id={list[key].userId}/>
+                <AdminSelectStatus
+                  status={list[key].status?.status}
+                  propsKey={key}
+                  id={list[key].userId}
+                  changeStatus={changeStatus}
+                />
               </div>
             </div>
             <div className="applicationManagmentAdmin__item_iner">
