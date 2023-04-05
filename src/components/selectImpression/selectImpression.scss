@@ -17,6 +17,8 @@
 
   &__list {
     margin-top: 20px;
+    position: relative;
+    z-index: 200;
   }
 
   &__label {
@@ -29,6 +31,11 @@
       display: flex;
       align-items: center;
       gap: 7px;
+
+      & img {
+        width: 31px;
+        height: 30px;
+      }
     }
   }
 

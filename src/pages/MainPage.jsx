@@ -4,11 +4,16 @@ import Footer from '../components/footer/Footer'
 import { useSelector } from 'react-redux'
 import { Modal } from '../components/modal/modal'
 import Sended from '../components/sended/Sended'
+import { useDispatch } from 'react-redux'
+import { toggleRatioModal } from '../store/modal/actions'
 
 const  MainPage = () => {
   const modalSended = useSelector(store => store.modal.modalSended)
 
+  const dispatch = useDispatch()
+
   const handleSearchFocus = event => {
+    handleSelectApplication(event)
     let imgSearch = document.querySelector('.header__search-img')
     let inputSearch = document.querySelector('.header__search-input')
     if (event.target.closest('.header__search')) {
@@ -21,8 +26,19 @@ const  MainPage = () => {
     }
   }
 
+  const handleSelectApplication = event => {
+    if (event.target.closest('.selectImpression')) {
+      return
+    } else {
+      dispatch(toggleRatioModal(false))
+    }
+  }
+
   return (
-    <div className="homePage" onClick={(event) => handleSearchFocus(event)}>
+    <div
+      className="homePage"
+      onClick={(event) => handleSearchFocus(event)}
+    >
       <Header/>
       <main>
         <Outlet/>

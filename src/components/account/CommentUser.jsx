@@ -67,7 +67,7 @@ const CommentUser = () => {
           <div className="commentUser__item commentUser__item-input">
             <p className="commentUser__item-text">Название: </p>
             <div className="commentUser__item-select">
-              <SelectImpression />
+              <SelectImpression/>
             </div>
           </div>
           <div className="commentUser__item comment-textarea commentUser__item-input">
